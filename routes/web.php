@@ -15,4 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/",function(){
     return view("welcome");
-});
+})->name("get.landingpage");
+
+Route::get("/choose-hired-student-type",function(){
+    return view("choose-hired-student-type");
+})->name("get.choose-hired-student-type");
+

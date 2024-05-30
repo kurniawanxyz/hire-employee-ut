@@ -19,6 +19,8 @@
     <!-- Theme Style -->
     <link rel="stylesheet" type="text/css" href="{{asset('style.css')}}">
 
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+
     <!-- Favicon and touch icons  -->
     <link rel="shortcut icon" href="{{ asset('assets/icon/favicon.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{asset('assets/icon/apple-touch-icon-158-precomposed.png')}}">
@@ -67,7 +69,7 @@
     <!-- Header -->
     <header id="site-header" class="header-front-page style-5">
         <div id="site-header-inner" class="container">
-            <div class="wrap-inner">          
+            <div class="wrap-inner flex justify-content-between">          
                 <div id="site-logo" class="clearfix">
                     <div id="site-logo-inner">
                         <a href="home-slider-full-screen.html" title="Construction" rel="home" class="main-logo">
@@ -130,83 +132,19 @@
                         <li class="menu-item"><a href="blog.html">Blog</a></li>
                         <li class="menu-item"><a href="page-contact.html">Contact</a></li>
                     </ul>
-                </nav><!-- /#main-nav -->
-{{-- 
-                <div id="header-search">
-                    
-                    <form role="search" method="get" class="header-search-form" action="#">
-                        <input type="text" value="" name="s" class="header-search-field" placeholder="Type and hit enter...">
-                        <button type="submit" class="header-search-submit" title="Search">Search</button>
-                        <input type="hidden" name="post_type" value="post">
-                    </form>
-                </div><!-- /#header-search --> --}}
-{{-- 
+                </nav>
                 <div class="nav-top-cart-wrapper">
-                    <a class="nav-cart-trigger" href="#">
-                        <span class="fa fa-shopping-cart cart-icon">
-                            Hire Employee
-                        </span>
+                    <a href="{{route('get.choose-hired-student-type')}}" class="wprt-button small">
+                        Hire
                     </a>
-
-                    <div class="nav-shop-cart">
-                        <div class="widget_shopping_cart_content">
-                            <ul class="cart_list product_list_widget ">
-                                <li class="mini_cart_item">
-                                    <a href="#" class="remove" title="Remove this item">×</a>
-                                    <a href="#">
-                                        <img width="160" height="160" src="assets/img/shop-item.png" alt="image">
-                                        Shop Item 01
-                                    </a>
-                                                
-                                    <span class="quantity">1 × <span class="woocommerce-Price-amount amount">
-                                        <span class="woocommerce-Price-currencySymbol">$</span>200.00</span>
-                                    </span>
-                                </li>
-                                <li class="mini_cart_item">
-                                    <a href="#" class="remove" title="Remove this item">×</a>
-                                    <a href="#">
-                                        <img width="160" height="160" src="assets/img/shop-item.png" alt="image">
-                                        Shop Item 02
-                                    </a>
-                                                
-                                    <span class="quantity">1 × <span class="woocommerce-Price-amount amount">
-                                        <span class="woocommerce-Price-currencySymbol">$</span>70.00</span>
-                                    </span>
-                                </li>
-                                <li class="mini_cart_item">
-                                    <a href="#" class="remove" title="Remove this item">×</a>
-                                    <a href="#">
-                                        <img width="160" height="160" src="assets/img/shop-item.png" alt="image">
-                                        Shop Item 03
-                                    </a>
-                                                
-                                    <span class="quantity">1 × <span class="woocommerce-Price-amount amount">
-                                        <span class="woocommerce-Price-currencySymbol">$</span>30.00</span>
-                                    </span>
-                                </li>
-                            </ul><!-- /.product_list_widget -->
-
-                            <p class="total">
-                                <strong>Subtotal:</strong>
-                                <span class="woocommerce-Price-amount amount">
-                                    <span class="woocommerce-Price-currencySymbol">$</span>300.00
-                                </span>
-                            </p>
-        
-                            <p class="buttons">
-                                <a href="#" class="wprt-button small">View Cart</a>
-                                <a href="#" class="wprt-button small checkout">Checkout</a>
-                            </p>
-                        </div>
-                    </div>
-                </div><!-- /.nav-top-cart-wrapper --> --}}
+                </div>
             </div>
         </div><!-- /#site-header-inner -->
     </header><!-- /#site-header -->
 </div><!-- /#site-header-wrap -->
 
 <!-- Hero Background SlideShow -->
-<div id="hero-section" data-number="3" data-image-1="assets/img/slider/10.jpg" data-image-2="assets/img/slider/11.jpg" data-image-3="assets/img/slider/12.jpg" data-effect="fade">
+<div id="hero-section" data-number="3" data-image-1="{{asset('assets/img/slider/9.jpg')}}" data-image-2="{{asset('assets/img/slider/8.jpg')}}" data-image-3="{{asset('assets/img/slider/1.jpg')}}" data-effect="fade">
     <div class="hero-content">
         <div class="hero-title scroll" data-min="28px" data-max="80px">
             <h1>UNITED TRACTORS</h1>
