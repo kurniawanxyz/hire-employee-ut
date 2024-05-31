@@ -134,7 +134,7 @@
                     </ul>
                 </nav>
                 <div class="nav-top-cart-wrapper">
-                    <a href="{{route('get.choose-hired-student-type')}}" class="wprt-button small">
+                    <a href="{{route('hiredStudent.index')}}" class="wprt-button small">
                         Hire
                     </a>
                 </div>

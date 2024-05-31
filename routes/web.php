@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\Authentication;
+use App\Http\Controllers\HiredStudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Route::get("/",function(){
 Route::get("/choose-hired-student-type",function(){
     return view("choose-hired-student-type");
 })->name("get.choose-hired-student-type");
+
+Route::get("/hire-student/{role?}/{branchId?}",[HiredStudentController::class,"index"])->name("hiredStudent.index");
 
 Route::get('admin/login', [Authentication::class, 'showLoginForm']);
 Route::post('admin/login', [Authentication::class, 'login'])->name('login');
