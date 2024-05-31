@@ -13,7 +13,7 @@
     <meta name="author" content="Dreamstechnologies - Bootstrap Admin Template">
     <title>Login - HRMS admin template</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/img/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/img/logokecil.png') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
 
@@ -36,7 +36,7 @@
             <div class="container">
 
                 <div class="account-logo">
-                    <a href="admin-dashboard.html"><img src="{{ asset('assets/admin/img/logo2.png') }}"
+                    <a href="admin-dashboard.html"><img src="{{ asset('assets/admin/img/logo.png') }}"
                             alt="Dreamguy's Technologies"></a>
                 </div>
 
@@ -46,10 +46,11 @@
                         <p class="account-subtitle">Access to our dashboard</p>
 
                         <form action="{{ route('login') }}" method="POST">
+                            @csrf
                             <div class="input-block mb-4">
                                 <label class="col-form-label">Email Address</label>
                                 <input class="form-control @error('email') is-invalid @enderror" type="text" name="email"
-                                    placeholder="Enter your email address">
+                                    placeholder="Enter your email address" value="{{ old('email') }}">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -85,10 +86,10 @@
     </div>
 
 
-    <script src="{{ asset('assets/admin/js/jquery-3.7.1.min.js') }}" type="cdf6f079f511087e612f96b1-text/javascript"></script>
-    <script src="{{ asset('assets/admin/js/app.js') }}" type="cdf6f079f511087e612f96b1-text/javascript"></script>
+    <script src="{{ asset('assets/admin/js/jquery-3.7.1.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/admin/js/app.js') }}" type="text/javascript"></script>
 
-    <script src="{{ asset('assets/admin/js/bootstrap.bundle.min.js') }}" type="cdf6f079f511087e612f96b1-text/javascript"></script>
+    <script src="{{ asset('assets/admin/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
 
 </body>
 

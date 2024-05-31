@@ -16,7 +16,9 @@ class AdminIni
     public function handle(Request $request, Closure $next): Response
     {
         if(auth()->check() && auth()->user()->email == config('app.admin_email')){
-
+            return $next($request);
         }
+
+        return to_route('get.landingpage');
     }
 }
