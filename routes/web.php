@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\Authentication;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/",function(){
     return view("welcome");
+});
+
+Route::get('admin/login', [Authentication::class, 'showLoginForm']);
+Route::post('admin/login', [Authentication::class, 'login'])->name('login');
+Route::middleware('auth.admin')->group(function(){
+
 });
