@@ -29,12 +29,20 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/apple-touch-icon-158-precomposed.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
+<style>
+    p,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 ,
+    span,
+    button{
+        font-family: 'Poppins'
+    }
+</style>
 
 <body>
     <div class="p-5">
@@ -44,93 +52,80 @@
     </div>
     <div style="padding: 50px" class="">
         <h1>Hire Student</h1>
-        <form method="post" class="">
+        <form method="get" class="">
             <div class="row">
                 <div class="col-md-6 d-flex flex-column mt-3">
-                    <label class="form-label" for="">Role</label>
-                    <div>
-                        <select class="form-control" name="" id="">
+                    <label class="form-label" for="role">Role</label>
+                    <div class="d-flex">
+                        <select class="form-control" name="role" id="role">
                             <option disabled selected>Select Role</option>
-                            <option value="">Mechanic</option>
-                            <option value="">Operator</option>
+                            <option value="mechanic">Mechanic</option>
+                            <option value="operator">Operator</option>
                         </select>
-                        <button></button>
+                        <button class="wprt-button small">Search</button>
                     </div>
                 </div>
                 <div class="col-md-6 d-flex flex-column mt-3">
-                    <label class="form-label" for="">Branch</label>
-                    <select class="form-control" name="" id="">
-                        <option disabled selected>Select Role</option>
-                        <option value="">Mechanic</option>
-                        <option value="">Operator</option>
-                    </select>
+                    <label class="form-label" for="branch">Branch</label>
+                    <div class="d-flex">
+                        <select class="form-control" name="branch" id="branch">
+                            <option disabled selected>Select Role</option>
+                            @forelse ($branchs as $i => $item)
+                                <option value="{{$item->id}}">{{$item->city}}</option>
+                            @empty
+                                
+                            @endforelse
+                        </select>
+                        <button class="wprt-button small">Search</button>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
     <div class="row px-5 justify-content-between mb-5">
-        <div class="card col-md-2">
-            <div class="card-img d-flex border w-full">
-                <img class="m-auto d-block" style="border-radius: 100%" src="{{asset('assets/img/avatar.png')}}" alt="">
-            </div>
-            <div class="card-body">
-                <ul class="m-0">
-                    <li>
-                        Name: Adi Kurniawan
-                    </li>
-                    <li>
-                        Age: 18 years old
-                    </li>
-                    <li>
-                        Heigh: 160 cm
-                    </li>
-                    <li>
-                        Weight: 45 Kg
-                    </li>
-                </ul>
-                <div class="mt-3 d-flex flex-column">
-                    <span class="fw-bold">Experience:</span>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi?</p>
+        @forelse ($students as $item )
+        <div class="col-md-3 px-4">
+            <div class="card">
+                <div class="card-img d-flex w-full mt-3">
+                    <img class="m-auto d-block" style="border-radius: 100%" src="{{asset('assets/img/avatar.png')}}" alt="">
                 </div>
-                <div class="mt-3 d-flex justify-content-end">
-                    <button class="wprt-button small">Hire</button>
+                <div class="card-body">
+                    <ul class="m-0">
+                        <li>
+                            Name: Adi Kurniawan
+                        </li>
+                        <li>
+                            Age: 18 years old
+                        </li>
+                        <li>
+                            Heigh: 160 cm
+                        </li>
+                        <li>
+                            Weight: 45 Kg
+                        </li>
+                    </ul>
+                    <div class="mt-3 d-flex flex-column">
+                        <span class="fw-bold">Experience:</span>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi?</p>
+                    </div>
+                    <div class="mt-3 d-flex justify-content-end">
+                        <button class="wprt-button small">Hire</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card col-md-2">
-            <div class="card-img">
-                <img src="{{asset('assets/img/avatar.png')}}" alt="">
-            </div>
-            <div class="card-body">
-                
-            </div>
-        </div>
-        <div class="card col-md-2">
-            <div class="card-img">
-                <img src="{{asset('assets/img/avatar.png')}}" alt="">
-            </div>
-            <div class="card-body">
-                
-            </div>
-        </div>
-        <div class="card col-md-2">
-            <div class="card-img">
-                <img src="{{asset('assets/img/avatar.png')}}" alt="">
-            </div>
-            <div class="card-body">
-                
-            </div>
-        </div>
-        <div class="card col-md-2">
-            <div class="card-img">
-                <img src="{{asset('assets/img/avatar.png')}}" alt="">
-            </div>
-            <div class="card-body">
-                
-            </div>
+        @empty
+            <p>Siswa not found</p> 
+        @endforelse
+       
+    </div>
+    <div class="px-5 d-flex flex-row py-3 justify-content-end align-items-center gap-4 border-t">
+        <span>Confirm to admin: </span>
+        <div class="d-flex align-items-center gap-2">
+            <button class="wprt-button small outline">Whatsapp</button>
+            <button class="wprt-button small">Email</button>
         </div>
     </div>
-
     <a id="scroll-top"></a>
 
     <!-- Javascript -->

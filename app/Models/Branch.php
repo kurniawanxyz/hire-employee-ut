@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HiredStudent extends Model
+class Branch extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $guarded =[];
 
-    public function branch()
+    public function hired_students()
     {
-        return $this->belongsTo(Branch::class);
+        return $this->hasMany(HiredStudent::class);
     }
+
 }

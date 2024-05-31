@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('hired_students', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("branch_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string("name");
             $table->integer('age');
             $table->integer('height');

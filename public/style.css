@@ -7,7 +7,8 @@
  * Author URI: http://www.blogwp.com
  */
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i|Montserrat:300,400,500,600,700|Droid+Serif&amp;subset=latin");
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 
 @import "assets/css/bootstrap.min.css";
 @import "assets/css/animsition.css";
@@ -58,7 +59,7 @@ body,
 button,
 input,
 select,
-textarea { font-family: "Open Sans", sans-serif; color: #777; font-size: 14px; line-height: 1.875; background-color: #fff; overflow-x: hidden; overflow-y: auto; }
+textarea { font-family: "Poppins", sans-serif; color: #777; font-size: 14px; line-height: 1.875; background-color: #fff; overflow-x: hidden; overflow-y: auto; }
 img { height: auto; max-width: 100%; vertical-align: middle; -ms-interpolation-mode: bicubic }
 p { margin: 0 0 20px; }
 strong,
@@ -260,7 +261,7 @@ h2,
 h3,
 h4,
 h5,
-h6 { font-family: "Montserrat", sans-serif; color: #4b4b4b; line-height: 1.5; margin: 0 0 12px; font-weight: 500; text-rendering: optimizeLegibility; }
+h6 { font-family: "Poopins", sans-serif; color: #4b4b4b; line-height: 1.5; margin: 0 0 12px; font-weight: 500; text-rendering: optimizeLegibility; }
 
 h1 { font-size: 2.142em; } /* 30px */
 h2 { font-size: 1.758em; } /* 25px */
@@ -366,9 +367,9 @@ p.dropcap span.first-letter { font-size: 55px; float: left; color: #ffbc13; text
 .letter-spacing-7px { letter-spacing: 7px; }
 .letter-spacing-8px { letter-spacing: 8px; }
 
-.font-family-body { font-family: 'Open Sans', sans-serif !important; }
-.font-family-heading { font-family: 'Montserrat', serif !important; }
-.font-family-extend { font-family: 'Droid Serif', serif !important; }
+.font-family-body { font-family: 'Poppins', sans-serif !important; }
+.font-family-heading { font-family: 'Poppins', serif !important; }
+.font-family-extend { font-family: 'Poppins', serif !important; }
 
 .font-size-13 { font-size: 13px; }
 .font-size-14 { font-size: 14px; }
@@ -1294,6 +1295,7 @@ body.page #main-content { padding-top: 0; padding-bottom: 0; }
 	#site-header.style-4 #site-header-inner { padding-top: 12px; padding-bottom: 12px; }
 }
 
+
 /* Retina Devices
 -------------------------------------------------------------- */
 @media 
@@ -1308,4 +1310,8 @@ only screen and (                min-resolution: 2dppx){
 		background: url(assets/img/5-stars%402x.png) no-repeat center center ;
 		background-size: 97px 15px;
 	}
+}
+
+*{
+    font-family: "Poppins";
 }

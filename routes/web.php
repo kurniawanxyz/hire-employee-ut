@@ -23,7 +23,7 @@ Route::get("/choose-hired-student-type",function(){
     return view("choose-hired-student-type");
 })->name("get.choose-hired-student-type");
 
-Route::get("/hire-student/{role?}/{branchId?}",[HiredStudentController::class,"index"])->name("hiredStudent.index");
+Route::get("/hire-student",[HiredStudentController::class,"index"])->name("hiredStudent.index");
 
 Route::get('admin/login', [Authentication::class, 'showLoginForm']);
 Route::post('admin/login', [Authentication::class, 'login'])->name('login');

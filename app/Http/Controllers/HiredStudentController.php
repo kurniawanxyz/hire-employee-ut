@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\HiredStudent;
 use Illuminate\Http\Request;
 
@@ -14,20 +15,22 @@ class HiredStudentController extends Controller
      */
 
      public function __construct(
-        private HiredStudent $hiredStudent
+        private HiredStudent $hiredStudent,
+        private Branch $branch,
      ) {
      }
-    public function index(?string $role = null, ?int $branchId = null)
+    public function index(Request $req)
     {
-        $student = $this->hiredStudent->query();
-        if(!isNull($role)){
-            $student->where("role",$role);
+        $students = $this->hiredStudent->query();
+        if(isset($req->role)){
+            $students->where("role",$req->role);
         }
-        if(!isNull($branchId)){
-            $student->where("branch_id",$branchId);
+        if(isset($req->branch)){
+            $students->where("branch_id",$req->branch);
         }
-        $student->get();
-        return view("hire-student",compact("student"));
+        $students->get();
+        $branchs = $this->branch->query()->get();
+        return view("hire-student",compact("students","branchs"));
     }
 
     /**
