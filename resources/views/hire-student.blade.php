@@ -39,7 +39,10 @@
     h5,
     h6 ,
     span,
-    button{
+    button,
+    label,
+    opt,
+    select{
         font-family: 'Poppins'
     }
 </style>
@@ -59,8 +62,8 @@
                     <div class="d-flex">
                         <select class="form-control" name="role" id="role">
                             <option disabled selected>Select Role</option>
-                            <option value="mechanic">Mechanic</option>
-                            <option value="operator">Operator</option>
+                            <option @selected($role == "mechanic") value="mechanic">Mechanic</option>
+                            <option @selected($role == "operator") value="operator">Operator</option>
                         </select>
                         <button class="wprt-button small">Search</button>
                     </div>
@@ -71,7 +74,7 @@
                         <select class="form-control" name="branch" id="branch">
                             <option disabled selected>Select Role</option>
                             @forelse ($branchs as $i => $item)
-                                <option value="{{$item->id}}">{{$item->city}}</option>
+                                <option @selected($branch == $item->id) value="{{$item->id}}">{{$item->city}}</option>
                             @empty
                                 
                             @endforelse
@@ -82,9 +85,9 @@
             </div>
         </form>
     </div>
-    <div class="row px-5 justify-content-between mb-5">
-        @forelse ($students as $item )
-        <div class="col-md-3 px-4">
+    <div class="row px-5 justify-content-start mb-5">
+        @forelse ($students as $item)
+        <div class="col-md-4 px-5 mt-3">
             <div class="card">
                 <div class="card-img d-flex w-full mt-3">
                     <img class="m-auto d-block" style="border-radius: 100%" src="{{asset('assets/img/avatar.png')}}" alt="">
@@ -92,24 +95,25 @@
                 <div class="card-body">
                     <ul class="m-0">
                         <li>
-                            Name: Adi Kurniawan
+                            Name: {{$item->name}}
                         </li>
                         <li>
-                            Age: 18 years old
+                            Age: {{$item->age}} years old
                         </li>
                         <li>
-                            Heigh: 160 cm
+                            Height: {{$item->height}} cm
                         </li>
                         <li>
-                            Weight: 45 Kg
+                            Weight: {{$item->weight}} Kg
                         </li>
                     </ul>
                     <div class="mt-3 d-flex flex-column">
                         <span class="fw-bold">Experience:</span>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi?</p>
+                        <p>{{$item->experience}}</p>
                     </div>
                     <div class="mt-3 d-flex justify-content-end">
-                        <button class="wprt-button small">Hire</button>
+                        <button onclick="handleHire('{{$item->id}}')" class="wprt-button small btn-hire-{{$item->id}}">Hire</button>
+                        <button onclick="handleUnHire('{{$item->id}}')" class="btn btn-danger small btn-unhire-{{$item->id}} d-none">UnHire</button>
                     </div>
                 </div>
             </div>
@@ -117,6 +121,11 @@
         @empty
             <p>Siswa not found</p> 
         @endforelse
+        <div>
+            {{
+                $students->links("pagination::bootstrap-5")
+            }}
+        </div>
        
     </div>
     <div class="px-5 d-flex flex-row py-3 justify-content-end align-items-center gap-4 border-t">
@@ -125,12 +134,16 @@
             <button class="wprt-button small outline">Whatsapp</button>
             <button class="wprt-button small">Email</button>
         </div>
+        <div class="d-flex">
+            <button onclick="handleReset()" class="btn btn-danger">Reset</button>
+        </div>
     </div>
     <a id="scroll-top"></a>
 
     <!-- Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/animsition.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/plugins.js') }}"></script>
@@ -140,6 +153,66 @@
     <script type="text/javascript" src="{{ asset('assets/js/vegas.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/cube.portfolio.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script>
+        handleCheckHire()
+        function handleReset()
+        {
+            Swal.fire({
+                title: 'Confirmation',
+                text: 'Are you sure you want to delete the hired student data?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Delete!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.removeItem('hired_students');
+                    handleCheckHire();
+                }
+            });
+        }
+        function handleCheckHire()
+        {
+            let hiredStudent = JSON.parse(localStorage.getItem('hired_students')) || []
+            let student = {{$students->pluck('id')->toJson()}}
+            console.log({student})
+
+            let notHiredStudent = student.filter(id => !hiredStudent.includes(id));
+            notHiredStudent.forEach(id => {
+                let btnHire = $('.btn-hire-' + id)
+                let btnUnHire = $('.btn-unhire-' + id)
+                btnHire.removeClass('d-none')
+                btnUnHire.addClass('d-none')
+            });
+            
+            $.each(hiredStudent, function(key, value) {
+                let btnHire = $('.btn-hire-' + value)
+                let btnUnHire = $('.btn-unhire-' + value)
+                btnHire.addClass('d-none')
+                btnUnHire.removeClass('d-none')
+          })
+        }
+        function handleUnHire(id){
+            let hiredStudents = JSON.parse(localStorage.getItem('hired_students')) || [];
+            let index = hiredStudents.indexOf(id);
+            if (index > -1) {
+                hiredStudents.splice(index, 1);
+            }
+            localStorage.setItem('hired_students', JSON.stringify(hiredStudents));
+            console.log(localStorage.getItem("hired_students"));
+            handleCheckHire()
+        }
+        function handleHire(id)
+        {
+            let hiredStudents = JSON.parse(localStorage.getItem('hired_students')) || [];
+            hiredStudents.push(id);
+            localStorage.setItem('hired_students', JSON.stringify(hiredStudents));
+            console.log(localStorage.getItem("hired_students"));
+            handleCheckHire()
+        }
+    </script>
 
 </body>
 

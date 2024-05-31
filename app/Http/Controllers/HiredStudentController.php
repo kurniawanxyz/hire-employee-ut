@@ -21,16 +21,19 @@ class HiredStudentController extends Controller
      }
     public function index(Request $req)
     {
+        $role = $req->role;
+        $branch = $req->branch;
         $students = $this->hiredStudent->query();
         if(isset($req->role)){
-            $students->where("role",$req->role);
+            $students->where("role",$role);
         }
         if(isset($req->branch)){
-            $students->where("branch_id",$req->branch);
+            $students->where("branch_id",$branch);
         }
-        $students->get();
+        $students = $students->paginate(6);
+        // dd($students);
         $branchs = $this->branch->query()->get();
-        return view("hire-student",compact("students","branchs"));
+        return view("hire-student",compact("students","branchs","branch","role"));
     }
 
     /**
