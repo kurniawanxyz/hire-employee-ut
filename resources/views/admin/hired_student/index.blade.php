@@ -1,13 +1,13 @@
 @extends('layouts.nav-admin')
 
 @section('title', 'Hired Stutends')
-<script src="{{ asset('assets/admin/js/delete-modal.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('assets/css/sweetalert2.min.css') }}">
 @section('content')
     <div class="page-wrapper">
 
         <div class="content container-fluid">
             <div class="page-header mb-3">
-                <div class="card px-3 mb-4 flex-md-row justify-content-between align-items-center py-3 py-md-0">
+                <div class="card px-3 py-3 mb-4 flex-md-row justify-content-between align-items-center">
                     <div>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-dot mb-0">
@@ -17,14 +17,21 @@
                     </div>
                     <div class="d-flex flex-column flex-md-row align-items-md-center">
                         <div class="col-md-6 col-12 me-3 col-lg-4 pk-0">
-                            <select name="jurusan" class="form-select" id="jurusan">
-                                <option selected>{{ __('All') }}</option>
-                                <option>Mechanic</option>
-                                <option>Operator</option>
+                            <select name="selectRole" class="form-select" id="selectRole" paramName='role'>
+                                <option selected>--Role--</option>
+                                <option value="mechanic" {{ request('role') == 'mechanic' ? 'selected' : '' }}>Mechanic</option>
+                                <option value="operator" {{ request('role') == 'operator' ? 'selected' : '' }}>Operator</option>
                             </select>
                         </div>
-                        <div class="d-flex justify-content-center my-3">
-                            <form method="get" class="form-inline d-flex flex-row gap-1">
+                        <div class="col-md-6 col-12 me-3 col-lg-4 pk-0">
+                            <select name="selectHired" class="form-select" id="selectHired" paramName='hired'>
+                                <option selected>--Hired--</option>
+                                <option value="false" {{ request('hired') == 'true' ? 'selected' : '' }}>Not hired yet</option>
+                                <option value="true" {{ request('hired') == 'false' ? 'selected' : '' }}>Already hired</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <form method="get" class="form-inline d-flex flex-row gap-1 m-0">
                                 <input class="form-control mr-sm-2 py-0" type="search" name="query" placeholder="Search"
                                     aria-label="Search" value="{{ request('query') }}">
                                 <button class="btn btn-outline-primary py-0 my-sm-0" type="submit"><i
@@ -73,11 +80,18 @@
                                                     data-bs-toggle="dropdown" aria-expanded="false"><i
                                                         class="material-icons">more_vert</i></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="{{ route('admin.hired-students.edit', $student->id) }}"><i
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.hired-students.edit', $student->id) }}"><i
                                                             class="fa-solid fa-pencil m-r-5"></i>
                                                         Edit</a>
-                                                    <button class="btn dropdown-item"><i
-                                                            class="fa-regular fa-trash-can m-r-5"></i> Delete</button>
+                                                    <form nameData="{{ $student->name }}"
+                                                        action="{{ route('admin.hired-students.destroy', $student->id) }}"
+                                                        method="POST" class="student">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn dropdown-item"><i
+                                                                class="fa-regular fa-trash-can m-r-5"></i> Delete</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </td>
@@ -99,4 +113,11 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('assets/js/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/handle-searching.js') }}"></script>
+    <script>
+        showConfirmDeleteModal('.student');
+        searchDropdown('selectRole');
+        searchDropdown('selectHired');
+    </script>
 @endsection

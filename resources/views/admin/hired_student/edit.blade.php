@@ -84,14 +84,14 @@
                         <div class="my-3 px-3 d-flex">
                             <div class="form-check me-3">
                                 <input class="form-check-input" type="radio" name="recruit"
-                                    id="recruit1" value="yes" {{ $student->hasRecruit == '0' ? 'checked' : '' }}>
+                                    id="recruit1" value="no" {{ $student->hasRecruit == '0' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="recruit1">
                                     Not hired yet
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="recruit"
-                                    id="recruit2" value="no" {{ $student->hasRecruit == '1' ? 'checked' : '' }}>
+                                    id="recruit2" value="yes" {{ $student->hasRecruit == '1' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="recruit2">
                                     already recruited
                                 </label>

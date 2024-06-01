@@ -18,9 +18,22 @@ class AdminHiredStudentsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = HiredStudent::with('branch')->paginate(1);
+        $students = HiredStudent::with('branch');
+        if ($request->has('query') && !empty($request->input('query'))) {
+            $students->where('name', 'LIKE', '%' . $request->input('query') . '%');
+        }
+
+        if ($request->has('role') && !empty($request->input('role'))) {
+            $students->where('role', $request->input('role'));
+        }
+
+        if ($request->has('hired') && !empty($request->input('hired'))) {
+            $students->where('hasRecruit', $request->input('hired') == 'true' ? 1 : 0);
+        }
+
+        $students = $students->paginate(1);
         return view('admin.hired_student.index', compact('students'));
     }
 
@@ -135,7 +148,7 @@ class AdminHiredStudentsController extends Controller
             $hs->weight = $request->weight;
             $hs->experience = $request->experience;
             $hs->role = $request->role;
-            $hs->hasRecruit = ($request->recruit == 'yes') ? 1 : (($request->recruit == 'no') ? 0 : null);
+            $hs->hasRecruit = ($request->recruit == 'yes') ? true : (($request->recruit == 'no') ? false : null);
             $hs->save();
 
             DB::commit();
@@ -154,7 +167,26 @@ class AdminHiredStudentsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try{
+            DB::beginTransaction();
+
+            $hs = HiredStudent::where('id', $id)->first();
+            if(!$hs){
+                toastr()->error("Student ID not found!");
+                return back();
+            }
+
+            $name = $hs->name;
+            $hs->delete();
+            DB::commit();
+
+            toastr()->success("Successfully deleted student: $name");
+            return back();
+        }catch(\Exception $e){
+            DB::rollBack();
+            toastr()->error($e->getMessage());
+            return back();
+        }
     }
 
     public function import(Request $request)

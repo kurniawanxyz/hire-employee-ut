@@ -71,7 +71,7 @@
                     @endphp
 
                     @if ($start > 1)
-                        <li class="page-item"><a class="page-link" href="{{ $paginator->url(1) }}">1</a></li>
+                        <li class="page-item"><a class="page-link" href="{{ $paginator->appends(request()->query())->url(1) }}">1</a></li>
                         @if ($start > 2)
                             <li class="page-item disabled"><span class="page-link">...</span></li>
                         @endif
@@ -81,7 +81,7 @@
                         @if ($i == $paginator->currentPage())
                             <li class="page-item active" aria-current="page"><span class="page-link">{{ $i }}</span></li>
                         @else
-                            <li class="page-item"><a class="page-link" href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
+                            <li class="page-item"><a class="page-link" href="{{ $paginator->appends(request()->query())->url($i) }}">{{ $i }}</a></li>
                         @endif
                     @endfor
 
