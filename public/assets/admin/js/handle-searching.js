@@ -6,7 +6,7 @@ function showConfirmDeleteModal(formSelector, title = 'Are you sure?', text = nu
                 var nameData = form.getAttribute('nameData');
                 Swal.fire({
                     title: title,
-                    text: text != null ? text + nameData : "Want to delete student: '" + nameData + "'?",
+                    text: text != null ? text + nameData : "Want to delete : '" + nameData + "'?",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonText: "Ya, Hapus!",

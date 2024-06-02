@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg"
-    data-sidebar-image="none">
-<!-- Mirrored from smarthr.dreamstechnologies.com/html/template/admin-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 31 May 2024 02:44:57 GMT -->
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none">
 
 <head>
     <meta charset="utf-8" />
@@ -219,6 +217,10 @@
                         <li @class(['active' => request()->routeIs('admin.hired-students.*')])>
                             <a href="{{ route('admin.hired-students.index') }}"><i class="fa fa-users fs-6 text-center"></i>
                                 <span>Hired Students</span></a>
+                        </li>
+                        <li @class(['active' => request()->routeIs('admin.branches.*')])>
+                            <a href="{{ route('admin.branches.index') }}"><i class="fa fa-building fs-6 text-center"></i>
+                                <span>Branch</span></a>
                         </li>
                     </ul>
                 </div>

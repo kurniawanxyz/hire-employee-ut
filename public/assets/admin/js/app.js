@@ -50,6 +50,14 @@ $(document).ready(function() {
 	// Sidebar Initiate
 	init();
 
+    $('.theme-switch').click(function (e) {
+        let theme = sessionStorage.getItem('data-layout-mode');
+        if(theme == 'orange'){
+
+        }
+
+    });
+
 	$(document).on('click', '.select-people-checkbox', function() {
 		$(this).toggleClass('checkbox-checked');
 		return false;

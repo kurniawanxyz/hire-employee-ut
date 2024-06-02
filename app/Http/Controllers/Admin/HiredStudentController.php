@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
-class AdminHiredStudentsController extends Controller
+class HiredStudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -176,6 +176,11 @@ class AdminHiredStudentsController extends Controller
                 return back();
             }
 
+
+            if ((strpos($hs->photo, 'storage/') !== false) && (Storage::exists(explode('storage/', $hs->photo)[1]))) {
+                Storage::delete(explode('storage/', $hs->photo)[1]);
+            }
+
             $name = $hs->name;
             $hs->delete();
             DB::commit();
@@ -188,7 +193,6 @@ class AdminHiredStudentsController extends Controller
             return back();
         }
     }
-
     public function import(Request $request)
     {
         $validator = Validator::make($request->all(), [

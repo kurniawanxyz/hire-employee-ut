@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string("city");
             $table->string("zone");
-            $table->string("coordinate")->nullable();
+            $table->string("coordinate");
             $table->timestamps();
         });
     }
