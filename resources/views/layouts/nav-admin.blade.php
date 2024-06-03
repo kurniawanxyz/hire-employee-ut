@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none">
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg"
+    data-sidebar-image="none">
 
 <head>
     <meta charset="utf-8" />
@@ -19,6 +20,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/admin/css/line-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/material.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/plugins/icons/feather/feather.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/admin/plugins/morris/morris.css') }}" />
 
@@ -44,8 +46,12 @@
 
             <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa-solid fa-bars"></i></a>
 
+
             <ul class="nav user-menu">
 
+                <li>
+                    <button class="btn button-icon" id="toggle-icon"><i class="fe fe-sun fs-4 text-white"></i></button>
+                </li>
                 <li class="nav-item dropdown has-arrow flag-nav">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
                         <span>English</span>
@@ -59,6 +65,7 @@
                         </a>
                     </div>
                 </li>
+
 
                 {{-- <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
@@ -187,7 +194,10 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="profile.html">My Profile</a>
                         <a class="dropdown-item" href="settings.html">Settings</a>
-                        <a class="dropdown-item" href="index.html">Logout</a>
+                        <form action="{{ route('logout') }}" method="POST" class="m-0">
+                            @csrf
+                            <button type="submit" class="dropdown-item">Logout</button>
+                        </form>
                     </div>
                 </li>
             </ul>
@@ -214,12 +224,21 @@
                             <a href="{{ route('admin.dashboard') }}"><i class="la la-dashcube"></i>
                                 <span>Dashboard</span></a>
                         </li>
-                        <li @class(['active' => request()->routeIs('admin.hired-students.*')])>
-                            <a href="{{ route('admin.hired-students.index') }}"><i class="fa fa-users fs-6 text-center"></i>
-                                <span>Hired Students</span></a>
+                        <li class="@if (request()->routeIs('admin.hired-students.*')) active @endif submenu">
+                            <a href="#"><i class="fa fa-users fs-6 text-center"></i>
+                                <span>Hired Students</span><span class="menu-arrow"></span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('admin.hired-students.index') }}">Data</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.hired-students.upload-photo.view') }}">Upload Photo</a>
+                                </li>
+                            </ul>
                         </li>
                         <li @class(['active' => request()->routeIs('admin.branches.*')])>
-                            <a href="{{ route('admin.branches.index') }}"><i class="fa fa-building fs-6 text-center"></i>
+                            <a href="{{ route('admin.branches.index') }}"><i
+                                    class="fa fa-building fs-6 text-center"></i>
                                 <span>Branch</span></a>
                         </li>
                     </ul>

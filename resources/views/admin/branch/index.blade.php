@@ -50,7 +50,18 @@
                                         <td>{{ $i + 1 }}</td>
                                         <td>{{ $branch->zone }}</td>
                                         <td>{{ $branch->city }}</td>
-                                        <td>{{ $branch->coordinate }}</td>
+                                        <td>
+                                            <p>
+                                                @php
+                                                    $link =
+                                                        'https://www.google.com/maps/@' .
+                                                        str_replace(' ', '', $branch->coordinate) .
+                                                        ',15z';
+                                                @endphp
+                                                <a href={{ $link }} target="_blank" class="link-info">{{ $branch->coordinate }}</a>
+                                            </p>
+                                        </td>
+                                        {{-- <td>{{ $branch->coordinate }}</td> --}}
                                         <td>
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle"
