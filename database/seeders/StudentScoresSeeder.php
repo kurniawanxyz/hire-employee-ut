@@ -17,8 +17,8 @@ class StudentScoresSeeder extends Seeder
         foreach(HiredStudent::all() as $student){
             StudentScores::create([
                 'hired_student_id' => $student->id,
-                'avr_theory' => fake()->numberBetween(80, 100),
-                'avr_practice' => fake()->numberBetween(80, 100)
+                'avg_theory' => fake()->numberBetween(80, 100),
+                'avg_practice' => fake()->numberBetween(80, 100)
             ]);
         }
     }

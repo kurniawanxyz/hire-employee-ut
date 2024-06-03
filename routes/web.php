@@ -41,9 +41,12 @@ Route::get('/customer/dashboard', function() {return "Hello Customer";});
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('/hired-students', AdminHiredStudentController::class)->names('admin.hired-students');
-    Route::post('/hired-students/import', [AdminHiredStudentController::class, 'import'])->name('admin.hired-students.import');
-    Route::get('/students/upload-photo', [AdminHiredStudentController::class, 'uploadPhotoView'])->name('admin.hired-students.upload-photo.view');
-    Route::post('/students/upload-photo', [AdminHiredStudentController::class, 'uploadPhoto'])->name('admin.hired-students.upload-photo.post');
+    Route::prefix('/hired-students/upload')->group(function(){
+        Route::get('/photo', [AdminHiredStudentController::class, 'uploadPhotoView'])->name('admin.hired-students.upload-photo.view');
+        Route::post('/photo', [AdminHiredStudentController::class, 'uploadPhoto'])->name('admin.hired-students.upload-photo.post');
+        Route::get('/data', [AdminHiredStudentController::class, 'importView'])->name('admin.hired-students.import.view');
+        Route::post('/data', [AdminHiredStudentController::class, 'import'])->name('admin.hired-students.import.post');
+    });
 
     Route::resource('/branches', AdminHiredBranchController::class)->names('admin.branches');
 });

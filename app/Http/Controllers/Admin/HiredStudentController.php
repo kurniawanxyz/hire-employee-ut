@@ -197,6 +197,11 @@ class HiredStudentController extends Controller
             return back();
         }
     }
+
+    public function importView()
+    {
+        return view('admin.hired_student.upload.data');
+    }
     public function import(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -209,7 +214,7 @@ class HiredStudentController extends Controller
         ]);
 
         if ($validator->fails()) {
-            toastr()->error("Please enter .xlsx file!", "Error validation");
+            toastr()->error("Please enter valid .xlsx file!", "Error validation");
             return back();
         }
 
@@ -228,7 +233,7 @@ class HiredStudentController extends Controller
 
     public function uploadPhotoView()
     {
-        return view('admin.hired_student.upload-photo');
+        return view('admin.hired_student.upload.photo');
     }
     public function uploadPhoto(StoreStudentPhotoRequest $request)
     {

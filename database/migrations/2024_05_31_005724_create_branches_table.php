@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string("city");
-            $table->string("zone");
+            $table->string("zone")->nullable();
             $table->string("coordinate");
             $table->timestamps();
         });

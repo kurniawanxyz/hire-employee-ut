@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('student_scores', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('hired_student_id')->constrained()->cascadeOnDelete();
-            $table->integer('avr_theory');
-            $table->integer('avr_practice');
+            $table->integer('avg_theory')->nullable();
+            $table->integer('avg_practice')->nullable();
             $table->timestamps();
         });
     }
