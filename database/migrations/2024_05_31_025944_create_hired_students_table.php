@@ -12,14 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hired_students', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId("branch_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->uuid('id')->primary();
+            $table->string("photo")->default(asset('assets/admin/img/default_photo.png'));
             $table->string("name");
             $table->integer('age');
             $table->integer('height');
             $table->integer('weight');
             $table->longText('experience');
             $table->enum('role', ['mechanic', 'operator']);
+            $table->boolean('hasRecruit')->default(false);
+            $table->foreignUuid("branch_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

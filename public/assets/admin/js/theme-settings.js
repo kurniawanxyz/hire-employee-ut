@@ -15,41 +15,7 @@
         E,
         y,
         I,
-        z = document.querySelector(".sidebar").innerHTML,
-        l = localStorage.getItem("language");
-    function r(a) {
-        var b;
-        document.getElementById("header-lang-img") &&
-            ("en" == a
-                ? (document.getElementById("header-lang-img").src = "assets/images/flags/us.svg")
-                : "sp" == a
-                    ? (document.getElementById("header-lang-img").src = "assets/images/flags/spain.svg")
-                    : "gr" == a
-                        ? (document.getElementById("header-lang-img").src = "assets/images/flags/germany.svg")
-                        : "it" == a
-                            ? (document.getElementById("header-lang-img").src = "assets/images/flags/italy.svg")
-                            : "ru" == a
-                                ? (document.getElementById("header-lang-img").src = "assets/images/flags/russia.svg")
-                                : "ch" == a
-                                    ? (document.getElementById("header-lang-img").src = "assets/images/flags/china.svg")
-                                    : "fr" == a && (document.getElementById("header-lang-img").src = "assets/images/flags/french.svg"),
-                localStorage.setItem("language", a),
-                null == (l = localStorage.getItem("language")) && r("en"),
-                (b = new XMLHttpRequest()).open("GET", "assets/lang/" + l + ".json"),
-                (b.onreadystatechange = function () {
-                    var a;
-                    4 === this.readyState &&
-                        200 === this.status &&
-                        ((a = JSON.parse(this.responseText)),
-                            Object.keys(a).forEach(function (b) {
-                                var c = document.querySelectorAll("[data-key='" + b + "']");
-                                Array.from(c).forEach(function (c) {
-                                    c.textContent = a[b];
-                                });
-                            }));
-                }),
-                b.send());
-    }
+        z = document.querySelector(".sidebar").innerHTML
     function s() {
         var a;
         document.querySelectorAll(".navbar-nav .collapse") &&
@@ -127,30 +93,9 @@
                                 (a.parentElement.parentElement.parentElement.parentElement.closest(".collapse").classList.add("show"),
                                     a.parentElement.parentElement.parentElement.parentElement.closest(".collapse").previousElementSibling &&
                                     a.parentElement.parentElement.parentElement.parentElement.closest(".collapse").previousElementSibling.classList.add("active")))))),
-                //(document.getElementById("two-column-menu").innerHTML = c.outerHTML),
                 1,
-                // Array.from(document.querySelector("#two-column-menu ul").querySelectorAll("li a")).forEach(function (a) {
-                //     var b = (b = "/" == location.pathname ? "index.html" : location.pathname.substring(1)).substring(b.lastIndexOf("/") + 1);
-                //     a.addEventListener("click", function (c) {
-                //         var d;
-                //         (b != "/" + a.getAttribute("href") || a.getAttribute("data-bs-toggle")) && document.body.classList.contains("twocolumn-panel") && document.body.classList.remove("twocolumn-panel"),
-                //             document.getElementById("navbar-nav").classList.remove("twocolumn-nav-hide"),
-                //             document.querySelector(".hamburger-icon").classList.remove("open"),
-                //             ((c.target && c.target.matches("a.nav-icon")) || (c.target && c.target.matches("i"))) &&
-                //             (null !== document.querySelector("#two-column-menu ul .nav-icon.active") && document.querySelector("#two-column-menu ul .nav-icon.active").classList.remove("active"),
-                //                 (c.target.matches("i") ? c.target.closest("a") : c.target).classList.add("active"),
-                //                 0 < (d = document.getElementsByClassName("twocolumn-item-show")).length && d[0].classList.remove("twocolumn-item-show"),
-                //                 (c = (c.target.matches("i") ? c.target.closest("a") : c.target).getAttribute("href").slice(1)),
-                //                 document.getElementById(c) && document.getElementById(c).parentElement.classList.add("twocolumn-item-show"));
-                //     }),
-                //         b != "/" + a.getAttribute("href") ||
-                //         a.getAttribute("data-bs-toggle") ||
-                //         (a.classList.add("active"), document.getElementById("navbar-nav").classList.add("twocolumn-nav-hide"), document.querySelector(".hamburger-icon") && document.querySelector(".hamburger-icon").classList.add("open"));
-                // }),
                 1,
                 1);
-                // "horizontal" !== document.documentElement.getAttribute("data-layout") &&
-                // ((a = new SimpleBar(document.getElementById("navbar-nav"))).getContentElement(), (a = new SimpleBar(document.getElementsByClassName("twocolumn-iconview")[0])).getContentElement()));
     }
     function u(a) {
         if (a) {
@@ -164,7 +109,6 @@
     }
 
     function m() {
-        /*feather.replace();*/
         var a = document.documentElement.clientWidth;
         a < 1025 && 767 < a
             ? (document.body.classList.remove("twocolumn-panel"),
@@ -211,7 +155,6 @@
         }
     }
     function B() {
-        //feather.replace();
         var c,
             a,
             b = "/" == location.pathname ? "index.html" : location.pathname.substring(1);
@@ -818,7 +761,6 @@
                 a.stopPropagation(), bootstrap.Tab.getInstance(a.target).show();
             });
         }),
-        r(null === l ? "en" : l),
         (e = document.getElementsByClassName("language")),
         e &&
         Array.from(e).forEach(function (a) {
