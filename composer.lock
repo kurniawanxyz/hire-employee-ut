@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d93da925359d43907a7f3297739af28",
+    "content-hash": "55a1a570c845370ae6a863da781ec07c",
     "packages": [
         {
             "name": "brick/math",
@@ -2795,6 +2795,75 @@
             "time": "2023-02-08T01:06:31+00:00"
         },
         {
+            "name": "orkhanahmadov/laravel-zip-validator",
+            "version": "1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orkhanahmadov/laravel-zip-validator.git",
+                "reference": "98dc8ae5013ce436f73848a1189978cac79b6577"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orkhanahmadov/laravel-zip-validator/zipball/98dc8ae5013ce436f73848a1189978cac79b6577",
+                "reference": "98dc8ae5013ce436f73848a1189978cac79b6577",
+                "shasum": ""
+            },
+            "require": {
+                "ext-zip": "*",
+                "illuminate/contracts": "^9.0|^10.0",
+                "illuminate/support": "^9.0|^10.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0|^8.0",
+                "phpunit/phpunit": "^9.0|^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Orkhanahmadov\\ZipValidator\\ZipValidatorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Orkhanahmadov\\ZipValidator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Orkhan Ahmadov",
+                    "email": "ahmadov90@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel ZIP file content validator",
+            "homepage": "https://github.com/orkhanahmadov/laravel-zip-validator",
+            "keywords": [
+                "laravel",
+                "orkhanahmadov",
+                "validation",
+                "zip",
+                "zip validation"
+            ],
+            "support": {
+                "issues": "https://github.com/orkhanahmadov/laravel-zip-validator/issues",
+                "source": "https://github.com/orkhanahmadov/laravel-zip-validator/tree/1.11.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/orkhanahmadov",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-12-21T20:43:43+00:00"
+        },
+        {
             "name": "php-flasher/flasher",
             "version": "v1.15.14",
             "source": {
@@ -3881,16 +3950,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.4.7",
+            "version": "v6.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "a170e64ae10d00ba89e2acbb590dc2e54da8ad8f"
+                "reference": "be5854cee0e8c7b110f00d695d11debdfa1a2a91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/a170e64ae10d00ba89e2acbb590dc2e54da8ad8f",
-                "reference": "a170e64ae10d00ba89e2acbb590dc2e54da8ad8f",
+                "url": "https://api.github.com/repos/symfony/console/zipball/be5854cee0e8c7b110f00d695d11debdfa1a2a91",
+                "reference": "be5854cee0e8c7b110f00d695d11debdfa1a2a91",
                 "shasum": ""
             },
             "require": {
@@ -3955,7 +4024,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.4.7"
+                "source": "https://github.com/symfony/console/tree/v6.4.8"
             },
             "funding": [
                 {
@@ -3971,7 +4040,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T09:22:46+00:00"
+            "time": "2024-05-31T14:49:08+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -5696,16 +5765,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.4.7",
+            "version": "v6.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "ffeb9591c61f65a68d47f77d12b83fa530227a69"
+                "reference": "a147c0f826c4a1f3afb763ab8e009e37c877a44d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/ffeb9591c61f65a68d47f77d12b83fa530227a69",
-                "reference": "ffeb9591c61f65a68d47f77d12b83fa530227a69",
+                "url": "https://api.github.com/repos/symfony/string/zipball/a147c0f826c4a1f3afb763ab8e009e37c877a44d",
+                "reference": "a147c0f826c4a1f3afb763ab8e009e37c877a44d",
                 "shasum": ""
             },
             "require": {
@@ -5762,7 +5831,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.4.7"
+                "source": "https://github.com/symfony/string/tree/v6.4.8"
             },
             "funding": [
                 {
@@ -5778,7 +5847,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T09:22:46+00:00"
+            "time": "2024-05-31T14:49:08+00:00"
         },
         {
             "name": "symfony/translation",

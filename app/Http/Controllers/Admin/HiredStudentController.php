@@ -5,16 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHiredStudentRequest;
 use App\Http\Requests\StoreStudentPhotoRequest;
-use App\Http\Requests\StoreStudentPhotoRequest;
 use App\Imports\HiredStudentImport;
 use App\Models\Branch;
 use App\Models\HiredStudent;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
-use ZipArchive;
+use ZanySoft\Zip\Facades\Zip;
 use ZipArchive;
 
 class HiredStudentController extends Controller
@@ -62,7 +62,7 @@ class HiredStudentController extends Controller
 
             if ($request->hasFile('photo')) {
                 $fileName = $request->file('photo')->hashName();
-                $path = $request->file('photo')->storeAs('photo_student', $fileName);
+                $path = $request->file('photo')->storeAs('students_photo', $fileName);
 
                 $hs->photo = config('app.url') . '/storage/' . $path;
             }
@@ -134,7 +134,7 @@ class HiredStudentController extends Controller
                     Storage::delete(explode('storage/', $hs->photo)[1]);
                 }
                 $fileName = $request->file('photo')->hashName();
-                $path = $request->file('photo')->storeAs('photo_student', $fileName);
+                $path = $request->file('photo')->storeAs('students_photo', $fileName);
 
                 $hs->photo = config('app.url') . '/storage/' . $path;
             }
@@ -171,11 +171,11 @@ class HiredStudentController extends Controller
      */
     public function destroy(string $id)
     {
-        try{
+        try {
             DB::beginTransaction();
 
             $hs = HiredStudent::where('id', $id)->first();
-            if(!$hs){
+            if (!$hs) {
                 toastr()->error("Student ID not found!");
                 return back();
             }
@@ -191,7 +191,7 @@ class HiredStudentController extends Controller
 
             toastr()->success("Successfully deleted student: $name");
             return back();
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             DB::rollBack();
             toastr()->error($e->getMessage());
             return back();
@@ -230,39 +230,24 @@ class HiredStudentController extends Controller
     {
         return view('admin.hired_student.upload-photo');
     }
-    public function uploadAndValidateZip(StoreStudentPhotoRequest $request)
+    public function uploadPhoto(StoreStudentPhotoRequest $request)
     {
-        $file = $request->file('archive');
-        $filePath = $file->storeAs('temp', $file->getClientOriginalName());
+        try {
+            $file = $request->file('archive');
+            $extractPath = storage_path('app/public/students_photo');
 
-        $isValid = $this->validateZipContent(storage_path('app/' . $filePath));
+            $zip = new ZipArchive;
 
-        if ($isValid) {
-            Storage::move($filePath, 'public/archives/' . $file->getClientOriginalName());
-            toastr()->error("File is valid and has been uploaded successfully");
-            return back();
-        } else {
-            Storage::delete($filePath);
-            toastr()->error("Invalid file structure!","The contents of the zip file must have a folder named “student_photo”");
-            return back();
-        }
-    }
+            $zip->open($file);
+            $zip->extractTo($extractPath);
 
-    private function validateZipContent($zipFilePath)
-    {
-        $zip = new ZipArchive;
-        if ($zip->open($zipFilePath) === TRUE) {
-            $folderExists = false;
-            for ($i = 0; $i < $zip->numFiles; $i++) {
-                $stat = $zip->statIndex($i);
-                if (strpos($stat['name'], 'photo_students/') === 0) {
-                    $folderExists = true;
-                    break;
-                }
-            }
             $zip->close();
-            return $folderExists;
+
+            toastr()->success("Successfully extract zib");
+            return back();
+        } catch (\Exception $e) {
+            toastr()->error($e->getMessage());
+            return back();
         }
-        return false;
     }
 }
