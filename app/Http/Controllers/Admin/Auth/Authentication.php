@@ -12,6 +12,8 @@ class Authentication extends Controller
 {
     use RedirectsUsers, ThrottlesLogins;
 
+    protected $redirectTo = "admin/dashboard";
+
     /**
      * Show the application's login form.
      *
@@ -114,6 +116,9 @@ class Authentication extends Controller
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {
             return $response;
+        }
+        if($request->all()['email'] !== config('app.admin_email')){
+            $this->redirectTo = 'customer/dashboard';
         }
 
         return $request->wantsJson()

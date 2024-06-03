@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHiredStudentRequest;
 use App\Http\Requests\StoreStudentPhotoRequest;
+use App\Http\Requests\StoreStudentPhotoRequest;
 use App\Imports\HiredStudentImport;
 use App\Models\Branch;
 use App\Models\HiredStudent;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
+use ZipArchive;
 use ZipArchive;
 
 class HiredStudentController extends Controller

@@ -24,8 +24,9 @@
             <div class="card p-3">
                 <form action="{{ route('admin.hired-students.upload-photo.post') }}" method="post"
                     enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-3">
-                        <label for="upload-file" class="form-label">Upload student photo below (.zip)</label>
+                        <label for="upload-file" class="form-label">Upload student photo below (.zip) <br> The contents of the zip file must have a folder named “student_photo”</label>
                         <input class="form-control @error('archive') is-invalid @enderror" type="file" id="upload-file" name="archive">
                         @error('archive')
                                 <span class="invalid-feedback" role="alert">
@@ -33,6 +34,7 @@
                                 </span>
                             @enderror
                     </div>
+                    <button type="submit" class="btn btn-success">Upload <i class="fe fe-upload"></i></button>
                 </form>
             </div>
         </div>

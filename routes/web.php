@@ -29,6 +29,9 @@ Route::post("/send-whatsapp",[HiredStudentController::class,"handleSendWhatsApp"
 Route::get('/login', [Authentication::class, 'showLoginForm']);
 Route::post('/login', [Authentication::class, 'login'])->name('login');
 Route::post('/logout', [Authentication::class, 'logout'])->name('logout');
+
+Route::get('/customer/dashboard', function() {return "Hello Customer";});
+
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('/hired-students', AdminHiredStudentController::class)->names('admin.hired-students');
