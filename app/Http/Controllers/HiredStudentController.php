@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestSendEmail;
 use App\Http\Requests\RequestSendWhatsApp;
+use App\Mail\HireStudentEmail;
 use App\Models\Branch;
 use App\Models\HiredStudent;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use PSpell\Config;
 
 use function PHPUnit\Framework\isNull;
@@ -50,11 +54,23 @@ class HiredStudentController extends Controller
         foreach ($hiredStudent as $key => $value) {
             $message .= $key+1 . ". " . $value->name . " " . $value->role . " dari " . $value->branch->city . "%0A";
         }
-
-        // $url = "https://api.whatsapp.com/send/?phone=". $telp . "&&text=" . strval($message);
         $url = "https://wa.me/". $telp . "?text=" . strval($message);
 
         return response()->json(["url"=>$url]);
+    }
+
+    public function handleSendEmail(RequestSendEmail $req)
+    {
+        try {
+            $hiredStudentId= $req->validated();
+            $hiredStudentId = $hiredStudentId["students"];
+            $hiredStudent = $this->hiredStudent->query()->with("branch")->whereIn("id",$hiredStudentId)->get();
+            $email = Config("app.opt_email");
+            Mail::to($email)->send(new HireStudentEmail($hiredStudent));
+            return response()->json(["success"=>"Successfully send email"]);
+        } catch (Exception $e) {
+            return response()->json(["error"=>$e->getMessage()], 500);
+        }
     }
     /**
      * Show the form for creating a new resource.

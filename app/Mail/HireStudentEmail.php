@@ -2,8 +2,10 @@
 
 namespace App\Mail;
 
+use ArrayObject;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -16,9 +18,10 @@ class HireStudentEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(
+    private Collection $data
+    )
     {
-        //
     }
 
     /**
@@ -36,8 +39,12 @@ class HireStudentEmail extends Mailable
      */
     public function content(): Content
     {
+        // dd( $this->data->toArray());
         return new Content(
-            view: 'view.name',
+            view: 'emails.sendEmailHireStudent',
+            with:  [
+                "students" => $this->data->toArray(),
+            ],
         );
     }
 

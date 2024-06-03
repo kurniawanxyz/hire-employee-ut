@@ -32,7 +32,7 @@
 
     <div class="main-wrapper">
         <div class="account-content">
-            <a href="job-list.html" class="btn btn-primary apply-btn">Back To Home</a>
+            <a href="/" class="btn btn-primary apply-btn">Back To Home</a>
             <div class="container">
 
                 <div class="account-logo">

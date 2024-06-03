@@ -23,8 +23,14 @@ Route::get("/",function(){
 })->name("get.landingpage");
 
 
-Route::get("/hire-student",[HiredStudentController::class,"index"])->name("hiredStudent.index");
+
+Route::prefix("customer")->group(function(){
+    Route::get("/hire-student",[HiredStudentController::class,"index"])->name("hiredStudent.index");
+
+});
+
 Route::post("/send-whatsapp",[HiredStudentController::class,"handleSendWhatsApp"])->name("hiredstudent.sendWhatsApp");
+Route::post("/send-email",[HiredStudentController::class,"handleSendEmail"])->name("hiredstudent.sendEmail");
 
 Route::get('/login', [Authentication::class, 'showLoginForm']);
 Route::post('/login', [Authentication::class, 'login'])->name('login');

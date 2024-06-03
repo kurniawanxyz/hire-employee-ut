@@ -47,13 +47,12 @@ class BranchSeeder extends Seeder
                 "Manado"
             ]
             ];
-
             foreach ($data as $i=> $zone) {
-               foreach ($zone as $city) {
+                foreach ($zone as $city) {
                     Branch::create([
                        "city" => $city,
                        "zone" => $i,
-                       "coordinate" => "-6.186016542501749, 106.93241969897582"
+                       "coordinate" => "-6.183630176272319, 106.93049692348168",
                     ]);
                }
             }

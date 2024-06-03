@@ -118,7 +118,7 @@ class Authentication extends Controller
             return $response;
         }
         if($request->all()['email'] !== config('app.admin_email')){
-            $this->redirectTo = 'customer/dashboard';
+            $this->redirectTo = 'customer/hire-student';
         }
 
         return $request->wantsJson()
@@ -183,7 +183,7 @@ class Authentication extends Controller
 
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect('/');
+            : redirect('/')->with("success","Successfully Logged out");
     }
 
     /**

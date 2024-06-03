@@ -42,7 +42,7 @@
     <div id="top-bar" class="style-2">
         <div id="top-bar-inner" class="container">
             <div class="top-bar-inner-wrap">
-                
+
                 <div class="top-bar-socials">
                     <div class="inner">
                         <span class="icons">
@@ -69,7 +69,7 @@
     <!-- Header -->
     <header id="site-header" class="header-front-page style-5">
         <div id="site-header-inner" class="container">
-            <div class="wrap-inner flex justify-content-between">          
+            <div class="wrap-inner flex justify-content-between">
                 <div id="site-logo" class="clearfix">
                     <div id="site-logo-inner">
                         <a href="home-slider-full-screen.html" title="Construction" rel="home" class="main-logo">
@@ -126,7 +126,7 @@
                                 <li class="menu-item"><a href="page-project-detail.html">Project Detail 1</a></li>
                                 <li class="menu-item"><a href="page-project-detail-2.html">Project Detail 2</a></li>
                                 <li class="menu-item"><a href="page-project-detail-3.html">Project Detail 3</a></li>
-                                <li class="menu-item"><a href="page-project-detail-4.html">Project Detail 4</a></li>                               
+                                <li class="menu-item"><a href="page-project-detail-4.html">Project Detail 4</a></li>
                             </ul>
                         </li>
                         <li class="menu-item"><a href="blog.html">Blog</a></li>
@@ -134,8 +134,8 @@
                     </ul>
                 </nav>
                 <div class="nav-top-cart-wrapper">
-                    <a href="{{route('hiredStudent.index')}}" class="wprt-button small">
-                        Hire
+                    <a href="/login" class="wprt-button small">
+                        Login
                     </a>
                 </div>
             </div>
@@ -237,7 +237,7 @@
 
                                     <div class="wprt-spacer" data-desktop="32" data-mobi="32" data-smobi="32"></div>
                                 </div><!-- /.col-md-12 -->
-                                        
+
                                 <div class="col-md-6">
                                     <div class="wprt-image-box left clearfix">
                                         <div class="image-wrap">
@@ -355,7 +355,7 @@
                                                         <h2><a target="_blank" href="page-project-detail.html">LUXURY BUILDINGS</a></h2>
                                                         <p>Construction</p>
                                                     </div>
-                                                </figcaption>           
+                                                </figcaption>
                                             </figure>
                                             </div>
 
@@ -376,7 +376,7 @@
                                                         <h2><a target="_blank" href="page-project-detail-2.html">LUXURY BUILDINGS</a></h2>
                                                         <p>Construction</p>
                                                     </div>
-                                                </figcaption>           
+                                                </figcaption>
                                             </figure>
 
                                             <a class="project-zoom cbp-lightbox" href="assets/img/projects/2-full.jpg" data-title="LUXURY BUILDINGS">
@@ -396,7 +396,7 @@
                                                         <h2><a target="_blank" href="page-project-detail-3.html">LUXURY BUILDINGS</a></h2>
                                                         <p>Construction</p>
                                                     </div>
-                                                </figcaption>           
+                                                </figcaption>
                                             </figure>
 
                                             <a class="project-zoom cbp-lightbox" href="assets/img/projects/3-full.jpg" data-title="LUXURY BUILDINGS">
@@ -416,7 +416,7 @@
                                                         <h2><a target="_blank" href="page-project-detail-1.html">LUXURY BUILDINGS</a></h2>
                                                         <p>Construction</p>
                                                     </div>
-                                                </figcaption>           
+                                                </figcaption>
                                             </figure>
 
                                             <a class="project-zoom cbp-lightbox" href="assets/img/projects/4-full.jpg" data-title="LUXURY BUILDINGS">
@@ -436,7 +436,7 @@
                                                         <h2><a target="_blank" href="page-project-detail-2.html">LUXURY BUILDINGS</a></h2>
                                                         <p>Construction</p>
                                                     </div>
-                                                </figcaption>           
+                                                </figcaption>
                                             </figure>
 
                                             <a class="project-zoom cbp-lightbox" href="assets/img/projects/5-full.jpg" data-title="LUXURY BUILDINGS">
@@ -456,7 +456,7 @@
                                                         <h2><a target="_blank" href="page-project-detail-3.html">LUXURY BUILDINGS</a></h2>
                                                         <p>Construction</p>
                                                     </div>
-                                                </figcaption>           
+                                                </figcaption>
                                             </figure>
 
                                             <a class="project-zoom cbp-lightbox" href="assets/img/projects/6-full.jpg" data-title="LUXURY BUILDINGS">
@@ -476,7 +476,7 @@
                                                         <h2><a target="_blank" href="page-project-detail-1.html">LUXURY BUILDINGS</a></h2>
                                                         <p>Construction</p>
                                                     </div>
-                                                </figcaption>           
+                                                </figcaption>
                                             </figure>
 
                                             <a class="project-zoom cbp-lightbox" href="assets/img/projects/7-full.jpg" data-title="LUXURY BUILDINGS">
@@ -496,7 +496,7 @@
                                                         <h2><a target="_blank" href="page-project-detail-2.html">LUXURY BUILDINGS</a></h2>
                                                         <p>Construction</p>
                                                     </div>
-                                                </figcaption>           
+                                                </figcaption>
                                             </figure>
 
                                             <a class="project-zoom cbp-lightbox" href="assets/img/projects/8-full.jpg" data-title="LUXURY BUILDINGS">
@@ -864,7 +864,7 @@
                             <span class="text">1379 Shoreline Parkway, Mountain View, CA 94043, United States</span>
                         </li>
                         <li class="phone clearfix">
-                            <span class="hl">Phone:</span> 
+                            <span class="hl">Phone:</span>
                             <span class="text">+1 718-999-3939</span>
                         </li>
                         <li class="email clearfix">
@@ -896,7 +896,7 @@
 <div id="bottom" class="clearfix style-1">
     <div id="bottom-bar-inner" class="wprt-container">
         <div class="bottom-bar-inner-wrap">
-        
+
             <div class="bottom-bar-content">
                 <div id="copyright">CONSTRUCTION TEMPLATE &copy; DESIGN BY BLOGWP.
                 </div><!-- /#copyright -->
@@ -907,7 +907,7 @@
                     <li><a href="#/">HISTORY</a></li>
                     <li><a href="#/">FAQ</a></li>
                     <li><a href="#/">EVENTS</a></li>
-                </ul>       
+                </ul>
             </div><!-- /.bottom-bar-menu -->
         </div>
     </div>
