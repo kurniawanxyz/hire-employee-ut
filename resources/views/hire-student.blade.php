@@ -76,7 +76,7 @@
                             @forelse ($branchs as $i => $item)
                                 <option @selected($branch == $item->id) value="{{$item->id}}">{{$item->city}}</option>
                             @empty
-                                
+
                             @endforelse
                         </select>
                         <button class="wprt-button small">Search</button>
@@ -119,25 +119,27 @@
             </div>
         </div>
         @empty
-            <p>Siswa not found</p> 
+            <p>Siswa not found</p>
         @endforelse
         <div>
             {{
                 $students->links("pagination::bootstrap-5")
             }}
         </div>
-       
+
     </div>
     <div class="px-5 d-flex flex-row py-3 justify-content-end align-items-center gap-4 border-t">
         <span>Confirm to admin: </span>
         <div class="d-flex align-items-center gap-2">
-            <button class="wprt-button small outline">Whatsapp</button>
+            <button onclick="handleSendWhatsapp()" class="wprt-button small outline">Whatsapp</button>
             <button class="wprt-button small">Email</button>
         </div>
         <div class="d-flex">
             <button onclick="handleReset()" class="btn btn-danger">Reset</button>
         </div>
     </div>
+
+
     <a id="scroll-top"></a>
 
     <!-- Javascript -->
@@ -156,6 +158,26 @@
 
     <script>
         handleCheckHire()
+
+        function handleSendWhatsapp(){
+            $.ajax({
+                method: "POST",
+                url: "{{ route('hiredstudent.sendWhatsApp') }}",
+                data: {
+                    students: JSON.parse(localStorage.getItem('hired_students')) || [],
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                 
+                    
+                    window.location.href = response.url;
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error sending WhatsApp message');
+                }
+            });
+        }
+
         function handleReset()
         {
             Swal.fire({
@@ -186,7 +208,7 @@
                 btnHire.removeClass('d-none')
                 btnUnHire.addClass('d-none')
             });
-            
+
             $.each(hiredStudent, function(key, value) {
                 let btnHire = $('.btn-hire-' + value)
                 let btnUnHire = $('.btn-unhire-' + value)

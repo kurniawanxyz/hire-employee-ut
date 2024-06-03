@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 return [
 
     'admin_email' => env('ADMIN_EMAIL'),
+    'admin_nohp'=> env("ADMIN_NOHP"),
 
     /*
     |--------------------------------------------------------------------------

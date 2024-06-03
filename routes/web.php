@@ -19,11 +19,9 @@ Route::get("/",function(){
     return view("welcome");
 })->name("get.landingpage");
 
-Route::get("/choose-hired-student-type",function(){
-    return view("choose-hired-student-type");
-})->name("get.choose-hired-student-type");
 
 Route::get("/hire-student",[HiredStudentController::class,"index"])->name("hiredStudent.index");
+Route::post("/send-whatsapp",[HiredStudentController::class,"handleSendWhatsApp"])->name("hiredstudent.sendWhatsApp");
 
 Route::get('admin/login', [Authentication::class, 'showLoginForm']);
 Route::post('admin/login', [Authentication::class, 'login'])->name('login');
