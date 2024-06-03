@@ -44,18 +44,38 @@ $(document).ready(function() {
 		});
 		$('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active').trigger('click');
 
+        let theme = sessionStorage.getItem('data-layout-mode');
+        if (theme == 'orange') {
+            $('#toggle-icon i').removeClass('fe-moon').addClass('fe-sun');
+        }
 
+        if (theme == 'dark') {
+            $('#toggle-icon i').removeClass('fe-sun').addClass('fe-moon');
+        }
 	}
 
 	// Sidebar Initiate
 	init();
 
-    $('.theme-switch').click(function (e) {
+    $('#toggle-icon').click(function (e) {
         let theme = sessionStorage.getItem('data-layout-mode');
         if(theme == 'orange'){
+            sessionStorage.setItem('data-layout-mode', 'dark');
+            sessionStorage.setItem('data-sidebar', 'dark');
 
+            $('#toggle-icon i').removeClass('fe-sun').addClass('fe-moon');
+            $('html').attr('data-layout-mode', 'dark');
+            $('html').attr('data-sidebar', 'dark');
         }
 
+        if(theme == 'dark'){
+            sessionStorage.setItem('data-layout-mode', 'orange');
+            sessionStorage.setItem('data-sidebar', 'light');
+
+            $('#toggle-icon i').removeClass('fe-moon').addClass('fe-sun');
+            $('html').attr('data-layout-mode', 'orange');
+            $('html').attr('data-sidebar', 'light');
+        }
     });
 
 	$(document).on('click', '.select-people-checkbox', function() {

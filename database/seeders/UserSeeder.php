@@ -19,5 +19,11 @@ class UserSeeder extends Seeder
             'email' => config('app.admin_email'),
             'password' => Hash::make("admin-ini")
         ]);
+
+        User::create([
+            'name' => 'customer',
+            'email' => config('app.customer_email'),
+            'password' => Hash::make("customer-ini")
+        ]);
     }
 }

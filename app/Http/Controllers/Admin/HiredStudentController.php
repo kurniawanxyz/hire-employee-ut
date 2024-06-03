@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHiredStudentRequest;
+use App\Http\Requests\StoreStudentPhotoRequest;
 use App\Imports\HiredStudentImport;
 use App\Models\Branch;
 use App\Models\HiredStudent;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
+use ZipArchive;
 
 class HiredStudentController extends Controller
 {
@@ -220,5 +222,45 @@ class HiredStudentController extends Controller
             toastr()->error($e->getMessage());
             return back();
         }
+    }
+
+    public function uploadPhotoView()
+    {
+        return view('admin.hired_student.upload-photo');
+    }
+    public function uploadAndValidateZip(StoreStudentPhotoRequest $request)
+    {
+        $file = $request->file('archive');
+        $filePath = $file->storeAs('temp', $file->getClientOriginalName());
+
+        $isValid = $this->validateZipContent(storage_path('app/' . $filePath));
+
+        if ($isValid) {
+            Storage::move($filePath, 'public/archives/' . $file->getClientOriginalName());
+            toastr()->error("File is valid and has been uploaded successfully");
+            return back();
+        } else {
+            Storage::delete($filePath);
+            toastr()->error("Invalid file structure!","The contents of the zip file must have a folder named “student_photo”");
+            return back();
+        }
+    }
+
+    private function validateZipContent($zipFilePath)
+    {
+        $zip = new ZipArchive;
+        if ($zip->open($zipFilePath) === TRUE) {
+            $folderExists = false;
+            for ($i = 0; $i < $zip->numFiles; $i++) {
+                $stat = $zip->statIndex($i);
+                if (strpos($stat['name'], 'photo_students/') === 0) {
+                    $folderExists = true;
+                    break;
+                }
+            }
+            $zip->close();
+            return $folderExists;
+        }
+        return false;
     }
 }

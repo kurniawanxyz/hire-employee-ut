@@ -16,14 +16,14 @@
                         </nav>
                     </div>
                     <div class="d-flex flex-column flex-md-row align-items-md-center">
-                        <div class="col-md-6 col-12 me-3 col-lg-4 pk-0">
+                        <div class="col-md-6 col-12 me-3 col-lg-3 pk-0">
                             <select name="selectRole" class="form-select" id="selectRole" paramName='role'>
                                 <option selected>--Role--</option>
                                 <option value="mechanic" {{ request('role') == 'mechanic' ? 'selected' : '' }}>Mechanic</option>
                                 <option value="operator" {{ request('role') == 'operator' ? 'selected' : '' }}>Operator</option>
                             </select>
                         </div>
-                        <div class="col-md-6 col-12 me-3 col-lg-4 pk-0">
+                        <div class="col-md-6 col-12 me-3 col-lg-3 pk-0">
                             <select name="selectHired" class="form-select" id="selectHired" paramName='hired'>
                                 <option selected>--Hired--</option>
                                 <option value="false" {{ request('hired') == 'true' ? 'selected' : '' }}>Not hired yet</option>
