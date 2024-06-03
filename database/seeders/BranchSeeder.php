@@ -53,6 +53,7 @@ class BranchSeeder extends Seeder
                     Branch::create([
                        "city" => $city,
                        "zone" => $i,
+                       "coordinate" => "-6.186016542501749, 106.93241969897582"
                     ]);
                }
             }
