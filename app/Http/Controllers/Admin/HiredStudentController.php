@@ -8,13 +8,11 @@ use App\Http\Requests\StoreStudentPhotoRequest;
 use App\Imports\HiredStudentImport;
 use App\Models\Branch;
 use App\Models\HiredStudent;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
-use ZanySoft\Zip\Facades\Zip;
 use ZipArchive;
 
 class HiredStudentController extends Controller
@@ -37,7 +35,7 @@ class HiredStudentController extends Controller
             $students->where('hasRecruit', $request->input('hired') == 'true' ? 1 : 0);
         }
 
-        $students = $students->paginate(1);
+        $students = $students->paginate(10);
         return view('admin.hired_student.index', compact('students'));
     }
 

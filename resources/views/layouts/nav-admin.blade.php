@@ -229,20 +229,24 @@
                                 <span>Hired Students</span><span class="menu-arrow"></span></a>
                             <ul>
                                 <li>
-                                    <a href="{{ route('admin.hired-students.import.view') }}">Upload Data</a>
+                                    <a @class(['active' => request()->routeIs('admin.hired-students.import.view')]) href="{{ route('admin.hired-students.import.view') }}">Upload Data</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin.hired-students.upload-photo.view') }}">Upload Photo</a>
+                                    <a @class(['active' => request()->routeIs('admin.hired-students.upload-photo.view')]) href="{{ route('admin.hired-students.upload-photo.view') }}">Upload Photo</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin.hired-students.index') }}">Data</a>
+                                    <a @class(['active' => request()->routeIs('admin.hired-students.index')]) href="{{ route('admin.hired-students.index') }}">Data</a>
                                 </li>
                             </ul>
                         </li>
-                        <li @class(['active' => request()->routeIs('admin.branches.*')])>
-                            <a href="{{ route('admin.branches.index') }}"><i
-                                    class="fa fa-building fs-6 text-center"></i>
-                                <span>Branch</span></a>
+                        <li class="@if (request()->routeIs('admin.branches.*')) active @endif submenu">
+                            <a href="#"><i
+                                    class="fe fe-map-pin fs-6 text-center"></i>
+                                <span>Branch</span><span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a  @class(['active' => request()->routeIs('admin.branches.import.view')]) href="{{ route('admin.branches.import.view') }}">Upload Branches</a></li>
+                                <li><a  @class(['active' => request()->routeIs('admin.branches.index')]) href="{{ route('admin.branches.index') }}">Data</a></li>
+                            </ul>
                         </li>
                         <li @class(['active' => request()->routeIs('admin.branches.*')])>
                             <a href="{{ route('admin.branches.index') }}"><i

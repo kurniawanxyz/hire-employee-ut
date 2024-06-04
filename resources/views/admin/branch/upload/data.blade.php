@@ -14,9 +14,9 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-dot mb-0">
                                 <li class="breadcrumb-item" aria-current="page"><a
-                                        href="{{ route('admin.hired-students.index') }}">{{ __('Hired Students data') }}</a>
+                                        href="{{ route('admin.hired-students.index') }}">Branches</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Upload Photo</li>
+                                <li class="breadcrumb-item active" aria-current="page">Upload Data</li>
                             </ol>
                         </nav>
                     </div>
@@ -24,13 +24,13 @@
             </div>
 
             <div class="card p-3">
-                <form action="{{ route('admin.hired-students.upload-photo.post') }}" method="post"
+                <form action="{{ route('admin.branches.import.post') }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="upload-file" class="form-label">Upload student photo below (.zip) <br> The content of all zibs must be of type .png</label>
-                        <input class="dropify @error('archive') is-invalid @enderror" type="file" id="upload-file" name="archive">
-                        @error('archive')
+                        <label for="upload-file" class="form-label">Upload UT branches below (.xlsx) <br> Only 1 sheet allowed</label>
+                        <input class="dropify @error('file_excel') is-invalid @enderror" type="file" id="upload-file" name="file_excel">
+                        @error('file_excel')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

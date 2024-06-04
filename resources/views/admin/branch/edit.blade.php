@@ -71,39 +71,5 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="uploadDataByExcel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="uploadDataByExcelLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="uploadDataByExcelLabel">Export data siswa by Excel</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-                            class="fa fa-times"></i></button>
-                </div>
-                <div class="modal-body">
-                    <div class="col-md">
-                        <a href="{{ asset('assets/sample/sample_hired_student.xlsx') }}" type="button"
-                            class="btn btn-primary">download list kolom</a>
-                        <form action="{{ route('admin.hired-students.import') }}" method="POST"
-                            enctype="multipart/form-data" id="upload-form">
-                            @csrf
-
-                            <div class="input-group pt-3">
-                                <input type="file" class="form-control" name="file_excel" id="inputGroupFile02">
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                            </div>
-                            @error('file_excel')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button onclick="$('#upload-form').submit()" class="btn btn-success">Upload</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <script src="{{ asset('assets/admin/js/awesomplete.js') }}"></script>
 @endsection

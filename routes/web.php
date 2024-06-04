@@ -48,4 +48,6 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
     });
 
     Route::resource('/branches', AdminHiredBranchController::class)->names('admin.branches');
+    Route::get('/branches/upload/data', [AdminHiredBranchController::class, 'importView'])->name('admin.branches.import.view');
+    Route::post('/branches/upload/data', [AdminHiredBranchController::class, 'import'])->name('admin.branches.import.post');
 });

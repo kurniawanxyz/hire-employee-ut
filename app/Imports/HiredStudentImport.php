@@ -15,17 +15,17 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 class HiredStudentImport implements ToCollection, WithHeadingRow
 {
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function collection(Collection $rows)
     {
-        dd($rows);
-        foreach($rows as $row){
-            $student = HiredStudent::create([
+        foreach ($rows as $row) {
+            $student = HiredStudent::updateOrCreate([
+                'nis' => $row['nis']
+            ], [
                 'name' => $row['nama'],
-                'nis' => $row['nis'],
                 'place_birth' => $row['tempat_lahir'],
                 'date_birth' => $row['tempat_tanggal_lahir'],
                 'email' => $row['e_mail'],
@@ -38,17 +38,25 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
                 'experience' => fake()->paragraph(10),
                 'batch' => $row['batch'],
                 'role' => $row['role'],
-                'branch_id' => Branch::firstOrCreate(['city' => $row['area_uts'], ['coordinate' => "-6.186008127859927, 106.93225105660737"]])
+                'branch_id' => Branch::firstOrCreate(
+                    ['city' => $row['area_uts']],
+                    [
+                        'zone' => '(Not yet registered)',
+                        'coordinate' => '(Not yet registered)'
+                    ]
+                )->id
             ]);
 
-            StudentScores::create([
+            StudentScores::updateOrCreate([
                 'hired_student_id' => $student->id,
+            ], [
                 'avg_theory' => $row['nilai_rata_rata_teori'],
-                'avg_practice' => ['nilai_rata_rata_praktik']
+                'avg_practice' => $row['nilai_rata_rata_praktik']
             ]);
 
-            UnitSpecialization::create([
+            UnitSpecialization::updateOrCreate([
                 'hired_student_id' => $student->id,
+            ], [
                 'ojt_location' => $row['lokasi_ojt'],
                 'rank_1' => $row['spesialisasi_unit_rank_1'],
                 'rank_2' => $row['spesialisasi_unit_rank_2'],
@@ -56,8 +64,9 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
                 'rank_4' => $row['spesialisasi_unit_rank_4'],
             ]);
 
-            OjtExperienceStudents::create([
+            OjtExperienceStudents::updateOrCreate([
                 'hired_student_id' => $student->id,
+            ], [
                 'preventive_maintenance' => $row['experience_ojt_ps'],
                 'remove_and_install' => $row['experience_ojt_ri'],
                 'machine_troubleshooting' => $row['experience_ojt_ts'],

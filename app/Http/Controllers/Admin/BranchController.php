@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBranchRequest;
+use App\Imports\BranchImport;
 use App\Models\Branch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BranchController extends Controller
 {
@@ -23,7 +26,7 @@ class BranchController extends Controller
                 ->orWhere('city', 'LIKE', '%' . $query . '%');
         }
 
-        $branches = $branches->paginate(1);
+        $branches = $branches->paginate(10);
 
         return view('admin.branch.index', compact('branches'));
     }
@@ -138,6 +141,40 @@ class BranchController extends Controller
             return back();
         } catch (\Exception $e) {
             DB::rollBack();
+            toastr()->error($e->getMessage());
+            return back();
+        }
+    }
+
+    public function importView()
+    {
+        return view('admin.branch.upload.data');
+    }
+
+    public function import(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'file_excel' => [
+                'required',
+                'file',
+                'mimetypes:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                'mimes:xlsx',
+            ],
+        ]);
+
+        if ($validator->fails()) {
+            toastr()->error("Please enter valid .xlsx file!", "Error validation");
+            return back();
+        }
+
+        try {
+            $file = $request->file('file_excel');
+
+            Excel::import(new BranchImport, $file);
+
+            toastr()->success("Successfully add data!");
+            return to_route('admin.branches.index');
+        } catch (\Exception $e) {
             toastr()->error($e->getMessage());
             return back();
         }
