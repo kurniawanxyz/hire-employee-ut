@@ -26,8 +26,8 @@
                         <div class="col-md-6 col-12 me-3 col-lg-3 pk-0">
                             <select name="selectHired" class="form-select" id="selectHired" paramName='hired'>
                                 <option selected>--Hired--</option>
-                                <option value="false" {{ request('hired') == 'true' ? 'selected' : '' }}>Not hired yet</option>
-                                <option value="true" {{ request('hired') == 'false' ? 'selected' : '' }}>Already hired</option>
+                                <option value="false" {{ request('hired') == 'false' ? 'selected' : '' }}>Not hired yet</option>
+                                <option value="true" {{ request('hired') == 'true' ? 'selected' : '' }}>Already hired</option>
                             </select>
                         </div>
                         <div class="d-flex justify-content-center">

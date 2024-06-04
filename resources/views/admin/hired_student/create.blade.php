@@ -2,6 +2,7 @@
 
 @section('title', 'Create Student')
 <link rel="stylesheet" href="{{ asset('assets/admin/css/photo_hover.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/admin/css/select2.min.css') }}">
 
 @section('content')
     <div class="page-wrapper">
@@ -349,7 +350,10 @@
         </div>
     </div>
     <script src="{{ asset('assets/admin/js/change-img.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/select2.min.js') }}"></script>
     <script>
+        $("#branch").select2();
         changeImg('potoProfile', 'profileImage');
     </script>
 @endsection

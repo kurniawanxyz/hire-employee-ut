@@ -12,7 +12,8 @@ class AdminController extends Controller
     public function dashboard()
     {
         $hiredStudent = HiredStudent::count();
+        $studentAcc = HiredStudent::where('hasRecruit', 1)->count();
         $branch = Branch::count();
-        return view('admin.dashboard', compact('hiredStudent', 'branch'));
+        return view('admin.dashboard', compact('hiredStudent', 'branch', 'studentAcc'));
     }
 }

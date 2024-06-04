@@ -32,7 +32,7 @@ function searchDropdown(selectParentID, inOneSelectOption = false) {
         var currentUrl = window.location.href;
         var newUrl;
 
-        if (selectedValue === "Semua") {
+        if (selectedValue.includes('--')) {
             newUrl = currentUrl.replace(new RegExp(`[?&]${selectedName}=[^&]*(&|$)`), function (match, p1, p2) {
                 return p1 === '?' ? '?' : '';
             });
