@@ -47,10 +47,12 @@ $(document).ready(function() {
         let theme = sessionStorage.getItem('data-layout-mode');
         if (theme == 'orange') {
             $('#toggle-icon i').removeClass('fe-moon').addClass('fe-sun');
+            $('#logo-PT').attr('src', window.location.origin + '/assets/admin/img/UTWEB SMALL.png');
         }
 
         if (theme == 'dark') {
             $('#toggle-icon i').removeClass('fe-sun').addClass('fe-moon');
+            $('#logo-PT').attr('src', window.location.origin + '/assets/admin/img/logo_UTS_terang.png');
         }
 	}
 
@@ -66,6 +68,7 @@ $(document).ready(function() {
             $('#toggle-icon i').removeClass('fe-sun').addClass('fe-moon');
             $('html').attr('data-layout-mode', 'dark');
             $('html').attr('data-sidebar', 'dark');
+            $('#logo-PT').attr('src', window.location.origin +'/assets/admin/img/logo_UTS_terang.png');
         }
 
         if(theme == 'dark'){
@@ -75,6 +78,7 @@ $(document).ready(function() {
             $('#toggle-icon i').removeClass('fe-moon').addClass('fe-sun');
             $('html').attr('data-layout-mode', 'orange');
             $('html').attr('data-sidebar', 'light');
+            $('#logo-PT').attr('src', window.location.origin+'/assets/admin/img/UTWEB SMALL.png');
         }
     });
 

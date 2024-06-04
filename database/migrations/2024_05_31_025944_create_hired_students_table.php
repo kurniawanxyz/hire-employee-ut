@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string("photo")->default(asset('assets/admin/img/default_photo.png'));
             $table->string("name");
-            $table->integer('nis');
+            $table->string('nis');
             $table->string('place_birth');
             $table->string('date_birth');
             $table->string('email');

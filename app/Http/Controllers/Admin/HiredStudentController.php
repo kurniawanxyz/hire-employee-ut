@@ -8,6 +8,9 @@ use App\Http\Requests\StoreStudentPhotoRequest;
 use App\Imports\HiredStudentImport;
 use App\Models\Branch;
 use App\Models\HiredStudent;
+use App\Models\OjtExperienceStudents;
+use App\Models\StudentScores;
+use App\Models\UnitSpecialization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -61,7 +64,6 @@ class HiredStudentController extends Controller
             if ($request->hasFile('photo')) {
                 $fileName = $request->file('photo')->hashName();
                 $path = $request->file('photo')->storeAs('students_photo', $fileName);
-
                 $hs->photo = config('app.url') . '/storage/' . $path;
             }
 
@@ -73,12 +75,42 @@ class HiredStudentController extends Controller
 
             $hs->branch_id = $branch->id;
             $hs->name = $request->name;
+            $hs->nis = $request->nis;
+            $hs->email = $request->email;
+            $hs->school_origin = $request->school_origin;
+            $hs->major = $request->major;
+            $hs->batch = $request->batch;
+            $hs->place_birth = $request->place_birth;
+            $hs->date_birth = $request->date_birth;
             $hs->age = $request->age;
             $hs->height = $request->height;
             $hs->weight = $request->weight;
             $hs->experience = $request->experience;
             $hs->role = $request->role;
+            $hs->hasRecruit = ($request->recruit == 'yes') ? true : (($request->recruit == 'no') ? false : null);
             $hs->save();
+
+            $score = new StudentScores;
+            $score->hired_student_id = $hs->id;
+            $score->avg_theory = $request->avg_theory;
+            $score->avg_practice = $request->avg_practice;
+            $score->save();
+
+            $ojt = new OjtExperienceStudents;
+            $ojt->hired_student_id = $hs->id;
+            $ojt->preventive_maintenance = $request->exp_ojt_ps;
+            $ojt->remove_and_install = $request->exp_ojt_ri;
+            $ojt->machine_troubleshooting = $request->exp_ojt_ts;
+            $ojt->save();
+
+            $us = new UnitSpecialization;
+            $us->hired_student_id = $hs->id;
+            $us->ojt_location = $request->ojt_location;
+            $us->rank_1 = $request->us_rank_1;
+            $us->rank_2 = $request->us_rank_2;
+            $us->rank_3 = $request->us_rank_3;
+            $us->rank_4 = $request->us_rank_4;
+            $us->save();
 
             DB::commit();
 
@@ -104,7 +136,7 @@ class HiredStudentController extends Controller
      */
     public function edit(string $id)
     {
-        $student = HiredStudent::with('branch')->where('id', $id)->first();
+        $student = HiredStudent::with('branch', 'ojt', 'score', 'specialization')->where('id', $id)->first();
         if (!$student) {
             toastr()->error("Student ID not found!");
             return back();
@@ -128,7 +160,7 @@ class HiredStudentController extends Controller
             }
 
             if ($request->hasFile('photo')) {
-                if (Storage::exists(explode('storage/', $hs->photo)[1])) {
+                if (strpos($hs->photo, 'storage/') !== false && Storage::exists(explode('storage/', $hs->photo)[1])) {
                     Storage::delete(explode('storage/', $hs->photo)[1]);
                 }
                 $fileName = $request->file('photo')->hashName();
@@ -145,6 +177,13 @@ class HiredStudentController extends Controller
 
             $hs->branch_id = $branch->id;
             $hs->name = $request->name;
+            $hs->nis = $request->nis;
+            $hs->email = $request->email;
+            $hs->school_origin = $request->school_origin;
+            $hs->major = $request->major;
+            $hs->batch = $request->batch;
+            $hs->place_birth = $request->place_birth;
+            $hs->date_birth = $request->date_birth;
             $hs->age = $request->age;
             $hs->height = $request->height;
             $hs->weight = $request->weight;
@@ -152,6 +191,25 @@ class HiredStudentController extends Controller
             $hs->role = $request->role;
             $hs->hasRecruit = ($request->recruit == 'yes') ? true : (($request->recruit == 'no') ? false : null);
             $hs->save();
+
+            $score = StudentScores::where('hired_student_id', $hs->id)->first();
+            $score->avg_theory = $request->avg_theory;
+            $score->avg_practice = $request->avg_practice;
+            $score->save();
+
+            $ojt = OjtExperienceStudents::where('hired_student_id', $hs->id)->first();
+            $ojt->preventive_maintenance = $request->exp_ojt_ps;
+            $ojt->remove_and_install = $request->exp_ojt_ri;
+            $ojt->machine_troubleshooting = $request->exp_ojt_ts;
+            $ojt->save();
+
+            $us = UnitSpecialization::where('hired_student_id', $hs->id)->first();
+            $us->ojt_location = $request->ojt_location;
+            $us->rank_1 = $request->us_rank_1;
+            $us->rank_2 = $request->us_rank_2;
+            $us->rank_3 = $request->us_rank_3;
+            $us->rank_4 = $request->us_rank_4;
+            $us->save();
 
             DB::commit();
 

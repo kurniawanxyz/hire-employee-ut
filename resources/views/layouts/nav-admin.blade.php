@@ -32,7 +32,7 @@
         <div class="header">
             <div class="header-left d-flex align-items-center">
                 <a href="admin-dashboard.html" class="logo">
-                    <img src="{{ asset('assets/admin/img/UTWEB SMALL.png') }}" alt="Logo" class="w-75" />
+                    <img src="{{ asset('assets/admin/img/UTWEB SMALL.png') }}" id="logo-PT" alt="Logo" class="w-75" />
                 </a>
                 <a id="toggle_btn" href="javascript:void(0);">
                     <span class="bar-icon">
@@ -233,7 +233,7 @@
                                     <a @class(['active' => request()->routeIs('admin.hired-students.upload-photo.view')]) href="{{ route('admin.hired-students.upload-photo.view') }}">Upload Photo</a>
                                 </li>
                                 <li>
-                                    <a @class(['active' => request()->routeIs('admin.hired-students.index')]) href="{{ route('admin.hired-students.index') }}">Data</a>
+                                    <a @class(['active' => request()->routeIs('admin.hired-students.*')]) href="{{ route('admin.hired-students.index') }}">Data</a>
                                 </li>
                             </ul>
                         </li>
@@ -243,7 +243,7 @@
                                 <span>Branch</span><span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a  @class(['active' => request()->routeIs('admin.branches.import.view')]) href="{{ route('admin.branches.import.view') }}">Upload Branches</a></li>
-                                <li><a  @class(['active' => request()->routeIs('admin.branches.index')]) href="{{ route('admin.branches.index') }}">Data</a></li>
+                                <li><a  @class(['active' => request()->routeIs('admin.branches.*')]) href="{{ route('admin.branches.index') }}">Data</a></li>
                             </ul>
                         </li>
                         <li @class(['active' => request()->routeIs('admin.landingPages.index')])>

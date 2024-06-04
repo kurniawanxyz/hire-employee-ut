@@ -29,10 +29,14 @@ class HiredStudent extends Model
 
     public function score():HasOne
     {
-        return $this->hasOne(StudentScores::class, 'id');
+        return $this->hasOne(StudentScores::class);
     }
     public function specialization():HasOne
     {
-        return $this->hasOne(UnitSpecialization::class, 'id');
+        return $this->hasOne(UnitSpecialization::class);
+    }
+    public function ojt():HasOne
+    {
+        return $this->hasOne(OjtExperienceStudents::class);
     }
 }
