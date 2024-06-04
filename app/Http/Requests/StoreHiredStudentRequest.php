@@ -24,11 +24,28 @@ class StoreHiredStudentRequest extends FormRequest
         return [
             'photo' => "image|max:2048",
             'name' => "required",
-            'age' => "required|integer",
-            'height' => "required|integer",
-            'weight' => "required|integer",
-            'experience' => "required",
-            'role' => "required|in:mechanic,operator"
+            'age' => "nullable|integer",
+            'height' => "nullable|integer",
+            'weight' => "nullable|integer",
+            'experience' => "nullable|string",
+            'role' => "required|in:mechanic,operator",
+            'nis' => 'required',
+            'email' => 'required|email:rfc,dns',
+            'school_origin' => 'required',
+            'place_birth' => 'required',
+            'date_birth' => 'required',
+            'major' => 'required',
+            'batch' => 'required|integer',
+            'ojt_location' => 'required',
+            'avg_practice' => 'nullable|integer',
+            'avg_theory' => 'nullable|integer',
+            'exp_ojt_ps' => 'nullable|integer',
+            'exp_ojt_ri' => 'nullable|integer',
+            'exp_ojt_ts' => 'nullable|integer',
+            'us_rank_1' => 'nullable',
+            'us_rank_2' => 'nullable',
+            'us_rank_3' => 'nullable',
+            'us_rank_4' => 'nullable'
         ];
     }
 }

@@ -24,17 +24,21 @@
             </div>
 
             <div class="card p-3">
-                <form action="{{ route('admin.branches.import.post') }}" method="post"
-                    enctype="multipart/form-data">
+                <form action="{{ route('admin.branches.import.post') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="upload-file" class="form-label">Upload UT branches below (.xlsx) <br> Only 1 sheet allowed</label>
-                        <input class="dropify @error('file_excel') is-invalid @enderror" type="file" id="upload-file" name="file_excel">
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                            <label for="upload-file" class="form-label">Upload UT branches below (.xlsx) <br> Only 1 sheet
+                                allowed</label>
+                            <a href="{{ asset('assets/sample/Cabang-Cabang UT.xlsx') }}" class="btn btn-outline-success px-3 py-1" style="height: max-content">Download sample</a>
+                        </div>
+                        <input class="dropify @error('file_excel') is-invalid @enderror" type="file" id="upload-file"
+                            name="file_excel">
                         @error('file_excel')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-success">Upload <i class="fe fe-upload"></i></button>
                 </form>
