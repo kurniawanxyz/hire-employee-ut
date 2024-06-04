@@ -246,11 +246,11 @@
                                 <li><a  @class(['active' => request()->routeIs('admin.branches.index')]) href="{{ route('admin.branches.index') }}">Data</a></li>
                             </ul>
                         </li>
-                        <li @class(['active' => request()->routeIs('admin.branches.*')])>
-                            <a href="{{ route('admin.branches.index') }}"><i
-                                    class="fa fa-building fs-6 text-center"></i>
-                                <span>Landing page</span></a>
+                        <li @class(['active' => request()->routeIs('admin.landingPages.index')])>
+                            <a href="{{ route('admin.landingPages.index') }}"><i class="la la-gear"></i>
+                                <span>LandingPage</span></a>
                         </li>
+                        
                     </ul>
                 </div>
             </div>

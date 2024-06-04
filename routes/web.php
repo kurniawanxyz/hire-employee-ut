@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\HiredStudentController as AdminHiredStudentContro
 use App\Http\Controllers\Admin\BranchController as AdminHiredBranchController;
 use App\Http\Controllers\Admin\Auth\Authentication;
 use App\Http\Controllers\HiredStudentController;
+use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\LangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/",function(){
-    return view("welcome");
-})->name("get.landingpage");
+Route::get("/",[LandingPageController::class,"index"])->name("get.landingpage");
 
 
 
@@ -35,7 +35,7 @@ Route::get('/login', [Authentication::class, 'showLoginForm']);
 Route::post('/login', [Authentication::class, 'login'])->name('login');
 Route::post('/logout', [Authentication::class, 'logout'])->name('logout');
 
-Route::get('/customer/dashboard', function() {return "Hello Customer";});
+Route::get('/lang/{locale}',[LangController::class,"changeLanguage"])->name("get.changeLanguage");
 
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -47,6 +47,8 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
         Route::post('/data', [AdminHiredStudentController::class, 'import'])->name('admin.hired-students.import.post');
     });
 
+    Route::get("/landingPage",[LandingPageController::class,"edit"])->name("admin.landingPages.index");
+    Route::put("/update-landingpage",[LandingPageController::class,"update"])->name("admin.landingPages.update");
     Route::resource('/branches', AdminHiredBranchController::class)->names('admin.branches');
     Route::get('/branches/upload/data', [AdminHiredBranchController::class, 'importView'])->name('admin.branches.import.view');
     Route::post('/branches/upload/data', [AdminHiredBranchController::class, 'import'])->name('admin.branches.import.post');

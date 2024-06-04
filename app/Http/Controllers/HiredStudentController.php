@@ -30,7 +30,7 @@ class HiredStudentController extends Controller
     {
         $role = $req->role;
         $branch = $req->branch;
-        $students = $this->hiredStudent->query()->with("branch");
+        $students = $this->hiredStudent->query()->with("branch")->where('hasRecruit',false);
         if(isset($req->role)){
             $students->where("role",$role);
         }
