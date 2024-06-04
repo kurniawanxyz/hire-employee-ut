@@ -241,6 +241,11 @@
                                     class="fa fa-building fs-6 text-center"></i>
                                 <span>Branch</span></a>
                         </li>
+                        <li @class(['active' => request()->routeIs('admin.branches.*')])>
+                            <a href="{{ route('admin.branches.index') }}"><i
+                                    class="fa fa-building fs-6 text-center"></i>
+                                <span>Landing page</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>

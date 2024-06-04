@@ -195,6 +195,9 @@
         $("#branch").select2({
             matcher: matchCustom
         })
+        $("#role").select2({
+        })
+
         handleCheckHire()
 
         function handleLogout() {

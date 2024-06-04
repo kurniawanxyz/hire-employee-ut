@@ -24,9 +24,8 @@ Route::get("/",function(){
 
 
 
-Route::prefix("customer")->group(function(){
+Route::prefix("customer")->middleware(["auth.customer"])->group(function(){
     Route::get("/hire-student",[HiredStudentController::class,"index"])->name("hiredStudent.index");
-
 });
 
 Route::post("/send-whatsapp",[HiredStudentController::class,"handleSendWhatsApp"])->name("hiredstudent.sendWhatsApp");
