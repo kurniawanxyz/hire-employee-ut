@@ -15,24 +15,15 @@ class BranchImport implements ToCollection, WithHeadingRow
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
-            $province = $row['provinsi'];
-            $city = $row['kota'];
-
-            $existingBranch = Branch::where('city', 'LIKE', "%$city%")->first();
-
-            if ($existingBranch) {
-                $existingBranch->update([
-                    'zone' => $province,
-                    'city' => $city,
+            Branch::updateOrCreate(
+                [
+                    'city' => $row['kota']
+                ],
+                [
+                    'zone' => $row['provinsi'],
                     'coordinate' => $row['koordinat']
-                ]);
-            } else {
-                Branch::create([
-                    'zone' => $province,
-                    'city' => $city,
-                    'coordinate' => $row['koordinat']
-                ]);
-            }
+                ]
+            );
         }
     }
 }
