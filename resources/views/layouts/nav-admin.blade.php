@@ -229,10 +229,13 @@
                                 <span>Hired Students</span><span class="menu-arrow"></span></a>
                             <ul>
                                 <li>
-                                    <a href="{{ route('admin.hired-students.index') }}">Data</a>
+                                    <a href="{{ route('admin.hired-students.import.view') }}">Upload Data</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('admin.hired-students.upload-photo.view') }}">Upload Photo</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.hired-students.index') }}">Data</a>
                                 </li>
                             </ul>
                         </li>

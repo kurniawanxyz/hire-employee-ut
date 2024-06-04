@@ -1,4 +1,4 @@
-<?php
+;<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,11 +15,18 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string("photo")->default(asset('assets/admin/img/default_photo.png'));
             $table->string("name");
-            $table->integer('age');
-            $table->integer('height');
-            $table->integer('weight');
-            $table->longText('experience');
+            $table->integer('nis');
+            $table->string('place_birth');
+            $table->string('date_birth');
+            $table->string('email');
+            $table->string('school_origin');
+            $table->string('major');
+            $table->integer('age')->nullable();
+            $table->integer('height')->nullable();
+            $table->integer('weight')->nullable();
+            $table->longText('experience')->nullable();
             $table->enum('role', ['mechanic', 'operator']);
+            $table->integer('batch');
             $table->boolean('hasRecruit')->default(false);
             $table->foreignUuid("branch_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

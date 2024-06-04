@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('branches', function (Blueprint $table) {
+        Schema::create('student_scores', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string("city");
-            $table->string("zone")->nullable();
-            $table->string("coordinate");
+            $table->foreignUuid('hired_student_id')->constrained()->cascadeOnDelete();
+            $table->integer('avg_theory')->nullable();
+            $table->integer('avg_practice')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('student_scores');
     }
 };

@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
-class HiredStudent extends Model
+class OjtExperienceStudents extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
     public $incrementing = false, $keyType = "string";
     protected static function boot()
@@ -22,17 +23,8 @@ class HiredStudent extends Model
         });
     }
 
-    public function branch()
+    public function hired_student(): BelongsTo
     {
-        return $this->belongsTo(Branch::class);
-    }
-
-    public function score():HasOne
-    {
-        return $this->hasOne(StudentScores::class, 'id');
-    }
-    public function specialization():HasOne
-    {
-        return $this->hasOne(UnitSpecialization::class, 'id');
+        return $this->belongsTo(HiredStudent::class, 'hired_student_id');
     }
 }

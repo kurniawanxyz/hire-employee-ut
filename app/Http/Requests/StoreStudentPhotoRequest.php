@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Orkhanahmadov\ZipValidator\Rules\ZipContent;
 
 class StoreStudentPhotoRequest extends FormRequest
 {
@@ -22,7 +23,7 @@ class StoreStudentPhotoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'archive' => 'required|file|mimes:zip'
+            'archive' => ['required','file','mimes:zip', new ZipContent('*.jpg')]
         ];
     }
 }
