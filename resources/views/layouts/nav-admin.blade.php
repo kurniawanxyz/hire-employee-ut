@@ -233,7 +233,7 @@
                                     <a @class(['active' => request()->routeIs('admin.hired-students.upload-photo.view')]) href="{{ route('admin.hired-students.upload-photo.view') }}">Upload Photo</a>
                                 </li>
                                 <li>
-                                    <a @class(['active' => request()->routeIs('admin.hired-students.*')]) href="{{ route('admin.hired-students.index') }}">Data</a>
+                                    <a @class(['active' => request()->routeIs('admin.hired-students.index') || request()->routeIs('admin.hired-students.edit') || request()->routeIs('admin.hired-students.create')]) href="{{ route('admin.hired-students.index') }}">Data</a>
                                 </li>
                             </ul>
                         </li>
@@ -243,14 +243,14 @@
                                 <span>Branch</span><span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a  @class(['active' => request()->routeIs('admin.branches.import.view')]) href="{{ route('admin.branches.import.view') }}">Upload Branches</a></li>
-                                <li><a  @class(['active' => request()->routeIs('admin.branches.*')]) href="{{ route('admin.branches.index') }}">Data</a></li>
+                                <li><a  @class(['active' => request()->routeIs('admin.branches.index') || request()->routeIs('admin.branches.edit') || request()->routeIs('admin.branches.create')]) href="{{ route('admin.branches.index') }}">Data</a></li>
                             </ul>
                         </li>
                         <li @class(['active' => request()->routeIs('admin.landingPages.index')])>
                             <a href="{{ route('admin.landingPages.index') }}"><i class="la la-gear"></i>
                                 <span>LandingPage</span></a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
