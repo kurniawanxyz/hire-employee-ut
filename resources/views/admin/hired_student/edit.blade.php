@@ -14,7 +14,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-dot mb-0">
                                 <li class="breadcrumb-item" aria-current="page"><a
-                                        href="{{ route('admin.hired-students.index') }}">{{ __('Hired Students data') }}</a>
+                                        href="{{ route('admin.hired-students.index') }}">{{ __('Hire Students data') }}</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">Edit</li>
                             </ol>
@@ -121,7 +121,7 @@
                                 <input class="form-check-input" type="radio" name="recruit" id="recruit1"
                                     value="no" {{ old('recruit',$student->hasRecruit == 0 ? 'no' : '') == 'no' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="recruit1">
-                                    Not hired yet
+                                    Not hire yet
                                 </label>
                             </div>
                             <div class="form-check">

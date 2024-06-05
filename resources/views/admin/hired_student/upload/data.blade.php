@@ -14,7 +14,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-dot mb-0">
                                 <li class="breadcrumb-item" aria-current="page"><a
-                                        href="{{ route('admin.hired-students.index') }}">{{ __('Hired Students data') }}</a>
+                                        href="{{ route('admin.hired-students.index') }}">{{ __('Hire Students data') }}</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">Upload Data</li>
                             </ol>
@@ -28,7 +28,7 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="upload-file" class="form-label">Upload hired student below (.xlsx) <br> Only 1 sheet allowed</label>
+                        <label for="upload-file" class="form-label">Upload hire student below (.xlsx) <br> Only 1 sheet allowed</label>
                         <input class="dropify" type="file" id="upload-file" name="file_excel">
                         @error('file_excel')
                                 <span class="text-danger" role="alert">

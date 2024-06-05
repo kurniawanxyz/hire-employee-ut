@@ -1,6 +1,6 @@
 @extends('layouts.nav-admin')
 
-@section('title', 'Hired Stutends')
+@section('title', 'Hire Stutends')
 <link rel="stylesheet" href="{{ asset('assets/css/sweetalert2.min.css') }}">
 @section('content')
     <div class="page-wrapper">

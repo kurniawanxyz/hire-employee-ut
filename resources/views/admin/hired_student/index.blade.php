@@ -1,6 +1,6 @@
 @extends('layouts.nav-admin')
 
-@section('title', 'Hired Stutends')
+@section('title', 'Hire Stutends')
 <link rel="stylesheet" href="{{ asset('assets/css/sweetalert2.min.css') }}">
 @section('content')
     <div class="page-wrapper">
@@ -11,7 +11,7 @@
                     <div>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-dot mb-0">
-                                <li class="breadcrumb-item active" aria-current="page">{{ __('Hired Students data') }}</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ __('Hire Students data') }}</li>
                             </ol>
                         </nav>
                     </div>
@@ -25,9 +25,9 @@
                         </div>
                         <div class="col-md-6 col-12 me-3 col-lg-3 pk-0">
                             <select name="selectHired" class="form-select" id="selectHired" paramName='hired'>
-                                <option selected>--Hired--</option>
-                                <option value="false" {{ request('hired') == 'false' ? 'selected' : '' }}>Not hired yet</option>
-                                <option value="true" {{ request('hired') == 'true' ? 'selected' : '' }}>Already hired</option>
+                                <option selected>--Hire--</option>
+                                <option value="false" {{ request('hired') == 'false' ? 'selected' : '' }}>Not hire yet</option>
+                                <option value="true" {{ request('hired') == 'true' ? 'selected' : '' }}>Already hire</option>
                             </select>
                         </div>
                         <div class="d-flex justify-content-center">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="text-end">
-                        <a href="{{ route('admin.hired-students.create') }}" class="btn btn-outline-primary">Add Hired Student</a>
+                        <a href="{{ route('admin.hired-students.create') }}" class="btn btn-outline-primary">Add Hire Student</a>
                     </div>
                 </div>
             </div>
