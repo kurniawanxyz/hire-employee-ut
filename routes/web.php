@@ -26,6 +26,7 @@ Route::get("/",[LandingPageController::class,"index"])->name("get.landingpage");
 
 Route::prefix("customer")->middleware(["auth.customer"])->group(function(){
     Route::get("/hire-student",[HiredStudentController::class,"index"])->name("hiredStudent.index");
+    Route::get("/hire-student/detail/{id}",[HiredStudentController::class,"show"])->name("hriedStudent.show");
 });
 
 Route::post("/send-whatsapp",[HiredStudentController::class,"handleSendWhatsApp"])->name("hiredstudent.sendWhatsApp");

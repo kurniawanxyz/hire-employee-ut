@@ -20,7 +20,7 @@ class LandingPageController extends Controller
     {
         $landingPage = LandingPage::all()->first();
         $branchs = Branch::all()->count();
-        $landingPage["total_branch"] = $branchs; 
+        $landingPage["total_branch"] = $branchs;
         return view("welcome", compact("landingPage"));
     }
 
@@ -80,10 +80,12 @@ class LandingPageController extends Controller
             }
 
             $landingPage->update($data);
-            return redirect()->back()->with("success", "Landing Page Updated");
+            toastr()->success("Landing Page Updated","Success");
+            return redirect()->back();
         }catch(Exception $e)
         {
-            return redirect()->back()->with("error",$e->getMessage());
+            toastr()->error($e->getMessage(),"Error");
+            return redirect()->back();
         }
     }
 

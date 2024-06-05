@@ -32,7 +32,7 @@
 
     <div class="main-wrapper">
         <div class="account-content">
-            <a href="/" class="btn btn-primary apply-btn">Back To Home</a>
+            <a href="/" class="btn btn-primary apply-btn"  style="background-color: #ffc107;border: none">Back</a>
             <div class="container">
 
                 <div class="account-logo">
@@ -75,7 +75,7 @@
                                 @enderror
                             </div>
                             <div class="input-block mb-4 text-center">
-                                <button class="btn btn-primary account-btn" type="submit">Login</button>
+                                <button class="btn btn-warning w-100" type="submit">Login</button>
                             </div>
                         </form>
 

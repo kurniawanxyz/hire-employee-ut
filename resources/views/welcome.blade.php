@@ -149,9 +149,9 @@
             {{-- @dd($home) --}}
 
             <!-- Hero Background SlideShow -->
-            <div id="hero-section" data-number="3" data-image-1="{{ asset($landingPage->hero_section_image_1) }}"
-                data-image-2="{{ asset($landingPage->hero_section_image_2) }}"
-                data-image-3="{{ asset($landingPage->hero_section_image_3) }}" data-effect="fade">
+            <div id="hero-section" data-number="3" data-image-1="{{ asset($landingPage->hero_section_image_1??'assets/img/hero/hero1.jpg') }}"
+                data-image-2="{{ asset($landingPage->hero_section_image_2??'assets/img/hero/hero2.jpg') }}"
+                data-image-3="{{ asset($landingPage->hero_section_image_3??'assets/img/hero/hero3.jpg') }}" data-effect="fade">
                 <div class="hero-content">
                     <div class="hero-title" data-min="28px" data-max="80px">
                         <h1>UNITED TRACTORS SCHOOL</h1>

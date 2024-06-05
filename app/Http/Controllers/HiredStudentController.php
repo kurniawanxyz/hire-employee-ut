@@ -8,6 +8,7 @@ use App\Mail\HireStudentEmail;
 use App\Models\Branch;
 use App\Models\HiredStudent;
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -30,7 +31,7 @@ class HiredStudentController extends Controller
     {
         $role = $req->role;
         $branch = $req->branch;
-        $students = $this->hiredStudent->query()->with("branch")->where('hasRecruit',false);
+        $students = $this->hiredStudent->query()->with(["branch","specialization"])->where('hasRecruit',false);
         if(isset($req->role)){
             $students->where("role",$role);
         }
@@ -39,7 +40,6 @@ class HiredStudentController extends Controller
         }
         $students = $students->paginate(6);
         $branchs = $this->branch->query()->get();
-
         return view("hire-student",compact("students","branchs","branch","role"));
     }
 
@@ -91,9 +91,20 @@ class HiredStudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(HiredStudent $hiredStudent)
+    public function show(string $id)
     {
-        //
+        try{
+            $student = HiredStudent::findOrFail($id);
+            $pointExperience = [
+                $student->ojt->preventive_maintenance,
+                $student->ojt->remove_and_install,
+                $student->ojt->machine_troubleshooting
+            ];
+            return view("detail-studentHired",compact("student","pointExperience"));
+        }catch(Exception $e)
+        {
+            toastr()->error($e->getMessage(),"Error");
+        }
     }
 
     /**

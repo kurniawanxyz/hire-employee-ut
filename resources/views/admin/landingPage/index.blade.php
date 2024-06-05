@@ -59,7 +59,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="hero_section_image_1">
-                                <img id="preview1" src="{{ asset($landingPage->hero_section_image_1) }}"
+                                <img id="preview1" src="{{ asset($landingPage->hero_section_image_1??'assets/img/hero/hero1.jpg') }}"
                                     class="object-fit-cover" alt="hero image 1">
                                 <div class="hover-content">
                                     <h3 class="text-primary">Hero Image 1</h3>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="hero_section_image_2">
-                                <img id="preview2" src="{{ asset($landingPage->hero_section_image_2) }}"
+                                <img id="preview2" src="{{ asset($landingPage->hero_section_image_2??'assets/img/hero/hero2.jpg') }}"
                                     class="object-fit-cover" alt="hero image 2">
                                 <h3 class="text-primary">Hero Image 2</h3>
                             </label>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="">
-                                <img id="preview3" src="{{ asset($landingPage->hero_section_image_3) }}"
+                                <img id="preview3" src="{{ asset($landingPage->hero_section_image_3??'assets/img/hero/hero3.jpg') }}"
                                     class="object-fit-cover" alt="hero image 2">
                                 <h3 class="text-primary">Hero Image 3</h3>
                             </label>

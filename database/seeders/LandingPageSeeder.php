@@ -14,9 +14,6 @@ class LandingPageSeeder extends Seeder
     public function run(): void
     {
         LandingPage::create([
-            'hero_section_image_1' => 'assets/img/slider/9.jpg',
-            'hero_section_image_2' => 'assets/img/slider/8.jpg',
-            'hero_section_image_3' => 'assets/img/slider/1.jpg',
             'manpower_channelled' => 22000,
             'client' => 10000,
             'youtube' => 'https://www.youtube.com/@UTSchoolinsani',

@@ -56,7 +56,7 @@
 
 <body>
     <nav class="d-flex w-100 justify-content-between px-5 py-3 align-items-center "
-        style="background-color: #212522; position: fixed;top: 0;z-index: 10000000;">
+    style="background-color: #212522; position: fixed;top: 0;z-index: 10000000;">
         <h1 style="color: white;margin: 0;">UTSchool</h1>
         <button onclick="handleLogout()">Logout</button>
     </nav>
@@ -83,7 +83,7 @@
                             @forelse ($branchs as $i => $item)
                                 <option @selected($branch == $item->id) value="{{ $item->id }}">{{ $item->city }}
                                 </option>
-                            @empty
+                                @empty
                             @endforelse
                         </select>
                         <button class="wprt-button small">Search</button>
@@ -94,36 +94,69 @@
     </div>
     <div class="row px-5 justify-content-start mb-5">
         @forelse ($students as $item)
-            <div class="col-md-4 px-5 mt-3">
-                <div class="card">
+            <div class="col-md-4 px-5 mt-5">
+                <div class="card mx-5">
                     <div class="card-img d-flex w-full mt-3">
-                        <img class="m-auto d-block" style="border-radius: 100%"
-                            src="{{ asset('assets/img/avatar.png') }}" alt="">
+                    <img class="m-auto d-block object-fit-cover" style="border-radius: 100%; object-fit: cover; object-position: top;width: 200px; height: 200px;"
+                    src="{{$item->photo}}" alt="Foto {{ $item->name }}">
                     </div>
+                    <span class="text-center fw-bold mt-3" style="font-size: 15px">{{$item->name}}</span>
                     <div class="card-body">
-                        <ul class="m-0">
+                        {{-- <ul class="m-0">
                             <li>
                                 Name: {{ $item->name }}
                             </li>
+
+                            @php
+                                $age = \Carbon\Carbon::createFromFormat('d/m/Y', $item->date_birth)->age;
+                            @endphp
                             <li>
-                                Age: {{ $item->age }} years old
+                                Age: {{$age}} years old
                             </li>
                             <li>
-                                Height: {{ $item->height }} cm
+                                Height: {{ $item->height?? 170 }} cm
                             </li>
                             <li>
-                                Weight: {{ $item->weight }} Kg
+                                Weight: {{ $item->weight??50 }} Kg
                             </li>
-                        </ul>
-                        <div class="mt-3 d-flex flex-column">
-                            <span class="fw-bold">Experience:</span>
-                            <p>{{ $item->experience }}</p>
-                        </div>
-                        <div class="mt-3 d-flex justify-content-end">
-                            <button onclick="handleHire('{{ $item->id }}')"
-                                class="wprt-button small btn-hire-{{ $item->id }}">Hire</button>
-                            <button onclick="handleUnHire('{{ $item->id }}')"
-                                class="btn btn-danger small btn-unhire-{{ $item->id }} d-none">UnHire</button>
+                        </ul> --}}
+                        {{-- <div class="mt-3 d-flex flex-column">
+                            <span class="fw-bold">Spesialization:</span>
+                            @php
+                                $hasSpecialization = ($item->specialization->rank_1 == "-") &&
+                                    ($item->specialization->rank_2 == "-") &&
+                                    ($item->specialization->rank_3 == "-") &&
+                                    ($item->specialization->rank_4 == "-");
+                            @endphp
+                            @if (!$hasSpecialization)
+                            <div>
+                                @if ($item->specialization->rank_1 != "-")
+                                    <span class="badge bg-warning" style="font-size: 1.25em">{{ $item->specialization->rank_1 }}</span>
+                                @endif
+                                @if ($item->specialization->rank_2 != "-")
+                                    <span class="badge bg-warning" style="font-size: 1.25em">{{ $item->specialization->rank_2 }}</span>
+                                @endif
+                                @if ($item->specialization->rank_3 != "-")
+                                    <span class="badge bg-warning" style="font-size: 1.25em">{{ $item->specialization->rank_3 }}</span>
+                                @endif
+                                @if ($item->specialization->rank_4 != "-")
+                                    <span class="badge bg-warning" style="font-size: 1.25em">{{ $item->specialization->rank_4 }}</span>
+                                @endif
+                            </div>
+                            @else
+                                <p>Belum memiliki spesialisasi</p>
+                            @endif
+                        </div> --}}
+                        <div class="mt-3 d-flex justify-content-end gap-2 px-5">
+                            <div class="col-6">
+                                <button onclick="window.location.href = '{{ route('hriedStudent.show', $item->id) }}'" class="wprt-button small outline w-100 text-center">Detail</button>
+                            </div>
+                            <div class="col-6">
+                                <button onclick="handleHire('{{ $item->id }}')"
+                                    class="wprt-button small btn-hire-{{ $item->id }} w-100">Hire</button>
+                                <button onclick="handleUnHire('{{ $item->id }}')"
+                                    class="btn btn-danger small btn-unhire-{{ $item->id }} d-none w-100">UnHire</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -167,6 +200,10 @@
     <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
 
     <script>
+
+
+
+
        function matchCustom(params, data) {
     // If there are no search terms, return all of the data
     if ($.trim(params.term) === '') {
@@ -199,16 +236,15 @@
         })
 
         handleCheckHire()
-
         function handleLogout() {
             Swal.fire({
-                title: 'Konfirmasi',
-                text: 'Apakah Anda yakin ingin logout?',
+                title: 'Confirmation',
+                text: 'Are you sure you want to logout?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Logout'
+                confirmButtonText: 'Yes, Logout'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -224,8 +260,8 @@
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: 'Terjadi kesalahan!',
-                                footer: '<a href>Kenapa saya mengalami masalah ini?</a>'
+                                text: 'An error occurred!',
+                                footer: '<a href>Why am I experiencing this issue?</a>'
                             })
                         }
                     })
@@ -233,15 +269,15 @@
             });
         }
 
-        function hadleSendEmail() {
+        function handleSendEmail() {
             Swal.fire({
-                title: 'Konfirmasi',
-                text: 'Apakah Anda yakin ingin mengirim email?',
+                title: 'Confirmation',
+                text: 'Are you sure you want to send an email?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Kirim!'
+                confirmButtonText: 'Yes, Send!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -254,7 +290,8 @@
                         success: function(response) {
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Email telah terkirim',
+                                title: 'Email has been sent',
+                                text: 'Email has been sent',
                                 showConfirmButton: false,
                                 timer: 1500
                             })
@@ -263,8 +300,7 @@
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: 'Terjadi kesalahan!',
-                                footer: '<a href>Kenapa saya mengalami masalah ini?</a>'
+                                text: 'An error occurred!',
                             })
                         }
                     })
@@ -274,18 +310,18 @@
 
         function handleSendWhatsapp() {
             Swal.fire({
-                title: 'Konfirmasi',
-                text: 'Apakah Anda yakin ingin mengirim pesan WhatsApp?',
+                title: 'Confirmation',
+                text: 'Are you sure you want to send a WhatsApp message?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Kirim!'
+                confirmButtonText: 'Yes, Send!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Pesan WhatsApp telah terkirim',
+                        title: 'WhatsApp message has been sent',
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -306,7 +342,6 @@
                 }
             });
         }
-
         function handleReset() {
             Swal.fire({
                 title: 'Confirmation',

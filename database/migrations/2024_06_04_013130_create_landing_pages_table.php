@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('landing_pages', function (Blueprint $table) {
             $table->uuid("id")->primary();
-            $table->string("hero_section_image_1");
-            $table->string("hero_section_image_2");
-            $table->string("hero_section_image_3");
+            $table->string("hero_section_image_1")->nullable();
+            $table->string("hero_section_image_2")->nullable();
+            $table->string("hero_section_image_3")->nullable();
             $table->integer("manpower_channelled");
             $table->integer("client");
             $table->string("youtube")->nullable();
