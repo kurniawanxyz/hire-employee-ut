@@ -224,7 +224,7 @@
                         </li>
                         <li class="@if (request()->routeIs('admin.hired-students.*')) active @endif submenu">
                             <a href="#"><i class="fa fa-users fs-6 text-center"></i>
-                                <span>Hired Students</span><span class="menu-arrow"></span></a>
+                                <span>Hire Students</span><span class="menu-arrow"></span></a>
                             <ul>
                                 <li>
                                     <a @class(['active' => request()->routeIs('admin.hired-students.import.view')]) href="{{ route('admin.hired-students.import.view') }}">Upload Data</a>

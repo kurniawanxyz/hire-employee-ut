@@ -14,7 +14,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-dot mb-0">
                                 <li class="breadcrumb-item" aria-current="page"><a
-                                        href="{{ route('admin.hired-students.index') }}">{{ __('Hired Students data') }}</a>
+                                        href="{{ route('admin.hired-students.index') }}">{{ __('Hire Students data') }}</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">Upload Photo</li>
                             </ol>

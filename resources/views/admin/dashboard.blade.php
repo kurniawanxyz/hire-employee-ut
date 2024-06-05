@@ -25,7 +25,7 @@
                             <span class="dash-widget-icon"><i class="fa-solid fa-user"></i></span>
                             <div class="dash-widget-info">
                                 <h3>{{ $hiredStudent }}</h3>
-                                <span>Hired Students</span>
+                                <span>Hire Students</span>
                             </div>
                         </div>
                     </div>
