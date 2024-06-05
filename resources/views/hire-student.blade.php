@@ -335,7 +335,7 @@ function handleSendEmail() {
                             _token: '{{ csrf_token() }}'
                         },
                         success: function(response) {
-                            window.location.href = response.url;
+                            window.open(response.url, '_blank');
                         },
                         error: function(xhr, status, error) {
                             console.error('Error sending WhatsApp message');
