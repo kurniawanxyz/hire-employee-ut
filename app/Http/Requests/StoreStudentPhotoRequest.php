@@ -23,7 +23,7 @@ class StoreStudentPhotoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'archive' => ['required','file','mimes:zip', new ZipContent('*.jpg')]
+            'archive' => ['required','file','mimes:zip', new ZipContent('*.png')]
         ];
     }
 }

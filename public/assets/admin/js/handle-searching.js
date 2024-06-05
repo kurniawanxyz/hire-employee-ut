@@ -24,7 +24,7 @@ function showConfirmDeleteModal(formSelector, title = 'Are you sure?', text = nu
     }
 }
 
-function searchDropdown(selectParentID, inOneSelectOption = false) {
+function searchDropdown(selectParentID) {
     document.getElementById(selectParentID).addEventListener('change', function () {
         var selectedValue = this.value;
         var selectedName = this.getAttribute('paramName');

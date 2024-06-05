@@ -32,10 +32,10 @@
                                 allowed</label>
                             <a href="{{ asset('assets/sample/Cabang-Cabang UT.xlsx') }}" class="btn btn-outline-success px-3 py-1" style="height: max-content">Download sample</a>
                         </div>
-                        <input class="dropify @error('file_excel') is-invalid @enderror" type="file" id="upload-file"
+                        <input class="dropify" type="file" id="upload-file"
                             name="file_excel">
                         @error('file_excel')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
