@@ -165,7 +165,7 @@
             <p>Siswa not found</p>
         @endforelse
         <div>
-            {{ $students->links('pagination::bootstrap-5') }}
+            {{ $students->links("pagination::bootstrap-5") }}
         </div>
 
     </div>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml lang="en-US"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html  lang="{{ str_replace('_', '-', app()->getLocale()) }}"><!--<![endif]-->
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"><!--<![endif]-->
 
 <!-- Mirrored from themes247.net/html5/construction-template/demo/home-3-hero-slideshow.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 May 2024 19:04:15 GMT -->
 
@@ -59,6 +59,7 @@
     </script>
 
 </head>
+
 <body class="front-page no-sidebar site-layout-full-width header-style-5 menu-has-search menu-has-cart header-sticky">
 
     <div id="wrapper" class="animsition">
@@ -72,20 +73,30 @@
                             <div class="top-bar-socials">
                                 <div class="inner">
                                     <span class="icons">
-                                        <a href="{{$landingPage->twitter}}" title="Twitter"><span class="fa fa-twitter"
-                                                aria-hidden="true"></span></a>
-                                        <a href="{{$landingPage->facebook}}" title="Facebook"><span class="fa fa-facebook"
-                                                aria-hidden="true"></span></a>
-                                        <a href="{{$landingPage->youtube}}" title="Youtube"><span class="fa fa-youtube"
-                                                aria-hidden="true"></span></a>
-                                        <a href="{{$landingPage->tiktok}}" title="Tiktok">
-                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,300,150"
-                                            style="fill:#FFFFFF;">
-                                            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(4,4)"><path d="M48,8h-32c-4.418,0 -8,3.582 -8,8v32c0,4.418 3.582,8 8,8h32c4.418,0 8,-3.582 8,-8v-32c0,-4.418 -3.582,-8 -8,-8zM50,27c-3.964,0 -6.885,-1.09 -9,-2.695v14.195c0,6.341 -5.159,11.5 -11.5,11.5c-6.341,0 -11.5,-5.159 -11.5,-11.5c0,-6.341 5.159,-11.5 11.5,-11.5h2v5h-2c-3.584,0 -6.5,2.916 -6.5,6.5c0,3.584 2.916,6.5 6.5,6.5c3.584,0 6.5,-2.916 6.5,-6.5v-24.5h5c0.018,1.323 0.533,8 9,8z"></path></g></g>
+                                        <a href="{{ $landingPage->twitter }}" title="Twitter"><span
+                                                class="fa fa-twitter" aria-hidden="true"></span></a>
+                                        <a href="{{ $landingPage->facebook }}" title="Facebook"><span
+                                                class="fa fa-facebook" aria-hidden="true"></span></a>
+                                        <a href="{{ $landingPage->youtube }}" title="Youtube"><span
+                                                class="fa fa-youtube" aria-hidden="true"></span></a>
+                                        <a href="{{ $landingPage->tiktok }}" title="Tiktok">
+                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20"
+                                                height="20" viewBox="0,0,300,150" style="fill:#FFFFFF;">
+                                                <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                                    stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                                    stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+                                                    font-weight="none" font-size="none" text-anchor="none"
+                                                    style="mix-blend-mode: normal">
+                                                    <g transform="scale(4,4)">
+                                                        <path
+                                                            d="M48,8h-32c-4.418,0 -8,3.582 -8,8v32c0,4.418 3.582,8 8,8h32c4.418,0 8,-3.582 8,-8v-32c0,-4.418 -3.582,-8 -8,-8zM50,27c-3.964,0 -6.885,-1.09 -9,-2.695v14.195c0,6.341 -5.159,11.5 -11.5,11.5c-6.341,0 -11.5,-5.159 -11.5,-11.5c0,-6.341 5.159,-11.5 11.5,-11.5h2v5h-2c-3.584,0 -6.5,2.916 -6.5,6.5c0,3.584 2.916,6.5 6.5,6.5c3.584,0 6.5,-2.916 6.5,-6.5v-24.5h5c0.018,1.323 0.533,8 9,8z">
+                                                        </path>
+                                                    </g>
+                                                </g>
                                             </svg>
                                         </a>
-                                        <a href="{{$landingPage->instagram}}" title="Instagram"><span class="fa fa-instagram"
-                                                aria-hidden="true"></span></a>
+                                        <a href="{{ $landingPage->instagram }}" title="Instagram"><span
+                                                class="fa fa-instagram" aria-hidden="true"></span></a>
                                     </span>
                                 </div>
                             </div><!-- /.top-bar-socials -->
@@ -94,13 +105,20 @@
                                 <span id="top-bar-text">
                                     <i class="fa fa-phone-square"></i>{{ Config('app.admin_nohp') }}
                                     <i class="fa fa-envelope"></i>{{ Config('app.opt_email') }}
-                                    <i class="fa fa-clock-o"></i>{{$landingPage->operational_start_day}}-{{$landingPage->operational_end_day}}: {{\Carbon\Carbon::parse($landingPage->operational_start_time)->format('H:i')}} - {{\Carbon\Carbon::parse($landingPage->operational_end_time)->format('H:i')}}
+                                    <i
+                                        class="fa fa-clock-o"></i>{{ $landingPage->operational_start_day }}-{{ $landingPage->operational_end_day }}:
+                                    {{ \Carbon\Carbon::parse($landingPage->operational_start_time)->format('H:i') }} -
+                                    {{ \Carbon\Carbon::parse($landingPage->operational_end_time)->format('H:i') }}
                                     {{-- <span></span> --}}
                                     <a class="d-flex" href="{{ route('get.changeLanguage', 'id') }}">
-                                        <img width="25" height="25" src="https://img.icons8.com/color/48/indonesia-circular.png" alt="indonesia-circular"/>
+                                        <img width="25" height="25"
+                                            src="https://img.icons8.com/color/48/indonesia-circular.png"
+                                            alt="indonesia-circular" />
                                         Indonesia</a>
                                     <a class="dropdown-item" href="{{ route('get.changeLanguage', 'en') }}">
-                                        <img width="25" height="25" src="https://img.icons8.com/color/48/great-britain-circular.png" alt="great-britain-circular"/>
+                                        <img width="25" height="25"
+                                            src="https://img.icons8.com/color/48/great-britain-circular.png"
+                                            alt="great-britain-circular" />
                                         English</a>
                                 </span><!-- /#top-bar-text -->
                             </div><!-- /.top-bar-content -->
@@ -118,9 +136,9 @@
                             <div id="site-logo" class="clearfix">
                                 <div id="site-logo-inner">
                                     <a href="#" title="Construction" rel="home" class="main-logo">
-                                        <img src="{{ asset('assets/admin/img/logo2.png') }}" width="50"
+                                        <img src="{{ asset('assets/admin/img/logo_UTS_terang.png') }}" width="150"
                                             style="object-fit: cover" />
-                                        <span class="fw-bold text-white " style="font-size: 20px">UT SCHOOL</span>
+                                        {{-- <span class="fw-bold text-white " style="font-size: 20px">UT SCHOOL</span> --}}
                                     </a>
                                 </div>
                             </div><!-- /#site-logo -->
@@ -128,11 +146,11 @@
                             <div class="mobile-button"><span></span></div><!-- //mobile menu button -->
                             <nav id="main-nav" class="main-nav">
                                 <ul class="menu">
-                                    <li class="menu-item"><a href="#hero-section">{{__('Home')}}</a>
+                                    <li class="menu-item"><a href="#hero-section">{{ __('Home') }}</a>
                                     </li>
-                                    <li class="menu-item"><a href="#about">{{__('About')}}</a>
+                                    <li class="menu-item"><a href="#about">{{ __('About') }}</a>
                                     </li>
-                                    <li class="menu-item"><a href="#maps">{{__('Map')}}</a>
+                                    <li class="menu-item"><a href="#maps">{{ __('Map') }}</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -149,21 +167,23 @@
             {{-- @dd($home) --}}
 
             <!-- Hero Background SlideShow -->
-            <div id="hero-section" data-number="3" data-image-1="{{ asset($landingPage->hero_section_image_1??'assets/img/hero/hero1.jpg') }}"
-                data-image-2="{{ asset($landingPage->hero_section_image_2??'assets/img/hero/hero2.jpg') }}"
-                data-image-3="{{ asset($landingPage->hero_section_image_3??'assets/img/hero/hero3.jpg') }}" data-effect="fade">
+            <div id="hero-section" data-number="3"
+                data-image-1="{{ asset($landingPage->hero_section_image_1 ?? 'assets/img/hero/hero1.jpg') }}"
+                data-image-2="{{ asset($landingPage->hero_section_image_2 ?? 'assets/img/hero/hero2.jpg') }}"
+                data-image-3="{{ asset($landingPage->hero_section_image_3 ?? 'assets/img/hero/hero3.jpg') }}"
+                data-effect="fade">
                 <div class="hero-content">
                     <div class="hero-title" data-min="28px" data-max="80px">
-                        <h1>UNITED TRACTORS SCHOOL</h1>
+                        {{-- <h1>UT SCHOOL</h1> --}}
                         {{-- <h1>TRACTORS</h1>
             <h1>SCHOOL</h1> --}}
                     </div>
 
-                    <div class="hero-text">
-                        <p class="font-weight-600 letter-spacing-1px text-uppercase">{{__('CHOOSE YOUR PROFESSIONAL')}}<span
+                    {{-- <div class="hero-text">
+                        <p style="font-size: 30px" class="font-weight-600 letter-spacing-1px text-uppercase">{{__('CHOOSE YOUR PROFESSIONAL')}}<span
                                 class="text-accent-color">{{__('MECHANIC')}}</span> {{__('AND')}} <span
                                 class="text-accent-color">{{__('OPERATOR')}}</span></p>
-                    </div>
+                    </div> --}}
 
                     <a class="arrow-2 bounce scroll-target" href="#services-section"><span
                             class="fa fa-angle-down"></span></a><!-- change href value to ID of section you want to scroll down -->
@@ -181,45 +201,46 @@
                                 <section id="divisions-section" class="wprt-section divisions">
                                     <div class="container">
                                         <div class="row ">
-                                            <div class="col-md-6">
-                                                <div class="wprt-spacer" data-desktop="0" data-mobi="60"
-                                                    data-smobi="60"></div>
+                                            <div onclick="window.location.href = '/customer/hire-student?role=mechanic'" class="col-md-6 " style="cursor: pointer"> 
+                                                {{-- <a href="/customer/hire-student"> --}}
+                                                    <div class="wprt-spacer" data-desktop="0" data-mobi="60"
+                                                        data-smobi="60">
+                                                    </div>
 
-                                                <div class="wprt-content-box style-1">
-                                                    <div class="wprt-icon-box icon-effect-2 icon-left">
-                                                        <div class="icon-wrap">
-                                                            <span class="dd-icon icon-tools-2"></span>
-                                                        </div>
-                                                        <div class="content-wrap">
-                                                            <h3 class="dd-title text-white font-size-19"><a
-                                                                    href="#">{{__('ROLE_MECHANIC')}}</a></h3>
-                                                            <div class="dd-link"><a
-                                                                    href="/customer/hire-student?role=mechanic">{{__('Hire')}}</a>
+                                                    <div class="wprt-content-box style-1">
+                                                        <p class="text-white" style="font-weight: 700; margin: -8px">
+                                                            {{ __('CHOOSE YOUR PROFESSIONAL') }}</p>
+                                                        <div class="wprt-icon-box icon-effect-2 icon-left">
+                                                            <div class="icon-wrap">
+                                                                <span class="dd-icon icon-tools-2"></span>
+                                                            </div>
+                                                            <div class="content-wrap">
+                                                                <h3 class="dd-title text-white font-size-19"><a
+                                                                        href="#">{{ __('ROLE_MECHANIC') }}</a></h3>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                {{-- </a> --}}
                                             </div><!-- /.col-md-4 -->
 
-                                            <div class="col-md-6">
-                                                <div class="wprt-spacer" data-desktop="0" data-mobi="30"
-                                                    data-smobi="30"></div>
-
-                                                <div class="wprt-content-box style-1">
-                                                    <div class="wprt-icon-box icon-effect-2 icon-left">
-                                                        <div class="icon-wrap">
-                                                            <span class="dd-icon icon-backhoes"></span>
-                                                        </div>
-                                                        <div class="content-wrap">
-                                                            <h3 class="dd-title text-white font-size-19"><a
-                                                                    href="#">{{__('ROLE_OPERATOR')}}</a></h3>
-                                                            {{-- <a href="" class="wprt-button small">Hire</a> --}}
-                                                            <div class="dd-link"><a
-                                                                    href="/customer/hire-student?role=operator">{{__('Hire')}}</a>
+                                            <div onclick="window.location.href = '/customer/hire-student?role=operator'" class="col-md-6" style="cursor: pointer">
+                                               
+                                                    <div class="wprt-spacer" data-desktop="0" data-mobi="30"
+                                                        data-smobi="30"></div>
+                                                        <div class="wprt-content-box style-1">
+                                                            <p class="text-white" style="font-weight: 700; margin: -8px">
+                                                                {{ __('CHOOSE YOUR PROFESSIONAL') }}</p>
+                                                            <div class="wprt-icon-box icon-effect-2 icon-left">
+                                                                <div class="icon-wrap">
+                                                                    <span class="dd-icon icon-backhoes"></span>
+                                                                </div>
+                                                                <div class="content-wrap">
+                                                                    <h3 class="dd-title text-white font-size-19"><a
+                                                                            href="#">{{ __('ROLE_OPERATOR') }}</a>
+                                                                    </h3>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
                                             </div><!-- /.col-md-4 -->
                                         </div>
                                     </div>
@@ -236,13 +257,15 @@
                                             </div><!-- /.col-md-12 -->
                                             <div class="col-md-4">
                                                 <div class="wprt-counter text-center white-type has-plus">
-                                                    <div class="number" data-speed="5000" data-to="{{$landingPage->manpower_channelled}}"
-                                                        data-in-viewport="yes">{{$landingPage->manpower_channelled}}</div>
+                                                    <div class="number" data-speed="5000"
+                                                        data-to="{{ $landingPage->manpower_channelled }}"
+                                                        data-in-viewport="yes">{{ $landingPage->manpower_channelled }}
+                                                    </div>
                                                     <div
                                                         class="wprt-lines style-2 custom-1 margin-top-10 margin-bottom-10">
                                                         <div class="line-1"></div>
                                                     </div>
-                                                    <div class="text">{{__('MANPOWER CHANNELLED')}}</div>
+                                                    <div class="text">{{ __('MANPOWER CHANNELLED') }}</div>
                                                 </div>
 
                                                 <div class="wprt-spacer" data-desktop="0" data-mobi="30"
@@ -250,13 +273,14 @@
                                             </div><!-- /.col-md-3 -->
                                             <div class="col-md-4">
                                                 <div class="wprt-counter text-center white-type has-plus">
-                                                    <div class="number" data-speed="5000" data-to="{{$landingPage->total_branch}}"
-                                                        data-in-viewport="yes">{{$landingPage->total_branch}}</div>
+                                                    <div class="number" data-speed="5000"
+                                                        data-to="{{ $landingPage->total_branch }}"
+                                                        data-in-viewport="yes">{{ $landingPage->total_branch }}</div>
                                                     <div
                                                         class="wprt-lines style-2 custom-1 margin-top-10 margin-bottom-10">
                                                         <div class="line-1"></div>
                                                     </div>
-                                                    <div class="text">{{__('BRANCHS')}}</div>
+                                                    <div class="text">{{ __('BRANCHS') }}</div>
                                                 </div>
 
                                                 <div class="wprt-spacer" data-desktop="0" data-mobi="30"
@@ -264,13 +288,14 @@
                                             </div><!-- /.col-md-3 -->
                                             <div class="col-md-4">
                                                 <div class="wprt-counter text-center white-type has-plus">
-                                                    <div class="number" data-speed="5000" data-to="{{$landingPage->client}}"
-                                                        data-in-viewport="yes">{{$landingPage->client}}</div>
+                                                    <div class="number" data-speed="5000"
+                                                        data-to="{{ $landingPage->client }}" data-in-viewport="yes">
+                                                        {{ $landingPage->client }}</div>
                                                     <div
                                                         class="wprt-lines style-2 custom-1 margin-top-10 margin-bottom-10">
                                                         <div class="line-1"></div>
                                                     </div>
-                                                    <div class="text">{{__('SATISFIED CLIENTS')}}</div>
+                                                    <div class="text">{{ __('SATISFIED CLIENTS') }}</div>
                                                 </div>
 
                                                 <div class="wprt-spacer" data-desktop="0" data-mobi="30"
@@ -298,11 +323,12 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="widget widget_text">
-                                <h2 id="about" class="widget-title"><span class="text-uppercase">{{__('AboutUs')}}</span></h2>
+                                <h2 id="about" class="widget-title"><span
+                                        class="text-uppercase">{{ __('AboutUs') }}</span></h2>
                                 <div class="textwidget">
                                     <img src="{{ asset('assets/admin/img/logo.png') }}" width="100"
                                         height="30" alt="image" class="margin-top-5 margin-bottom-25" />
-                                    <p>{{ __('ABOUT_US')}}</p>
+                                    <p>{{ __('ABOUT_US') }}</p>
 
                                 </div>
                             </div>
@@ -330,7 +356,7 @@
 
                         <div class="col-md-6">
                             <div class="widget widget_information">
-                                <h2 class="widget-title"><span>{{__('CONTACT INFO')}}</span></h2>
+                                <h2 class="widget-title"><span>{{ __('CONTACT INFO') }}</span></h2>
                                 <ul class="style-2">
                                     <li class="address clearfix">
                                         <span class="hl">Address:</span>
@@ -355,14 +381,28 @@
 
                             <div class="widget widget_socials">
                                 <div class="socials">
-                                    <a target="_blank" href="{{$landingPage->twitter}}"><i class="fa fa-twitter"></i></a>
-                                    <a target="_blank" href="{{$landingPage->facebook}}"><i class="fa fa-facebook"></i></a>
-                                    <a target="_blank" href="{{$landingPage->youtube}}"><i class="fa fa-youtube"></i></a>
-                                    <a target="_blank" href="{{$landingPage->instagram}}"><i class="fa fa-instagram"></i></a>
-                                    <a target="_blank" href="{{$landingPage->tiktok}}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,300,150"
-                                        style="fill:#FFFFFF;">
-                                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(4,4)"><path d="M48,8h-32c-4.418,0 -8,3.582 -8,8v32c0,4.418 3.582,8 8,8h32c4.418,0 8,-3.582 8,-8v-32c0,-4.418 -3.582,-8 -8,-8zM50,27c-3.964,0 -6.885,-1.09 -9,-2.695v14.195c0,6.341 -5.159,11.5 -11.5,11.5c-6.341,0 -11.5,-5.159 -11.5,-11.5c0,-6.341 5.159,-11.5 11.5,-11.5h2v5h-2c-3.584,0 -6.5,2.916 -6.5,6.5c0,3.584 2.916,6.5 6.5,6.5c3.584,0 6.5,-2.916 6.5,-6.5v-24.5h5c0.018,1.323 0.533,8 9,8z"></path></g></g>
+                                    <a target="_blank" href="{{ $landingPage->twitter }}"><i
+                                            class="fa fa-twitter"></i></a>
+                                    <a target="_blank" href="{{ $landingPage->facebook }}"><i
+                                            class="fa fa-facebook"></i></a>
+                                    <a target="_blank" href="{{ $landingPage->youtube }}"><i
+                                            class="fa fa-youtube"></i></a>
+                                    <a target="_blank" href="{{ $landingPage->instagram }}"><i
+                                            class="fa fa-instagram"></i></a>
+                                    <a target="_blank" href="{{ $landingPage->tiktok }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20"
+                                            height="20" viewBox="0,0,300,150" style="fill:#FFFFFF;">
+                                            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                                stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                                stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+                                                font-weight="none" font-size="none" text-anchor="none"
+                                                style="mix-blend-mode: normal">
+                                                <g transform="scale(4,4)">
+                                                    <path
+                                                        d="M48,8h-32c-4.418,0 -8,3.582 -8,8v32c0,4.418 3.582,8 8,8h32c4.418,0 8,-3.582 8,-8v-32c0,-4.418 -3.582,-8 -8,-8zM50,27c-3.964,0 -6.885,-1.09 -9,-2.695v14.195c0,6.341 -5.159,11.5 -11.5,11.5c-6.341,0 -11.5,-5.159 -11.5,-11.5c0,-6.341 5.159,-11.5 11.5,-11.5h2v5h-2c-3.584,0 -6.5,2.916 -6.5,6.5c0,3.584 2.916,6.5 6.5,6.5c3.584,0 6.5,-2.916 6.5,-6.5v-24.5h5c0.018,1.323 0.533,8 9,8z">
+                                                    </path>
+                                                </g>
+                                            </g>
                                         </svg>
                                     </a>
                                 </div>
@@ -381,14 +421,6 @@
                             <div id="copyright">COPYRIGHT BY &copy; UNITED TRACTORS SCHOOL.
                             </div><!-- /#copyright -->
                         </div><!-- /.bottom-bar-content -->
-
-                        <div class="bottom-bar-menu">
-                            <ul class="bottom-nav">
-                                <li><a href="#/">HISTORY</a></li>
-                                <li><a href="#/">FAQ</a></li>
-                                <li><a href="#/">EVENTS</a></li>
-                            </ul>
-                        </div><!-- /.bottom-bar-menu -->
                     </div>
                 </div>
             </div>
@@ -410,11 +442,10 @@
     <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
     <script src="https://cesium.com/downloads/cesiumjs/releases/1.83/Build/Cesium/Cesium.js"></script>
     <script>
-
-function changeLanguage() {
-    var selectedLanguage = document.getElementById("language-select").value;
-    window.location.href = "{{ route('get.changeLanguage', ':lang') }}".replace(':lang', selectedLanguage);
-}
+        function changeLanguage() {
+            var selectedLanguage = document.getElementById("language-select").value;
+            window.location.href = "{{ route('get.changeLanguage', ':lang') }}".replace(':lang', selectedLanguage);
+        }
 
         Cesium.Ion.defaultAccessToken =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkZWQ0MTM1Yy03ZjVmLTQxZWItYTQ1NC0yYmM3ZDQ2ZTBjNTUiLCJpZCI6MjE5NTk0LCJpYXQiOjE3MTc0MDMxMzB9.z7-KgL09KT4PHuWN08Z2PNOcYGU4sT_s89FjUrarKAQ";
