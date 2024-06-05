@@ -201,7 +201,7 @@
                                 <section id="divisions-section" class="wprt-section divisions">
                                     <div class="container">
                                         <div class="row ">
-                                            <div onclick="window.location.href = '/customer/hire-student?role=mechanic'" class="col-md-6 " style="cursor: pointer"> 
+                                            <div onclick="window.location.href = '/customer/hire-student?role=mechanic'" class="col-md-6 " style="cursor: pointer">
                                                 {{-- <a href="/customer/hire-student"> --}}
                                                     <div class="wprt-spacer" data-desktop="0" data-mobi="60"
                                                         data-smobi="60">
@@ -224,7 +224,7 @@
                                             </div><!-- /.col-md-4 -->
 
                                             <div onclick="window.location.href = '/customer/hire-student?role=operator'" class="col-md-6" style="cursor: pointer">
-                                               
+
                                                     <div class="wprt-spacer" data-desktop="0" data-mobi="30"
                                                         data-smobi="30"></div>
                                                         <div class="wprt-content-box style-1">
@@ -467,6 +467,32 @@
             skyAtmosphere: new Cesium.SkyAtmosphere()
         });
 
+        async function handleCreatePin(viewer,pinBuilder) {
+            $.ajax({
+                method: "GET",
+                url: "{{route('customer.getData')}}",
+                success: function(data) {
+
+                    for (let key in data) {
+                        if (data.hasOwnProperty(key)) { // Memastikan properti berasal dari dataek itu sendiri, bukan dari prototipe
+                            console.log(`${key}: ${data[key]}`);
+                            let coordinate = data[key].coordinate.split(",")
+
+                            viewer.entities.add({
+                            name: data[key].name,
+                            position: Cesium.Cartesian3.fromDegrees(coordinate[1], coordinate[0]),
+                            billboard: {
+                                image: pinBuilder.fromColor(Cesium.Color.RED, 48).toDataURL(),
+                                verticalOrigin: Cesium.VerticalOrigin.BOTTOM
+                            }
+                        });
+                        }
+                    }
+
+                }
+            })
+        }
+
         async function loadTileset() {
             try {
                 const resource = await Cesium.IonResource.fromAssetId(2275207);
@@ -476,24 +502,10 @@
                 viewer.scene.primitives.add(tileset);
 
                 // Tambahkan marker setelah tileset dimuat
-                var pinBuilder = new Cesium.PinBuilder();
-                viewer.entities.add({
-                    name: 'Marker',
-                    position: Cesium.Cartesian3.fromDegrees(106.93242431518361, -6.186088025422655),
-                    billboard: {
-                        image: pinBuilder.fromColor(Cesium.Color.RED, 48).toDataURL(),
-                        verticalOrigin: Cesium.VerticalOrigin.BOTTOM
-                    }
-                });
 
-                viewer.entities.add({
-                    name: 'Jepang',
-                    position: Cesium.Cartesian3.fromDegrees(139.87993405013398, 35.632811166900645),
-                    billboard: {
-                        image: pinBuilder.fromColor(Cesium.Color.RED, 48).toDataURL(),
-                        verticalOrigin: Cesium.VerticalOrigin.BOTTOM
-                    }
-                });
+
+
+
 
                 viewer.camera.setView({
                     destination: Cesium.Cartesian3.fromDegrees(106.93242431518361, -6.186088025422655,
@@ -505,6 +517,8 @@
                     }
                 });
 
+            var pinBuilder = new Cesium.PinBuilder();
+                handleCreatePin(viewer,pinBuilder)
                 // Mulai animasi berputar
                 var startTime = Cesium.JulianDate.now();
                 viewer.scene.preRender.addEventListener(function(scene, time) {

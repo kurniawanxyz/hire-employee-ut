@@ -250,6 +250,15 @@
                             <a href="{{ route('admin.landingPages.index') }}"><i class="la la-gear"></i>
                                 <span>LandingPage</span></a>
                         </li>
+                        <li class="@if (request()->routeIs('admin.customer.*')) active @endif submenu">
+                            <a href="#"><i
+                                    class="la la-building fs-6 text-center"></i>
+                                <span>Customers or patners</span><span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a  @class(['active' => request()->routeIs('admin.customer.import_page')]) href="{{ route('admin.customer.import_page') }}">Upload Customer or patners</a></li>
+                                <li><a  @class(['active' => request()->routeIs('admin.customer.index') || request()->routeIs('admin.customer.index') || request()->routeIs('admin.customer.index')]) href="{{ route('admin.customer.index') }}">Data</a></li>
+                            </ul>
+                        </li>
 
                     </ul>
                 </div>

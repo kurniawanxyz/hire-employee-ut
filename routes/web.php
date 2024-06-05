@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\HiredStudentController as AdminHiredStudentController;
 use App\Http\Controllers\Admin\BranchController as AdminHiredBranchController;
 use App\Http\Controllers\Admin\Auth\Authentication;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HiredStudentController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LangController;
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::get("/",[LandingPageController::class,"index"])->name("get.landingpage");
 
 
+
+Route::get("/get-customerOrPatners",[CustomerController::class,"getData"])->name("customer.getData");
 
 Route::prefix("customer")->middleware(["auth.customer"])->group(function(){
     Route::get("/hire-student",[HiredStudentController::class,"index"])->name("hiredStudent.index");
@@ -53,4 +56,13 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::resource('/branches', AdminHiredBranchController::class)->names('admin.branches');
     Route::get('/branches/upload/data', [AdminHiredBranchController::class, 'importView'])->name('admin.branches.import.view');
     Route::post('/branches/upload/data', [AdminHiredBranchController::class, 'import'])->name('admin.branches.import.post');
+
+    Route::get("/customerOrPatners/{names?}",[CustomerController::class,"index"])->name("admin.customer.index");
+    Route::get("/create/customerOrPatners/",[CustomerController::class,"create"])->name("admin.customer.create");
+    Route::get("/create/import-customerOrPatners",[CustomerController::class,"createWithImport"])->name("admin.customer.import_page");
+    Route::get("/edit/customerOrPatners/{customer}",[CustomerController::class,"edit"])->name("admin.customer.edit");
+    Route::post("/create-customerOrPatners",[CustomerController::class,"store"])->name("admin.customer.store");
+    Route::put("/update-customerOrPatners/{customer}",[CustomerController::class,"update"])->name("admin.customer.update");
+    Route::post("/import-customerOrPatners",[CustomerController::class,"importData"])->name("admin.customer.import");
+    Route::delete("/delete-customer/{customer}",[CustomerController::class,"destroy"])->name("admin.customer.destroy");
 });
