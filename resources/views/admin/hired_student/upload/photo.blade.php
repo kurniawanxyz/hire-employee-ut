@@ -29,9 +29,9 @@
                     @csrf
                     <div class="mb-3">
                         <label for="upload-file" class="form-label">Upload student photo below (.zip) <br> The content of all zibs must be of type .png</label>
-                        <input class="dropify @error('archive') is-invalid @enderror" type="file" id="upload-file" name="archive">
+                        <input class="dropify" type="file" id="upload-file" name="archive">
                         @error('archive')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror

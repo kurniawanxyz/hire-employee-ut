@@ -32,7 +32,7 @@
         <div class="header">
             <div class="header-left d-flex align-items-center">
                 <a href="admin-dashboard.html" class="logo">
-                    <img src="{{ asset('assets/admin/img/UTWEB SMALL.png') }}" id="logo-PT" alt="Logo" class="w-75" />
+                    <img src="{{ asset('assets/admin/img/logo_UTS_terang.png') }}" id="logo-PT" alt="Logo" class="w-75" />
                 </a>
                 <a id="toggle_btn" href="javascript:void(0);">
                     <span class="bar-icon">

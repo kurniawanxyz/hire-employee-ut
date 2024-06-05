@@ -29,9 +29,9 @@
                     @csrf
                     <div class="mb-3">
                         <label for="upload-file" class="form-label">Upload hired student below (.xlsx) <br> Only 1 sheet allowed</label>
-                        <input class="dropify @error('file_excel') is-invalid @enderror" type="file" id="upload-file" name="file_excel">
+                        <input class="dropify" type="file" id="upload-file" name="file_excel">
                         @error('file_excel')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror

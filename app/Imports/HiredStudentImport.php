@@ -8,6 +8,7 @@ use App\Models\OjtExperienceStudents;
 use App\Models\StudentScores;
 use App\Models\UnitSpecialization;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -26,14 +27,15 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
                 'nis' => $row['nis']
             ], [
                 'name' => $row['nama'],
+                'photo' => Storage::exists("students_photo/{$row['photo']}") ? config('app.url').'/storage/students_photo/'.$row['photo'] : asset('assets/admin/img/default_photo.png'),
                 'place_birth' => $row['tempat_lahir'],
                 'date_birth' => $row['tempat_tanggal_lahir'],
                 'email' => $row['e_mail'],
                 'school_origin' => $row['asal_sekolah'],
                 'major' => $row['jurusan'],
-                'age' => $row['age'] ?? null,
-                'height' => $row['height'] ?? null,
-                'weight' => $row['weight'] ?? null,
+                'age' => $row['usia'] ?? null,
+                'height' => $row['tinggi_badan'] ?? null,
+                'weight' => $row['berat_badan'] ?? null,
                 // TODO
                 'experience' => fake()->paragraph(10),
                 'batch' => $row['batch'],
