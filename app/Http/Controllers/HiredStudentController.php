@@ -49,7 +49,7 @@ class HiredStudentController extends Controller
         $hiredStudentId = $hiredStudentId["students"];
         $hiredStudent = $this->hiredStudent->query()->with("branch")->whereIn("id",$hiredStudentId)->get();
         $message="";
-        $telp = Config("admin_nohp");
+        $telp = Config("app.admin_nohp");
         $message.="Halo, Saya ingin merekrut mekanik atau pekerja berikut ini"."%0A";
         foreach ($hiredStudent as $key => $value) {
             $message .= $key+1 . ". " . $value->name . " " . $value->role . " dari " . $value->branch->city . "%0A";

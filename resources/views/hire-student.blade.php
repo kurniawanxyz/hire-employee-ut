@@ -173,7 +173,7 @@
         <span>Confirm to admin: </span>
         <div class="d-flex align-items-center gap-2">
             <button onclick="handleSendWhatsapp()" class="wprt-button small outline">Whatsapp</button>
-            <button onclick="hadleSendEmail()" class="wprt-button small">Email</button>
+            <button onclick="handleSendEmail()" class="wprt-button small">Email</button>
         </div>
         <div class="d-flex">
             <button onclick="handleReset()" class="btn btn-danger">Reset</button>
@@ -201,6 +201,45 @@
 
     <script>
 
+
+function handleSendEmail() {
+            Swal.fire({
+                title: 'Confirmation',
+                text: 'Are you sure you want to send an email?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Send!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        method: "POST",
+                        url: "{{ route('hiredstudent.sendEmail') }}",
+                        data: {
+                            students: JSON.parse(localStorage.getItem('hired_students')) || [],
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Email has been sent',
+                                text: 'Email has been sent',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        },
+                        error: function(xhr, status, error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'An error occurred!',
+                            })
+                        }
+                    })
+                }
+            });
+        }
 
 
 
@@ -269,44 +308,7 @@
             });
         }
 
-        function handleSendEmail() {
-            Swal.fire({
-                title: 'Confirmation',
-                text: 'Are you sure you want to send an email?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Send!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        method: "POST",
-                        url: "{{ route('hiredstudent.sendEmail') }}",
-                        data: {
-                            students: JSON.parse(localStorage.getItem('hired_students')) || [],
-                            _token: '{{ csrf_token() }}'
-                        },
-                        success: function(response) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Email has been sent',
-                                text: 'Email has been sent',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        },
-                        error: function(xhr, status, error) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'An error occurred!',
-                            })
-                        }
-                    })
-                }
-            });
-        }
+      
 
         function handleSendWhatsapp() {
             Swal.fire({
