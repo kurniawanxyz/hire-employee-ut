@@ -82,7 +82,7 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,300,150"
                                             style="fill:#FFFFFF;">
                                             <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(4,4)"><path d="M48,8h-32c-4.418,0 -8,3.582 -8,8v32c0,4.418 3.582,8 8,8h32c4.418,0 8,-3.582 8,-8v-32c0,-4.418 -3.582,-8 -8,-8zM50,27c-3.964,0 -6.885,-1.09 -9,-2.695v14.195c0,6.341 -5.159,11.5 -11.5,11.5c-6.341,0 -11.5,-5.159 -11.5,-11.5c0,-6.341 5.159,-11.5 11.5,-11.5h2v5h-2c-3.584,0 -6.5,2.916 -6.5,6.5c0,3.584 2.916,6.5 6.5,6.5c3.584,0 6.5,-2.916 6.5,-6.5v-24.5h5c0.018,1.323 0.533,8 9,8z"></path></g></g>
-                                            </svg>    
+                                            </svg>
                                         </a>
                                         <a href="{{$landingPage->instagram}}" title="Instagram"><span class="fa fa-instagram"
                                                 aria-hidden="true"></span></a>
@@ -107,7 +107,7 @@
 
 
                         </div>
-    
+
                     </div>
                 </div><!-- /#top-bar -->
 
@@ -284,7 +284,7 @@
                                     </div><!-- /.container -->
                                 </section>
 
-                     
+
                             </div><!-- /.page-content -->
                         </div>
                     </div>
@@ -330,7 +330,7 @@
 
                         <div class="col-md-6">
                             <div class="widget widget_information">
-                                <h2 class="widget-title"><span>CONTACT INFO</span></h2>
+                                <h2 class="widget-title"><span>{{__('CONTACT INFO')}}</span></h2>
                                 <ul class="style-2">
                                     <li class="address clearfix">
                                         <span class="hl">Address:</span>

@@ -51,7 +51,7 @@
     "AND": " AND ",
     "OPERATOR": " OPERATOR",
     "ABOUT_US": "Building isn’t just a job. At the Construction Company, it is our passion. With every project we undertake, we set the bar high and provide the best people in the industry, with a true love of what we do to make our Customers’ vision a reality.",
-    "ROLE_MECHANIC": "MEKANIK",
+    "ROLE_MECHANIC": "MECHANIC",
     "ROLE_OPERATOR": "OPERATOR",
     "MANPOWER CHANNELLED": "MANPOWER CHANNELLED",
     "BRANCHS": "BRANCH",
@@ -60,5 +60,6 @@
     "Home": "Home",
     "About": "About",
     "Map": "Map",
-    "AboutUs": "About Us"
+    "AboutUs": "About Us",
+    "CONTACT INFO": "CONTACT INFO"
 }
