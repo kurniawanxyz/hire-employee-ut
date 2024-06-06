@@ -9,7 +9,8 @@
     <meta name="language" content="ID, EN">
     <meta name="distribution" content="global">
     <meta name="rating" content="general">
-    <meta name="description" content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
+    <meta name="description"
+        content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
 
     <title>UT School - PT United Tractors</title>
 
@@ -23,11 +24,14 @@
     <meta property="og:site_name" content="UT School">
 
     <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:title" content="UT School - PT United Tractors">
-    <meta name="twitter:description"
-        content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
-    <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/120px-X_logo_2023.svg.png">
-    <meta name="twitter:site" content="{{ '@'.explode('com/',$landingPage->twitter)[1] }}">
+    @if (strpos($landingPage->twitter, 'com/') !== false)
+        <meta name="twitter:title" content="UT School - PT United Tractors">
+        <meta name="twitter:description"
+            content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
+        <meta name="twitter:image"
+            content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/120px-X_logo_2023.svg.png">
+        <meta name="twitter:site" content="{{ '@' . explode('com/', $landingPage->twitter)[1] }}">
+    @endif
 
     <!-- Canonical Link to Prevent Duplicate Content Issues -->
     <link rel="canonical" href="{{ config('app.url') }}">
@@ -153,7 +157,7 @@
                                 <div id="site-logo-inner">
                                     <a href="#" title="Construction" rel="home" class="main-logo">
                                         <img src="{{ asset('assets/admin/img/logo_UTS_terang.png') }}" width="150"
-                                            style="object-fit: cover" alt="home image"/>
+                                            style="object-fit: cover" alt="home image" />
                                         {{-- <span class="fw-bold text-white " style="font-size: 20px">UT SCHOOL</span> --}}
                                     </a>
                                 </div>
@@ -494,7 +498,7 @@
                     for (let key in data) {
                         if (data.hasOwnProperty(
                                 key
-                                )) { // Memastikan properti berasal dari dataek itu sendiri, bukan dari prototipe
+                            )) { // Memastikan properti berasal dari dataek itu sendiri, bukan dari prototipe
                             console.log(`${key}: ${data[key]}`);
                             let coordinate = data[key].coordinate.split(",")
 
