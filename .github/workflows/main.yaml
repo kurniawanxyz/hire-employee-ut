@@ -26,7 +26,7 @@ jobs:
         # ftp username
         username: kaito@hire.dcode.my.id
         # ftp password
-        password: [_yvyj6.A3=9
+        password: '[_yvyj6.A3=9'
         # Server port to connect to (read your web hosts docs)
         port: 21
         # protocol to deploy with - ftp, ftps, or ftps-legacy
