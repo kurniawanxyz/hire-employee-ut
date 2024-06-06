@@ -31,7 +31,7 @@
                             <label for="upload-file" class="form-label">Upload UT Patners below (.xlsx) <br> Only 1 sheet
                                 allowed</label>
                             <a href="{{ asset('assets/sample/patners.xlsx') }}" class="btn btn-outline-success px-3 py-1" style="height: max-content">Download sample</a>
-                        </div>
+                         </div>
                         <input class="dropify" type="file" id="upload-file"
                             name="excel">
                         @error('excel')
