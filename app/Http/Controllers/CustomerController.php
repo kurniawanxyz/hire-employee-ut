@@ -18,11 +18,13 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(string $names = null)
+    public function index(Request $req)
     {
         $customers = Customer::query();
-        if(!isNull($names)){
-            $customers->where("name","%".$names."%");
+        if (isset($req->name)) {
+            if ($req->name != null) {
+                $customers->where("name", "LIKE", "%" . $req->name . "%");
+            }
         }
         $customers = $customers->paginate(5);
         return view("admin.customer.index",compact("customers"));

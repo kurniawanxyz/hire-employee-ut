@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
     <!-- Favicon and touch icons  -->
-    <link rel="shortcut icon" href="{{ asset('assets/icon/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/admin/img/logokecil.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/apple-touch-icon-158-precomposed.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -201,6 +201,39 @@
 
     <script>
 
+function handleLogout() {
+            Swal.fire({
+                title: 'Confirmation',
+                text: 'Are you sure you want to logout?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Logout'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        method: "POST",
+                        url: "{{ route('logout') }}",
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            window.location.href = "/"
+                        },
+                        error: function(xhr, status, error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'An error occurred!',
+                                footer: '<a href>Why am I experiencing this issue?</a>'
+                            })
+                        }
+                    })
+                }
+            });
+        }
+
 
 function handleSendEmail() {
             Swal.fire({
@@ -275,40 +308,9 @@ function handleSendEmail() {
         })
 
         handleCheckHire()
-        function handleLogout() {
-            Swal.fire({
-                title: 'Confirmation',
-                text: 'Are you sure you want to logout?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Logout'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        method: "POST",
-                        url: "{{ route('logout') }}",
-                        data: {
-                            _token: '{{ csrf_token() }}'
-                        },
-                        success: function(response) {
-                            window.location.href = "/"
-                        },
-                        error: function(xhr, status, error) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'An error occurred!',
-                                footer: '<a href>Why am I experiencing this issue?</a>'
-                            })
-                        }
-                    })
-                }
-            });
-        }
 
-      
+
+
 
         function handleSendWhatsapp() {
             Swal.fire({

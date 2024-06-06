@@ -30,7 +30,7 @@
                         <div class="d-flex flex-row justify-content-between align-items-center">
                             <label for="upload-file" class="form-label">Upload UT Patners below (.xlsx) <br> Only 1 sheet
                                 allowed</label>
-                            <a href="{{ asset('assets/sample/Cabang-Cabang UT.xlsx') }}" class="btn btn-outline-success px-3 py-1" style="height: max-content">Download sample</a>
+                            <a href="{{ asset('assets/sample/patners.xlsx') }}" class="btn btn-outline-success px-3 py-1" style="height: max-content">Download sample</a>
                         </div>
                         <input class="dropify" type="file" id="upload-file"
                             name="excel">

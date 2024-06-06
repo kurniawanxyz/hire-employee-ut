@@ -57,12 +57,12 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/branches/upload/data', [AdminHiredBranchController::class, 'importView'])->name('admin.branches.import.view');
     Route::post('/branches/upload/data', [AdminHiredBranchController::class, 'import'])->name('admin.branches.import.post');
 
-    Route::get("/customerOrPatners/{names?}",[CustomerController::class,"index"])->name("admin.customer.index");
-    Route::get("/create/customerOrPatners/",[CustomerController::class,"create"])->name("admin.customer.create");
-    Route::get("/create/import-customerOrPatners",[CustomerController::class,"createWithImport"])->name("admin.customer.import_page");
-    Route::get("/edit/customerOrPatners/{customer}",[CustomerController::class,"edit"])->name("admin.customer.edit");
-    Route::post("/create-customerOrPatners",[CustomerController::class,"store"])->name("admin.customer.store");
-    Route::put("/update-customerOrPatners/{customer}",[CustomerController::class,"update"])->name("admin.customer.update");
-    Route::post("/import-customerOrPatners",[CustomerController::class,"importData"])->name("admin.customer.import");
+    Route::get("/customer-and-patners",[CustomerController::class,"index"])->name("admin.customer.index");
+    Route::get("/create/customer-and-patners/",[CustomerController::class,"create"])->name("admin.customer.create");
+    Route::get("/create/import-customer-and-patners",[CustomerController::class,"createWithImport"])->name("admin.customer.import_page");
+    Route::get("/edit/customer-and-patners/{customer}",[CustomerController::class,"edit"])->name("admin.customer.edit");
+    Route::post("/create-customer-and-patners",[CustomerController::class,"store"])->name("admin.customer.store");
+    Route::put("/update-customer-and-patners/{customer}",[CustomerController::class,"update"])->name("admin.customer.update");
+    Route::post("/import-customer-and-patners",[CustomerController::class,"importData"])->name("admin.customer.import");
     Route::delete("/delete-customer/{customer}",[CustomerController::class,"destroy"])->name("admin.customer.destroy");
 });

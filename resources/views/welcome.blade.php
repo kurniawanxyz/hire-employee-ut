@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
     <!-- Favicon and touch icons  -->
-    <link rel="shortcut icon" href="{{ asset('assets/icon/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/admin/img/logokecil.png') }}">
     <link href="https://cesium.com/downloads/cesiumjs/releases/1.83/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/apple-touch-icon-158-precomposed.png') }}">
 
@@ -201,8 +201,8 @@
                                 class="text-accent-color">{{__('OPERATOR')}}</span></p>
                     </div> --}}
 
-                    <a class="arrow-2 bounce scroll-target" href="#services-section"><span
-                            class="fa fa-angle-down"></span></a><!-- change href value to ID of section you want to scroll down -->
+                    {{-- <a class="arrow-2 bounce scroll-target" href="#services-section"><span
+                            class="fa fa-angle-down"></span></a><!-- change href value to ID of section you want to scroll down --> --}}
                 </div><!-- /.hero-content -->
             </div>
 
@@ -344,7 +344,7 @@
                                 <h2 id="about" class="widget-title"><span
                                         class="text-uppercase">{{ __('AboutUs') }}</span></h2>
                                 <div class="textwidget">
-                                    <img src="{{ asset('assets/admin/img/logo.png') }}" width="100"
+                                    <img src="{{ asset('assets/admin/img/logo_UTS_terang.png') }}" width="140"
                                         height="30" alt="image" class="margin-top-5 margin-bottom-25" />
                                     <p>{{ __('ABOUT_US') }}</p>
 
