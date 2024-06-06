@@ -1,24 +1,40 @@
-{{-- @dd(app()->getLocale()); --}}
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml lang="en-US"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"><!--<![endif]-->
 
-<!-- Mirrored from themes247.net/html5/construction-template/demo/home-3-hero-slideshow.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 May 2024 19:04:15 GMT -->
-
 <head>
-    <!-- Basic Page Needs -->
-    <meta charset="utf-8">
-    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>HIRE | UTS</title>
-    <meta name="description"
-        content="Template built for Construction Company, Building Services, Architecture, Engineering, Cleaning Service and other Construction related services">
-    <meta name="keywords"
-        content=" architecture, builder, building, building company, cleaning services, construction, construction business, construction company">
-    <meta name="author" content="blogwp.com">
-
-    <!-- Mobile Specific Metas -->
+    <!-- Meta Tags for SEO -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="ID, EN">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="description" content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
+
+    <title>UT School - PT United Tractors</title>
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="UT School - PT United Tractors">
+    <meta property="og:description"
+        content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
+    <meta property="og:image" content="{{ asset('assets/admin/img/logokecil.png') }}">
+    <meta property="og:url" content="{{ config('app.url') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="UT School">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:title" content="UT School - PT United Tractors">
+    <meta name="twitter:description"
+        content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
+    <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/120px-X_logo_2023.svg.png">
+    <meta name="twitter:site" content="{{ '@'.explode('com/',$landingPage->twitter)[1] }}">
+
+    <!-- Canonical Link to Prevent Duplicate Content Issues -->
+    <link rel="canonical" href="{{ config('app.url') }}">
+
+    <!-- Alternate Hreflang Links for Multi-Language Sites -->
+    <link rel="alternate" href="{{ config('app.url') . '/lang/en' }}" hreflang="en">
+    <link rel="alternate" href="{{ config('app.url') . '/lang/id' }}" hreflang="id">
 
     <!-- Theme Style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
@@ -137,7 +153,7 @@
                                 <div id="site-logo-inner">
                                     <a href="#" title="Construction" rel="home" class="main-logo">
                                         <img src="{{ asset('assets/admin/img/logo_UTS_terang.png') }}" width="150"
-                                            style="object-fit: cover" />
+                                            style="object-fit: cover" alt="home image"/>
                                         {{-- <span class="fw-bold text-white " style="font-size: 20px">UT SCHOOL</span> --}}
                                     </a>
                                 </div>
@@ -201,46 +217,48 @@
                                 <section id="divisions-section" class="wprt-section divisions">
                                     <div class="container">
                                         <div class="row ">
-                                            <div onclick="window.location.href = '/customer/hire-student?role=mechanic'" class="col-md-6 " style="cursor: pointer">
+                                            <div onclick="window.location.href = '/customer/hire-student?role=mechanic'"
+                                                class="col-md-6 " style="cursor: pointer">
                                                 {{-- <a href="/customer/hire-student"> --}}
-                                                    <div class="wprt-spacer" data-desktop="0" data-mobi="60"
-                                                        data-smobi="60">
-                                                    </div>
+                                                <div class="wprt-spacer" data-desktop="0" data-mobi="60"
+                                                    data-smobi="60">
+                                                </div>
 
-                                                    <div class="wprt-content-box style-1">
-                                                        <p class="text-white" style="font-weight: 700; margin: -8px">
-                                                            {{ __('CHOOSE YOUR PROFESSIONAL') }}</p>
-                                                        <div class="wprt-icon-box icon-effect-2 icon-left">
-                                                            <div class="icon-wrap">
-                                                                <span class="dd-icon icon-tools-2"></span>
-                                                            </div>
-                                                            <div class="content-wrap">
-                                                                <h3 class="dd-title text-white font-size-19"><a
-                                                                        href="#">{{ __('ROLE_MECHANIC') }}</a></h3>
-                                                            </div>
+                                                <div class="wprt-content-box style-1">
+                                                    <p class="text-white" style="font-weight: 700; margin: -8px">
+                                                        {{ __('CHOOSE YOUR PROFESSIONAL') }}</p>
+                                                    <div class="wprt-icon-box icon-effect-2 icon-left">
+                                                        <div class="icon-wrap">
+                                                            <span class="dd-icon icon-tools-2"></span>
+                                                        </div>
+                                                        <div class="content-wrap">
+                                                            <h3 class="dd-title text-white font-size-19"><a
+                                                                    href="#">{{ __('ROLE_MECHANIC') }}</a></h3>
                                                         </div>
                                                     </div>
+                                                </div>
                                                 {{-- </a> --}}
                                             </div><!-- /.col-md-4 -->
 
-                                            <div onclick="window.location.href = '/customer/hire-student?role=operator'" class="col-md-6" style="cursor: pointer">
+                                            <div onclick="window.location.href = '/customer/hire-student?role=operator'"
+                                                class="col-md-6" style="cursor: pointer">
 
-                                                    <div class="wprt-spacer" data-desktop="0" data-mobi="30"
-                                                        data-smobi="30"></div>
-                                                        <div class="wprt-content-box style-1">
-                                                            <p class="text-white" style="font-weight: 700; margin: -8px">
-                                                                {{ __('CHOOSE YOUR PROFESSIONAL') }}</p>
-                                                            <div class="wprt-icon-box icon-effect-2 icon-left">
-                                                                <div class="icon-wrap">
-                                                                    <span class="dd-icon icon-backhoes"></span>
-                                                                </div>
-                                                                <div class="content-wrap">
-                                                                    <h3 class="dd-title text-white font-size-19"><a
-                                                                            href="#">{{ __('ROLE_OPERATOR') }}</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
+                                                <div class="wprt-spacer" data-desktop="0" data-mobi="30"
+                                                    data-smobi="30"></div>
+                                                <div class="wprt-content-box style-1">
+                                                    <p class="text-white" style="font-weight: 700; margin: -8px">
+                                                        {{ __('CHOOSE YOUR PROFESSIONAL') }}</p>
+                                                    <div class="wprt-icon-box icon-effect-2 icon-left">
+                                                        <div class="icon-wrap">
+                                                            <span class="dd-icon icon-backhoes"></span>
                                                         </div>
+                                                        <div class="content-wrap">
+                                                            <h3 class="dd-title text-white font-size-19"><a
+                                                                    href="#">{{ __('ROLE_OPERATOR') }}</a>
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div><!-- /.col-md-4 -->
                                         </div>
                                     </div>
@@ -467,25 +485,28 @@
             skyAtmosphere: new Cesium.SkyAtmosphere()
         });
 
-        async function handleCreatePin(viewer,pinBuilder) {
+        async function handleCreatePin(viewer, pinBuilder) {
             $.ajax({
                 method: "GET",
-                url: "{{route('customer.getData')}}",
+                url: "{{ route('customer.getData') }}",
                 success: function(data) {
 
                     for (let key in data) {
-                        if (data.hasOwnProperty(key)) { // Memastikan properti berasal dari dataek itu sendiri, bukan dari prototipe
+                        if (data.hasOwnProperty(
+                                key
+                                )) { // Memastikan properti berasal dari dataek itu sendiri, bukan dari prototipe
                             console.log(`${key}: ${data[key]}`);
                             let coordinate = data[key].coordinate.split(",")
 
                             viewer.entities.add({
-                            name: data[key].name,
-                            position: Cesium.Cartesian3.fromDegrees(coordinate[1], coordinate[0]),
-                            billboard: {
-                                image: pinBuilder.fromColor(Cesium.Color.RED, 48).toDataURL(),
-                                verticalOrigin: Cesium.VerticalOrigin.BOTTOM
-                            }
-                        });
+                                name: data[key].name,
+                                position: Cesium.Cartesian3.fromDegrees(coordinate[1], coordinate[
+                                    0]),
+                                billboard: {
+                                    image: pinBuilder.fromColor(Cesium.Color.RED, 48).toDataURL(),
+                                    verticalOrigin: Cesium.VerticalOrigin.BOTTOM
+                                }
+                            });
                         }
                     }
 
@@ -517,8 +538,8 @@
                     }
                 });
 
-            var pinBuilder = new Cesium.PinBuilder();
-                handleCreatePin(viewer,pinBuilder)
+                var pinBuilder = new Cesium.PinBuilder();
+                handleCreatePin(viewer, pinBuilder)
                 // Mulai animasi berputar
                 var startTime = Cesium.JulianDate.now();
                 viewer.scene.preRender.addEventListener(function(scene, time) {
