@@ -18,8 +18,8 @@
                     <div class="d-flex flex-column flex-md-row align-items-md-center">
                         <div class="d-flex justify-content-center">
                             <form method="get" class="form-inline d-flex flex-row gap-1 m-0">
-                                <input class="form-control mr-sm-2 py-0" type="search" name="query" placeholder="Search"
-                                    aria-label="Search" value="{{ request('query') }}">
+                                <input class="form-control mr-sm-2 py-0" type="search" name="name" placeholder="Search"
+                                    aria-label="Search" value="{{ request('name') }}">
                                 <button class="btn btn-outline-primary py-0 my-sm-0" type="submit"><i
                                         class="fa fa-search"></i></button>
                             </form>

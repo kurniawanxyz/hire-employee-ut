@@ -275,40 +275,9 @@ function handleSendEmail() {
         })
 
         handleCheckHire()
-        function handleLogout() {
-            Swal.fire({
-                title: 'Confirmation',
-                text: 'Are you sure you want to logout?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Logout'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        method: "POST",
-                        url: "{{ route('logout') }}",
-                        data: {
-                            _token: '{{ csrf_token() }}'
-                        },
-                        success: function(response) {
-                            window.location.href = "/"
-                        },
-                        error: function(xhr, status, error) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'An error occurred!',
-                                footer: '<a href>Why am I experiencing this issue?</a>'
-                            })
-                        }
-                    })
-                }
-            });
-        }
+   
 
-      
+
 
         function handleSendWhatsapp() {
             Swal.fire({

@@ -185,8 +185,8 @@
                                 class="text-accent-color">{{__('OPERATOR')}}</span></p>
                     </div> --}}
 
-                    <a class="arrow-2 bounce scroll-target" href="#services-section"><span
-                            class="fa fa-angle-down"></span></a><!-- change href value to ID of section you want to scroll down -->
+                    {{-- <a class="arrow-2 bounce scroll-target" href="#services-section"><span
+                            class="fa fa-angle-down"></span></a><!-- change href value to ID of section you want to scroll down --> --}}
                 </div><!-- /.hero-content -->
             </div>
 
