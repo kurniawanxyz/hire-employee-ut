@@ -24,9 +24,9 @@ jobs:
         # ftp server
         server: utschool-hire.dcode.my.id
         # ftp username
-        username: admin@utschool-hire.dcode.my.id
+        username: adi@utschool-hire.dcode.my.id
         # ftp password
-        password: lE26Foq7EQ4
+        password: qkE4a7RubKFm
         # Server port to connect to (read your web hosts docs)
         port: 21
         # protocol to deploy with - ftp, ftps, or ftps-legacy
