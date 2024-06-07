@@ -22,11 +22,11 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.1
       with:
         # ftp server
-        server: hire.dcode.my.id
+        server: utschool-hire.dcode.my.id
         # ftp username
-        username: kaito@hire.dcode.my.id
+        username: admin@utschool-hire.dcode.my.id
         # ftp password
-        password: kvD4OrCY28Su
+        password: lE26Foq7EQ4
         # Server port to connect to (read your web hosts docs)
         port: 21
         # protocol to deploy with - ftp, ftps, or ftps-legacy
