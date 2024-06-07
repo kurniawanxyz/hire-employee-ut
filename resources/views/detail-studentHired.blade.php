@@ -62,7 +62,7 @@
     </nav>
     <div style="padding: 50px" class="mt-5">
         <div class="d-flex justify-content-between align-items-center">
-            <h1 class="">Student Information</h1>
+             <h1 class="">Student Information</h1>
             <a href="{{ route('hiredStudent.index') }}" class="wprt-button small">Back</a>
         </div>
         <div class="row">
