@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HiredStudentController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LangController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("/",[LandingPageController::class,"index"])->name("get.landingpage");
+
+Route::get('/migrate', function () {
+    // if (app()->environment('local', 'staging')) {
+        Artisan::call('migrate:fresh --force');
+        return 'Database migrated!';
+    // }
+    // return 'Not allowed';
+});
 
 
 
