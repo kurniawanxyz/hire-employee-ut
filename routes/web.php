@@ -32,6 +32,14 @@ Route::get('/optimize', function () {
     // }
     // return 'Not allowed';
 });
+Route::get('/key', function () {
+    // if (app()->environment('local', 'staging')) {
+        Artisan::call('key:generate');
+        // Artisan::call('storage:clear');
+        return 'optimized';
+    // }
+    // return 'Not allowed';
+});
 
 
 
