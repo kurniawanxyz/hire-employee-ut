@@ -11,7 +11,7 @@
     <meta name="rating" content="general">
     <meta name="description"
         content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
-
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>UT School - PT United Tractors</title>
 
     <!-- Open Graph Meta Tags for Social Media -->

@@ -27,7 +27,7 @@ Route::get("/",[LandingPageController::class,"index"])->name("get.landingpage");
 Route::get('/optimize', function () {
     // if (app()->environment('local', 'staging')) {
         Artisan::call('optimize:clear');
-        Artisan::call('storage:clear');
+        Artisan::call('storage:link');
         return 'optimized';
     // }
     // return 'Not allowed';
