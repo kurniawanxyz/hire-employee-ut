@@ -382,16 +382,24 @@
                                 <ul class="style-2">
                                     <li class="address clearfix">
                                         <span class="hl">Address:</span>
-                                        <span class="text">Jatinegara, Jl. Raya Bekasi KM.22, RT.7/RW.1, Cakung Bar.,
-                                            Kec. Cakung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13930</span>
+                                        <span class="text">Jl. Raya Bekasi KM. 22
+                                            Jakarta Timur 13910, Indonesia</span>
+                                    </li>
+                                    <li class="address clearfix">
+                                        <span class="hl">Call Center: </span>
+                                        <span class="text">08111084800</span>
                                     </li>
                                     <li class="phone clearfix">
                                         <span class="hl">Phone:</span>
-                                        <span class="text">{{ Config('app.admin_nohp') }}</span>
+                                        <span class="text">(021) 24579999 Ext. 62024</span>
+                                    </li>
+                                    <li class="phone clearfix">
+                                        <span class="hl">Fax:</span>
+                                        <span class="text">(021) 4603931</span>
                                     </li>
                                     <li class="email clearfix">
-                                        <span class="hl">E-mail:</span>
-                                        <span class="text">{{ Config('app.opt_email') }}</span>
+                                        <span class="hl">Email:</span>
+                                        <span class="text">admin@utschool.sch.id</span>
                                     </li>
                                 </ul>
                             </div>
@@ -440,7 +448,7 @@
                     <div class="bottom-bar-inner-wrap">
 
                         <div class="bottom-bar-content">
-                            <div id="copyright">COPYRIGHT BY &copy; UNITED TRACTORS SCHOOL.
+                            <div id="copyright">COPYRIGHT BY &copy; UTSCHOOL.
                             </div><!-- /#copyright -->
                         </div><!-- /.bottom-bar-content -->
                     </div>
