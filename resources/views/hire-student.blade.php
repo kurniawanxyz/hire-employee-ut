@@ -14,7 +14,7 @@
         content="Template built for Construction Company, Building Services, Architecture, Engineering, Cleaning Service and other Construction related services">
     <meta name="keywords"
         content=" architecture, builder, building, building company, cleaning services, construction, construction business, construction company">
-    <meta name="author" content="blogwp.com">
+
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -57,7 +57,9 @@
 <body>
     <nav class="d-flex w-100 justify-content-between px-5 py-3 align-items-center "
     style="background-color: #212522; position: fixed;top: 0;z-index: 10000000;">
-        <h1 style="color: white;margin: 0;">UTSchool</h1>
+        {{-- <span> --}}
+            <img width="150" style="object-fit:cover" src="{{asset('assets/admin/img/logo_UTS_terang.png')}}" alt="">
+        {{-- </span> --}}
         <button onclick="handleLogout()">Logout</button>
     </nav>
     <div style="padding: 50px" class="mt-5">

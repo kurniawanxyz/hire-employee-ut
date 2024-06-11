@@ -189,7 +189,7 @@
             <!-- Hero Background SlideShow -->
             <div id="hero-section" data-number="3"
                 data-image-1="{{ asset($landingPage->hero_section_image_1 ?? 'assets/img/hero/hero1.jpg') }}"
-                data-image-2="{{ asset($landingPage->hero_section_image_2 ?? 'assets/img/hero/hero2.jpg') }}"
+                data-image-2="{{ asset($landingPage->hero_section_image_2 ?? 'assets/img/hero/hero2.png') }}"
                 data-image-3="{{ asset($landingPage->hero_section_image_3 ?? 'assets/img/hero/hero3.jpg') }}"
                 data-effect="fade">
                 <div class="hero-content">

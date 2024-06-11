@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Smarthr - Bootstrap Admin Template">
     <meta name="keywords"
-        content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
-    <meta name="author" content="Dreamstechnologies - Bootstrap Admin Template">
-    <title>Login - HRMS admin template</title>
+        content="Login">
+    <meta name="author" content="UTSchool">
+    <title>Login</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/img/logokecil.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/img/logo.png') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
 
@@ -35,9 +35,8 @@
             <a href="/" class="btn btn-primary apply-btn"  style="background-color: #ffc107;border: none">Back</a>
             <div class="container">
 
-                <div class="account-logo">
-                    <a href="admin-dashboard.html"><img src="{{ asset('assets/admin/img/logo.png') }}"
-                            alt="Dreamguy's Technologies"></a>
+                <div class="mx-auto mb-4">
+                    <img width="200" class="d-block mx-auto" src="{{ asset('assets/img/UTWEB.png') }}" style="" alt="Dreamguy's Technologies">
                 </div>
 
                 <div class="account-box">
