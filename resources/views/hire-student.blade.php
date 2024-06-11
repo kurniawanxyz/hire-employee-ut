@@ -96,7 +96,7 @@
     </div>
     <div class="row px-5 justify-content-start mb-5">
         @forelse ($students as $item)
-            <div class="col-md-4 px-5 mt-5">
+            <div class="col-md-6 col-lg-4 px-5 mt-5">
                 <div class="card mx-5">
                     <div class="card-img d-flex w-full mt-3">
                     <img class="m-auto d-block object-fit-cover" style="border-radius: 100%; object-fit: cover; object-position: top;width: 200px; height: 200px;"
@@ -104,51 +104,6 @@
                     </div>
                     <span class="text-center fw-bold mt-3" style="font-size: 15px">{{$item->name}}</span>
                     <div class="card-body">
-                        {{-- <ul class="m-0">
-                            <li>
-                                Name: {{ $item->name }}
-                            </li>
-
-                            @php
-                                $age = \Carbon\Carbon::createFromFormat('d/m/Y', $item->date_birth)->age;
-                            @endphp
-                            <li>
-                                Age: {{$age}} years old
-                            </li>
-                            <li>
-                                Height: {{ $item->height?? 170 }} cm
-                            </li>
-                            <li>
-                                Weight: {{ $item->weight??50 }} Kg
-                            </li>
-                        </ul> --}}
-                        {{-- <div class="mt-3 d-flex flex-column">
-                            <span class="fw-bold">Spesialization:</span>
-                            @php
-                                $hasSpecialization = ($item->specialization->rank_1 == "-") &&
-                                    ($item->specialization->rank_2 == "-") &&
-                                    ($item->specialization->rank_3 == "-") &&
-                                    ($item->specialization->rank_4 == "-");
-                            @endphp
-                            @if (!$hasSpecialization)
-                            <div>
-                                @if ($item->specialization->rank_1 != "-")
-                                    <span class="badge bg-warning" style="font-size: 1.25em">{{ $item->specialization->rank_1 }}</span>
-                                @endif
-                                @if ($item->specialization->rank_2 != "-")
-                                    <span class="badge bg-warning" style="font-size: 1.25em">{{ $item->specialization->rank_2 }}</span>
-                                @endif
-                                @if ($item->specialization->rank_3 != "-")
-                                    <span class="badge bg-warning" style="font-size: 1.25em">{{ $item->specialization->rank_3 }}</span>
-                                @endif
-                                @if ($item->specialization->rank_4 != "-")
-                                    <span class="badge bg-warning" style="font-size: 1.25em">{{ $item->specialization->rank_4 }}</span>
-                                @endif
-                            </div>
-                            @else
-                                <p>Belum memiliki spesialisasi</p>
-                            @endif
-                        </div> --}}
                         <div class="mt-3 d-flex justify-content-end gap-2 px-5">
                             <div class="col-6">
                                 <button onclick="window.location.href = '{{ route('hriedStudent.show', $item->id) }}'" class="wprt-button small outline w-100 text-center">Detail</button>

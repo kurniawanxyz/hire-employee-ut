@@ -11,11 +11,11 @@
     <meta name="rating" content="general">
     <meta name="description"
         content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>UT School - PT United Tractors</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Hire Me! - UT School</title>
 
     <!-- Open Graph Meta Tags for Social Media -->
-    <meta property="og:title" content="UT School - PT United Tractors">
+    <meta property="og:title" content="Hire Me! - UT School">
     <meta property="og:description"
         content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
     <meta property="og:image" content="{{ asset('assets/admin/img/logokecil.png') }}">
@@ -56,11 +56,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <style>
-        html {
-            scroll-behavior: smooth
-        }
-    </style>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -79,7 +75,27 @@
     </script>
 
 </head>
+<style>
+    html {
+        scroll-behavior: smooth
+    }
 
+    @media (max-width: 768px) {
+        .indonesia {
+            display: none;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .indonesia-tablet {
+            display: inline;
+        }
+
+        .btn-login{
+         display: none
+        }
+    }
+</style>
 <body class="front-page no-sidebar site-layout-full-width header-style-5 menu-has-search menu-has-cart header-sticky">
 
     <div id="wrapper" class="animsition">
@@ -123,8 +139,15 @@
 
                             <div class="top-bar-content">
                                 <span id="top-bar-text">
-                                    <i class="fa fa-phone-square"></i>{{ Config('app.admin_nohp') }}
-                                    <i class="fa fa-envelope"></i>{{ Config('app.opt_email') }}
+                                    <i class="fa fa-phone-square indonesia"></i>
+                                    <span class="indonesia">
+                                       {{$operator->no_telp}}
+                                    </span>
+                                    <i class="fa fa-envelope indonesia"></i>
+                                    <span class="indonesia">
+                                        {{$operator->email}}
+                                    </span>
+
                                     <i
                                         class="fa fa-clock-o"></i>{{ $landingPage->operational_start_day }}-{{ $landingPage->operational_end_day }}:
                                     {{ \Carbon\Carbon::parse($landingPage->operational_start_time)->format('H:i') }} -
@@ -134,12 +157,18 @@
                                         <img width="25" height="25"
                                             src="https://img.icons8.com/color/48/indonesia-circular.png"
                                             alt="indonesia-circular" />
-                                        Indonesia</a>
+                                        <span class="indonesia">
+                                            Indonesia
+                                        </span>
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('get.changeLanguage', 'en') }}">
                                         <img width="25" height="25"
                                             src="https://img.icons8.com/color/48/great-britain-circular.png"
                                             alt="great-britain-circular" />
-                                        English</a>
+                                            <span class="indonesia">
+                                                English
+                                    </span>
+                                    </a>
                                 </span><!-- /#top-bar-text -->
                             </div><!-- /.top-bar-content -->
 
@@ -171,6 +200,11 @@
                                     <li class="menu-item"><a href="#about">{{ __('About') }}</a>
                                     </li>
                                     <li class="menu-item"><a href="#maps">{{ __('Map') }}</a>
+                                    </li>
+                                    <li style="padding: 10px;display: flex;justify-content: end;" class="menu-item btn-login p-2">
+                                        <button href="/login" class="btn btn-warning p-3 btn-login">
+                                            Login
+                                        </button>
                                     </li>
                                 </ul>
                             </nav>
@@ -391,15 +425,11 @@
                                     </li>
                                     <li class="phone clearfix">
                                         <span class="hl">Phone:</span>
-                                        <span class="text">(021) 24579999 Ext. 62024</span>
-                                    </li>
-                                    <li class="phone clearfix">
-                                        <span class="hl">Fax:</span>
-                                        <span class="text">(021) 4603931</span>
+                                        <span class="text">{{ $operator->no_telp }}</span>
                                     </li>
                                     <li class="email clearfix">
                                         <span class="hl">Email:</span>
-                                        <span class="text">admin@utschool.sch.id</span>
+                                        <span class="text">{{ $operator->email }}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -448,7 +478,7 @@
                     <div class="bottom-bar-inner-wrap">
 
                         <div class="bottom-bar-content">
-                            <div id="copyright">COPYRIGHT BY &copy; UTSCHOOL.
+                            <div id="copyright">COPYRIGHT BY &copy; UT SCHOOL.
                             </div><!-- /#copyright -->
                         </div><!-- /.bottom-bar-content -->
                     </div>

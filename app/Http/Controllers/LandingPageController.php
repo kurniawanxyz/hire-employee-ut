@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RequestUpdateLandingPage;
 use App\Models\Branch;
 use App\Models\LandingPage;
+use App\Models\Operator;
 use App\Traits\ImageTrait;
 use Carbon\Carbon;
 use Exception;
@@ -21,7 +22,8 @@ class LandingPageController extends Controller
         $landingPage = LandingPage::all()->first();
         $branchs = Branch::all()->count();
         $landingPage["total_branch"] = $branchs;
-        return view("welcome", compact("landingPage"));
+        $operator = Operator::all()->first();
+        return view("welcome", compact("landingPage","operator"));
     }
 
     /**

@@ -20,9 +20,9 @@
 @import "assets/css/magnific-popup.css";
 @import "assets/css/flexslider.css";
 @import "assets/css/vegas.css";
-@import "includes/rev-slider/css/settings.css";
+/* @import "includes/rev-slider/css/settings.css";
 @import "includes/rev-slider/css/layers.css";
-@import "includes/rev-slider/css/navigation.css";
+@import "includes/rev-slider/css/navigation.css"; */
 @import "assets/css/woocommerce.css";
 @import "assets/css/shortcodes.css";
 
@@ -1298,6 +1298,16 @@ body.page #main-content { padding-top: 0; padding-bottom: 0; }
 	#site-header.style-3 #site-header-inner,
 	#site-header.style-4 #site-header-inner { padding-top: 12px; padding-bottom: 12px; }
 }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .indonesia {
+                display: none;
+            }
+        }
 
 
 /* Retina Devices

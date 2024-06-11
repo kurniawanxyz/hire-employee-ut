@@ -7,6 +7,7 @@ use App\Http\Requests\RequestSendWhatsApp;
 use App\Mail\HireStudentEmail;
 use App\Models\Branch;
 use App\Models\HiredStudent;
+use App\Models\Operator;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -49,7 +50,7 @@ class HiredStudentController extends Controller
         $hiredStudentId = $hiredStudentId["students"];
         $hiredStudent = $this->hiredStudent->query()->with("branch")->whereIn("id",$hiredStudentId)->get();
         $message="";
-        $telp = Config("app.admin_nohp");
+        $telp = Operator::all()->first()->no_telp;
         $message.="Halo, Saya ingin merekrut mekanik atau pekerja berikut ini"."%0A";
         foreach ($hiredStudent as $key => $value) {
             $message .= $key+1 . ". " . $value->name . " " . $value->role . " dari " . $value->branch->city . "%0A";
@@ -65,7 +66,7 @@ class HiredStudentController extends Controller
             $hiredStudentId= $req->validated();
             $hiredStudentId = $hiredStudentId["students"];
             $hiredStudent = $this->hiredStudent->query()->with("branch")->whereIn("id",$hiredStudentId)->get();
-            $email = Config("app.opt_email");
+            $email = Operator::all()->first()->email;
             Mail::to($email)->send(new HireStudentEmail($hiredStudent));
             return response()->json(["success"=>"Successfully send email"]);
         } catch (Exception $e) {
