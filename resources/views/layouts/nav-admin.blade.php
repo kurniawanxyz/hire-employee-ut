@@ -129,13 +129,21 @@
                                         request()->routeIs('admin.branches.index') ||
                                         request()->routeIs('admin.branches.edit') ||
                                         request()->routeIs('admin.branches.create'),
-                                ])
-                                        href="{{ route('admin.branches.index') }}">Data</a></li>
+                                ]) href="{{ route('admin.branches.index') }}">Data</a>
+                                </li>
                             </ul>
                         </li>
-                        <li @class(['active' => request()->routeIs('admin.landingPages.index')])>
-                            <a href="{{ route('admin.landingPages.index') }}"><i class="la la-gear"></i>
-                                <span>LandingPage</span></a>
+                        <li class="@if (request()->routeIs('admin.operator.*')) active @endif submenu">
+                            <a href="#"><i class="la la-gear"></i>
+                                <span>Settings</span><span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a @class(['active' => request()->routeIs('admin.operator.show')])
+                                        href="{{ route('admin.operator.show') }}">Operator</a></li>
+                                <li>
+                                <li @class(['active' => request()->routeIs('admin.landingPages.index')])>
+                                    <a href="{{ route('admin.landingPages.index') }}">LandingPage</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="@if (request()->routeIs('admin.customer.*')) active @endif submenu">
                             <a href="#"><i class="la la-building fs-6 text-center"></i>
@@ -153,7 +161,6 @@
                                         href="{{ route('admin.customer.index') }}">Data</a></li>
                             </ul>
                         </li>
-
                     </ul>
                 </div>
             </div>

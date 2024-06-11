@@ -63,7 +63,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <button type="submit" class="btn btn-success w-max-content mt-3 <script>document.write('ahha')</script>">Save <i
+                        <button type="submit" class="btn btn-success w-max-content mt-3">Save <i
                                 class="fa fa-save"></i></button>
                     </div>
                 </form>

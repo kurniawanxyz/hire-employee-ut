@@ -1,15 +1,17 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\HiredStudentController as AdminHiredStudentController;
-use App\Http\Controllers\Admin\BranchController as AdminHiredBranchController;
 use App\Http\Controllers\Admin\Auth\Authentication;
+use App\Http\Controllers\Admin\BranchController as AdminHiredBranchController;
+use App\Http\Controllers\Admin\HiredStudentController as AdminHiredStudentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HiredStudentController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\Admin\OperatorController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -83,4 +85,6 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::put("/update-customer-and-patners/{customer}",[CustomerController::class,"update"])->name("admin.customer.update");
     Route::post("/import-customer-and-patners",[CustomerController::class,"importData"])->name("admin.customer.import");
     Route::delete("/delete-customer/{customer}",[CustomerController::class,"destroy"])->name("admin.customer.destroy");
+    Route::get('/operator', [OperatorController::class, 'show'])->name('admin.operator.show');
+    Route::put('/operator/{id}', [OperatorController::class, 'update'])->name('admin.operator.update');
 });
