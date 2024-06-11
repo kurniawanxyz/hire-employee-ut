@@ -24,14 +24,14 @@
     <meta property="og:site_name" content="UT School">
 
     <!-- Twitter Card Meta Tags -->
-    @if (strpos($landingPage->twitter, 'com/') !== false)
+    {{-- @if (strpos($landingPage->twitter, 'com/') !== false)
         <meta name="twitter:title" content="UT School - PT United Tractors">
         <meta name="twitter:description"
             content="Website UT School dari PT United Tractors bertujuan untuk merekomendasikan anak-anak terlatih dan berpengalaman dalam bidang Mekanik dan Operator. Lihat siswa-siswi yang memiliki skill bagus dan hire mereka melalui WhatsApp atau email. UT School website from PT United Tractors aims to recommend well-trained and experienced individuals in Mechanics and Operators. View students with excellent skills and hire them via WhatsApp or email.">
         <meta name="twitter:image"
             content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/120px-X_logo_2023.svg.png">
         <meta name="twitter:site" content="{{ '@' . explode('com/', $landingPage->twitter)[1] }}">
-    @endif
+    @endif --}}
 
     <!-- Canonical Link to Prevent Duplicate Content Issues -->
     <link rel="canonical" href="{{ config('app.url') }}">
@@ -84,6 +84,19 @@
         .indonesia {
             display: none;
         }
+
+        .spacer {
+            display: none;
+        }
+
+        #divisions-section{
+            padding: 10px;
+        }
+
+        .box-2{
+            margin-top: 30px !important;
+        }
+
     }
 
     @media (min-width: 769px) {
@@ -91,11 +104,16 @@
             display: inline;
         }
 
-        .btn-login{
-         display: none
+        .btn-login {
+            display: none
+        }
+
+        #divisions-section{
+            padding: 0px;
         }
     }
 </style>
+
 <body class="front-page no-sidebar site-layout-full-width header-style-5 menu-has-search menu-has-cart header-sticky">
 
     <div id="wrapper" class="animsition">
@@ -141,11 +159,11 @@
                                 <span id="top-bar-text">
                                     <i class="fa fa-phone-square indonesia"></i>
                                     <span class="indonesia">
-                                       {{$operator->no_telp}}
+                                        {{ $operator->no_telp }}
                                     </span>
                                     <i class="fa fa-envelope indonesia"></i>
                                     <span class="indonesia">
-                                        {{$operator->email}}
+                                        {{ $operator->email }}
                                     </span>
 
                                     <i
@@ -165,9 +183,9 @@
                                         <img width="25" height="25"
                                             src="https://img.icons8.com/color/48/great-britain-circular.png"
                                             alt="great-britain-circular" />
-                                            <span class="indonesia">
-                                                English
-                                    </span>
+                                        <span class="indonesia">
+                                            English
+                                        </span>
                                     </a>
                                 </span><!-- /#top-bar-text -->
                             </div><!-- /.top-bar-content -->
@@ -201,7 +219,8 @@
                                     </li>
                                     <li class="menu-item"><a href="#maps">{{ __('Map') }}</a>
                                     </li>
-                                    <li style="padding: 10px;display: flex;justify-content: end;" class="menu-item btn-login p-2">
+                                    <li style="padding: 10px;display: flex;justify-content: end;"
+                                        class="menu-item btn-login p-2">
                                         <button href="/login" class="btn btn-warning p-3 btn-login">
                                             Login
                                         </button>
@@ -255,11 +274,10 @@
                                 <section id="divisions-section" class="wprt-section divisions">
                                     <div class="container">
                                         <div class="row ">
-                                            <div onclick="window.location.href = '/customer/hire-student?role=mechanic'"
-                                                class="col-md-6 " style="cursor: pointer">
+                                            <div onclick="window.location.href = '/customer/hire-student?role=mechanic'" class="col-md-6 " style="cursor: pointer">
                                                 {{-- <a href="/customer/hire-student"> --}}
-                                                <div class="wprt-spacer" data-desktop="0" data-mobi="60"
-                                                    data-smobi="60">
+                                                <div id="" class="wprt-spacer spacer " data-desktop="0"
+                                                    data-mobi="60" data-smobi="60">
                                                 </div>
 
                                                 <div class="wprt-content-box style-1">
@@ -278,12 +296,11 @@
                                                 {{-- </a> --}}
                                             </div><!-- /.col-md-4 -->
 
-                                            <div onclick="window.location.href = '/customer/hire-student?role=operator'"
-                                                class="col-md-6" style="cursor: pointer">
+                                            <div onclick="window.location.href = '/customer/hire-student?role=operator'" class="col-md-6" style="cursor: pointer">
 
-                                                <div class="wprt-spacer" data-desktop="0" data-mobi="30"
+                                                <div id="" class="wprt-spacer spacer" data-desktop="0" data-mobi="30"
                                                     data-smobi="30"></div>
-                                                <div class="wprt-content-box style-1">
+                                                <div class="wprt-content-box style-1 box-2">
                                                     <p class="text-white" style="font-weight: 700; margin: -8px">
                                                         {{ __('CHOOSE YOUR PROFESSIONAL') }}</p>
                                                     <div class="wprt-icon-box icon-effect-2 icon-left">
