@@ -3,12 +3,12 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\Authentication;
 use App\Http\Controllers\Admin\BranchController as AdminHiredBranchController;
+use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
 use App\Http\Controllers\Admin\HiredStudentController as AdminHiredStudentController;
-use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HiredStudentController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LangController;
-use App\Http\Controllers\Admin\OperatorController;
+use App\Http\Controllers\PartnerController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -45,7 +45,7 @@ Route::get('/key', function () {
 
 
 
-Route::get("/get-customerOrPatners",[CustomerController::class,"getData"])->name("customer.getData");
+Route::get("/get-customerOrPatners",[PartnerController::class,"getData"])->name("customer.getData");
 
 Route::prefix("customer")->middleware(["auth.customer"])->group(function(){
     Route::get("/hire-student",[HiredStudentController::class,"index"])->name("hiredStudent.index");
@@ -63,7 +63,7 @@ Route::get('/lang/{locale}',[LangController::class,"changeLanguage"])->name("get
 
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::resource('/hired-students', AdminHiredStudentController::class)->names('admin.hired-students');
+    Route::resource('/hired-students', AdminHiredStudentController::class)->except(['show'])->names('admin.hired-students');
     Route::prefix('/hired-students/upload')->group(function(){
         Route::get('/photo', [AdminHiredStudentController::class, 'uploadPhotoView'])->name('admin.hired-students.upload-photo.view');
         Route::post('/photo', [AdminHiredStudentController::class, 'uploadPhoto'])->name('admin.hired-students.upload-photo.post');
@@ -71,20 +71,20 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
         Route::post('/data', [AdminHiredStudentController::class, 'import'])->name('admin.hired-students.import.post');
     });
 
+    Route::resource('/customer', AdminCustomerController::class)->except(['show'])->names('admin.customer');
+
     Route::get("/landingPage",[LandingPageController::class,"edit"])->name("admin.landingPages.index");
     Route::put("/update-landingpage",[LandingPageController::class,"update"])->name("admin.landingPages.update");
     Route::resource('/branches', AdminHiredBranchController::class)->names('admin.branches');
     Route::get('/branches/upload/data', [AdminHiredBranchController::class, 'importView'])->name('admin.branches.import.view');
     Route::post('/branches/upload/data', [AdminHiredBranchController::class, 'import'])->name('admin.branches.import.post');
 
-    Route::get("/customer-and-patners",[CustomerController::class,"index"])->name("admin.customer.index");
-    Route::get("/create/customer-and-patners/",[CustomerController::class,"create"])->name("admin.customer.create");
-    Route::get("/create/import-customer-and-patners",[CustomerController::class,"createWithImport"])->name("admin.customer.import_page");
-    Route::get("/edit/customer-and-patners/{customer}",[CustomerController::class,"edit"])->name("admin.customer.edit");
-    Route::post("/create-customer-and-patners",[CustomerController::class,"store"])->name("admin.customer.store");
-    Route::put("/update-customer-and-patners/{customer}",[CustomerController::class,"update"])->name("admin.customer.update");
-    Route::post("/import-customer-and-patners",[CustomerController::class,"importData"])->name("admin.customer.import");
-    Route::delete("/delete-customer/{customer}",[CustomerController::class,"destroy"])->name("admin.customer.destroy");
-    Route::get('/operator', [OperatorController::class, 'show'])->name('admin.operator.show');
-    Route::put('/operator/{id}', [OperatorController::class, 'update'])->name('admin.operator.update');
+    Route::get("/customer-and-patners",[PartnerController::class,"index"])->name("admin.partner.index");
+    Route::get("/create/customer-and-patners/",[PartnerController::class,"create"])->name("admin.partner.create");
+    Route::get("/create/import-customer-and-patners",[PartnerController::class,"createWithImport"])->name("admin.partner.import_page");
+    Route::get("/edit/customer-and-patners/{customer}",[PartnerController::class,"edit"])->name("admin.partner.edit");
+    Route::post("/create-customer-and-patners",[PartnerController::class,"store"])->name("admin.partner.store");
+    Route::put("/update-customer-and-patners/{customer}",[PartnerController::class,"update"])->name("admin.partner.update");
+    Route::post("/import-customer-and-patners",[PartnerController::class,"importData"])->name("admin.partner.import");
+    Route::delete("/delete-customer/{customer}",[PartnerController::class,"destroy"])->name("admin.partner.destroy");
 });

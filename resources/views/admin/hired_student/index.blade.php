@@ -94,7 +94,7 @@
                                 @empty
                                     <tr>
                                         <td colspan="6">
-                                            <p class="mt-3 mb-3 text-center fw-bold">Tidak ada data...</p>
+                                            <p class="mt-3 mb-3 text-center fw-bold">Data is empty...</p>
                                         </td>
                                     </tr>
                                 @endforelse

@@ -6,6 +6,7 @@ use App\Http\Requests\RequestUpdateLandingPage;
 use App\Models\Branch;
 use App\Models\LandingPage;
 use App\Models\Operator;
+use App\Models\User;
 use App\Traits\ImageTrait;
 use Carbon\Carbon;
 use Exception;
@@ -22,7 +23,7 @@ class LandingPageController extends Controller
         $landingPage = LandingPage::all()->first();
         $branchs = Branch::all()->count();
         $landingPage["total_branch"] = $branchs;
-        $operator = Operator::all()->first();
+        $operator = User::whereNot('email', config('app.admin_email'))->first();
         return view("welcome", compact("landingPage","operator"));
     }
 

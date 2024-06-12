@@ -220,17 +220,6 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-12 px-5 text-center pt-3">
-                        <label class="form-label" for="experience">Experience</label>
-                        <textarea class="form-control @error('experience') is-invalid @enderror" name="experience"
-                            placeholder="Write the experience student here" id="experience" style="height: 100px">{{ old('experience', $student->experience) }}</textarea>
-                        @error('experience')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
                     <div class="col-md-6 px-3">
                         <div class="my-3">
                             <label class="form-label" for="avg_theory">Average Theory</label>

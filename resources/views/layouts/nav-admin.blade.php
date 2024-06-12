@@ -133,30 +133,30 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="@if (request()->routeIs('admin.operator.*')) active @endif submenu">
+                        <li class="@if (request()->routeIs('admin.customer.*')) active @endif submenu">
                             <a href="#"><i class="la la-gear"></i>
                                 <span>Settings</span><span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a @class(['active' => request()->routeIs('admin.operator.show')])
-                                        href="{{ route('admin.operator.show') }}">Operator</a></li>
+                                <li><a @class(['active' => request()->routeIs('admin.customer.index') || request()->routeIs('admin.customer.create') || request()->routeIs('admin.customer.edit')])
+                                        href="{{ route('admin.customer.index') }}">Customer Account</a></li>
                                 <li>
                                 <li @class(['active' => request()->routeIs('admin.landingPages.index')])>
                                     <a href="{{ route('admin.landingPages.index') }}">LandingPage</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="@if (request()->routeIs('admin.customer.*')) active @endif submenu">
+                        <li class="@if (request()->routeIs('admin.partner.*')) active @endif submenu">
                             <a href="#"><i class="la la-building fs-6 text-center"></i>
                                 <span>Customers or patners</span><span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a @class(['active' => request()->routeIs('admin.customer.import_page')])
-                                        href="{{ route('admin.customer.import_page') }}">Upload Customer or
+                                        href="{{ route('admin.partner.import_page') }}">Upload Customer or
                                         patners</a></li>
                                 <li><a @class([
                                     'active' =>
-                                        request()->routeIs('admin.customer.index') ||
-                                        request()->routeIs('admin.customer.index') ||
-                                        request()->routeIs('admin.customer.index'),
+                                        request()->routeIs('admin.partner.index') ||
+                                        request()->routeIs('admin.partner.create') ||
+                                        request()->routeIs('admin.partner.edit'),
                                 ])
                                         href="{{ route('admin.customer.index') }}">Data</a></li>
                             </ul>

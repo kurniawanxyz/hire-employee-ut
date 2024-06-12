@@ -15,7 +15,7 @@ class CustomerMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->check() && auth()->user()->email == Config("app.customer_email")){
+        if(auth()->check() && auth()->user()->email !== config("app.admin_email")){
             return $next($request);
         }else{
             return redirect()->route('login')->with("error","Please login to continue");

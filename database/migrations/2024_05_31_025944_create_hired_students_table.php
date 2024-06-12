@@ -24,7 +24,6 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->integer('height')->nullable();
             $table->integer('weight')->nullable();
-            $table->longText('experience')->nullable();
             $table->enum('role', ['mechanic', 'operator']);
             $table->integer('batch');
             $table->boolean('hasRecruit')->default(false);

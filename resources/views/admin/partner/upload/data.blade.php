@@ -14,7 +14,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-dot mb-0">
                                 <li class="breadcrumb-item" aria-current="page"><a
-                                        href="{{ route('admin.customer.index') }}">Branches</a>
+                                        href="{{ route('admin.partner.index') }}">Branches</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">Upload Data</li>
                             </ol>
@@ -24,7 +24,7 @@
             </div>
 
             <div class="card p-3">
-                <form action="{{ route('admin.customer.import') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.partner.import') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <div class="d-flex flex-row justify-content-between align-items-center">

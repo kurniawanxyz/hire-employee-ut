@@ -6,39 +6,39 @@ use App\Http\Requests\RequestImportCustomer;
 use App\Http\Requests\RequestStoreCustomer;
 use App\Http\Requests\RequestUpdateCustomer;
 use App\Imports\CustomerImport;
-use App\Models\Customer;
+use App\Models\Partner;
 use Exception;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 use function PHPUnit\Framework\isNull;
 
-class CustomerController extends Controller
+class PartnerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $req)
     {
-        $customers = Customer::query();
+        $customers = Partner::query();
         if (isset($req->name)) {
             if ($req->name != null) {
                 $customers->where("name", "LIKE", "%" . $req->name . "%");
             }
         }
         $customers = $customers->paginate(5);
-        return view("admin.customer.index",compact("customers"));
+        return view("admin.partner.index",compact("customers"));
     }
 
     public function getData()
     {
-        $data = Customer::all();
+        $data = Partner::all();
         return response()->json($data);
     }
 
     public function createWithImport()
     {
-        return view("admin.customer.upload.data");
+        return view("admin.partner.upload.data");
     }
 
     /**
@@ -46,7 +46,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view("admin.customer.create");
+        return view("admin.partner.create");
     }
 
     /**
@@ -56,9 +56,9 @@ class CustomerController extends Controller
     {
         try{
             $data = $request->validated();
-            Customer::create($data);
+            Partner::create($data);
             toastr()->success("Successfully added customer", "Success");
-            return redirect()->route("admin.customer.index");
+            return redirect()->route("admin.partner.index");
         }catch(Exception $e)
         {
             toastr()->error($e->getMessage(), "Error");
@@ -73,7 +73,7 @@ class CustomerController extends Controller
             Excel::import(new CustomerImport, $excle);
             // dd($excle);
             toastr()->success("Successfully added customer", "Success");
-            return redirect()->route('admin.customer.index');
+            return redirect()->route('admin.partner.index');
         }catch(Exception $e)
         {
             toastr()->error($e->getMessage(), "Error");
@@ -94,8 +94,8 @@ class CustomerController extends Controller
      */
     public function edit(string $customer)
     {
-        $customer = Customer::findOrFail($customer);
-        return view("admin.customer.edit",compact("customer"));
+        $customer = Partner::findOrFail($customer);
+        return view("admin.partner.edit",compact("customer"));
     }
 
     /**
@@ -105,9 +105,9 @@ class CustomerController extends Controller
     {
         try{
             $data = $request->validated();
-            Customer::findOrFail($customer)->update($data);
+            Partner::findOrFail($customer)->update($data);
             toastr()->success("Successfully updated customer", "Success");
-            return redirect()->route("admin.customer.index");
+            return redirect()->route("admin.partner.index");
         }catch(Exception $e)
         {
             toastr()->error($e->getMessage(), "Error");
@@ -121,7 +121,7 @@ class CustomerController extends Controller
     public function destroy(string $customer)
     {
         try{
-            Customer::findOrFail($customer)->delete();
+            Partner::findOrFail($customer)->delete();
             toastr()->success("Successfully deleted customer", "Success");
             return redirect()->back();
         }catch(Exception $e)

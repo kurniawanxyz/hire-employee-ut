@@ -27,7 +27,6 @@ class StoreHiredStudentRequest extends FormRequest
             'age' => "nullable|integer",
             'height' => "nullable|integer",
             'weight' => "nullable|integer",
-            'experience' => "nullable|string",
             'role' => "required|in:mechanic,operator",
             'nis' => 'required',
             'email' => 'required|email:rfc,dns',

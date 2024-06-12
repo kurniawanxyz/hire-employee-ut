@@ -36,8 +36,6 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
                 'age' => $row['usia'] ?? null,
                 'height' => $row['tinggi_badan'] ?? null,
                 'weight' => $row['berat_badan'] ?? null,
-                // TODO
-                'experience' => fake()->paragraph(10),
                 'batch' => $row['batch'],
                 'role' => $row['role'],
                 'branch_id' => Branch::firstOrCreate(
