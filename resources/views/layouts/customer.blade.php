@@ -48,20 +48,30 @@
             position: sticky;
             top: 0;
         }
+
+
+        @media (max-width: 768px) {
+            .logo {
+                width: 100px;
+            }
+            .check-student-hired{
+                display: none;
+            }
+        }
+
     </style>
 
 <body>
     <nav class="d-flex w-100 justify-content-between px-5 py-3 align-items-center "
         style="background-color: #212522; position: fixed;top: 0;z-index: 1;">
         {{-- <span> --}}
-        <img width="150" style="object-fit:cover" src="{{ asset('assets/admin/img/logo_UTS_terang.png') }}"
+        <img width="150" class="logo" style="object-fit:cover" src="{{ asset('assets/admin/img/logo_UTS_terang.png') }}"
             alt="">
         {{-- </span> --}}
         <div class="d-flex gap-3">
             <button onclick="showModal()" id="checkHired" data-bs-toggle="modal" data-bs-target="#modalStudent"
-                class="btn btn-secondary py-3 d-flex justify-content-center align-items-center gap-2"
-                style="width: 150px;">
-                <span>Check Student Hired</span>
+                class="btn btn-secondary py-3 d-flex justify-content-center align-items-center gap-2">
+                <span class="check-student-hired">Check Student Hired</span>
                 <div id="totalStudent" class="bg-white rounded-circle p-1 text-secondary"
                     style="width: 20px; height: 20px">5</div>
             </button>
