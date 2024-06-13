@@ -8,7 +8,7 @@
             <div class="col-md-4 d-flex flex-column mb-0">
                 <label class="form-label" for="search">Name/NIS</label>
                 <div class="d-flex">
-                   <input value="{{request()->search}}" placeholder="Student name or nis" style="height: 32px; border: 1px solid #4445" class="form-control mb-0 rounded-2" type="text" name="search" id="search">
+                   <input value="{{request()->search}}" placeholder="Student Name or NIS" style="height: 32px; border: 1px solid #4445" class="form-control mb-0 rounded-2" type="text" name="search" id="search">
                     {{-- <button class="wprt-button small">Search</button> --}}
                 </div>
             </div>
