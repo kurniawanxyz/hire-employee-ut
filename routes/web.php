@@ -49,7 +49,8 @@ Route::get("/get-customerOrPatners",[PartnerController::class,"getData"])->name(
 
 Route::prefix("customer")->middleware(["auth.customer"])->group(function(){
     Route::get("/hire-student",[HiredStudentController::class,"index"])->name("hiredStudent.index");
-    Route::get("/hire-student/detail/{id}",[HiredStudentController::class,"show"])->name("hriedStudent.show");
+    Route::get("/hire-student/detail/{id}",[HiredStudentController::class,"show"])->name("hiredStudent.show");
+    Route::post("/data/student",[HiredStudentController::class,"getData"])->name("hiredStudent.data");
 });
 
 Route::post("/send-whatsapp",[HiredStudentController::class,"handleSendWhatsApp"])->name("hiredstudent.sendWhatsApp");

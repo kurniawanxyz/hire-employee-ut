@@ -1,14 +1,14 @@
-1. Diganti kolom pengalaman jadi kesimpulan dari berapa banyak 
+1. Diganti kolom pengalaman jadi kesimpulan dari berapa banyak  ( DONE )
 2. Tulisan branch diganti jadi —> Branch / site ( DONE )
-3. Detail student logo blm dikasih (DONE)
-4. Asal SMK ditambahkan / former school (DONE)
+3. Detail student logo blm dikasih ( DONE )
+4. Asal SMK ditambahkan / former school ( DONE )
 5. Dimasukkin uts branch ke kolom branch doang (DONE)
 6. Branch double diapus ( DONE )
 7. Dijelaskan jangan disingkat untuk PS, TS, dll (DONE)
-8. Operator dihide dulu 
+8. Operator dihide dulu  ( DONE )
 9. Ditambah search by name dan NIS ( DONE )
 10. Diubah jadi 4 sebaris ke bawahnya 3 ( CANCELED )
 11. Branch ditaro di bawah nama (bagian profile card) (DONE)
-12. Ditambahin semacam add to cart dan semacam notif keranjang tiap hire
+12. Ditambahin semacam add to cart dan semacam notif keranjang tiap hire (DONE)
 13. Penambahan akun customer di admin (DONE)
-14. Akun customer ditambahin PAMA, KPP, KAMAJU
+14. Akun customer ditambahin PAMA, KPP, KAMAJU (DONE)

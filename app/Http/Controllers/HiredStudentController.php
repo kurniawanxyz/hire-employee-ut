@@ -100,17 +100,30 @@ class HiredStudentController extends Controller
     {
         try{
             $student = HiredStudent::findOrFail($id);
+            $students = $this->hiredStudent->query()->where('hasRecruit',false)->get();
             $pointExperience = [
                 $student->ojt->preventive_maintenance,
                 $student->ojt->remove_and_install,
                 $student->ojt->machine_troubleshooting,
             ];
 
-            return view("detail-studentHired",compact("student","pointExperience"));
+            return view("detail-studentHired",compact("student","pointExperience","students"));
         }catch(Exception $e)
         {
             toastr()->error($e->getMessage(),"Error");
         }
+    }
+
+    public function getData(Request $request)
+    {
+        $request->validate(
+            [
+                "studentsId" => "required|array",
+            ]
+        );
+
+        $data = HiredStudent::with("branch")->whereIn("id",$request->studentsId)->get();
+        return response()->json($data);
     }
 
     /**
