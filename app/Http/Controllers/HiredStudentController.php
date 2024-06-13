@@ -32,6 +32,7 @@ class HiredStudentController extends Controller
     {
         $role = $req->role;
         $branch = $req->branch;
+        $search = $req->search;
         $students = $this->hiredStudent->query()->with(["branch","specialization"])->where('hasRecruit',false);
         if(isset($req->role)){
             $students->where("role",$role);
@@ -39,7 +40,10 @@ class HiredStudentController extends Controller
         if(isset($req->branch)){
             $students->where("branch_id",$branch);
         }
-        $students = $students->paginate(6);
+        if(isset($req->search)){
+            $students->where("name","LIKE","%".$search."%")->orWhere("nis","LIKE","%".$search."%");
+        }
+        $students = $students->paginate(8);
         $branchs = $this->branch->query()->get();
         return view("hire-student",compact("students","branchs","branch","role"));
     }
@@ -50,7 +54,7 @@ class HiredStudentController extends Controller
         $hiredStudentId = $hiredStudentId["students"];
         $hiredStudent = $this->hiredStudent->query()->with("branch")->whereIn("id",$hiredStudentId)->get();
         $message="";
-        $telp = Operator::all()->first()->no_telp;
+        $telp = auth()->user()->no_telp;
         $message.="Halo, Saya ingin merekrut mekanik atau pekerja berikut ini"."%0A";
         foreach ($hiredStudent as $key => $value) {
             $message .= $key+1 . ". " . $value->name . " " . $value->role . " dari " . $value->branch->city . "%0A";
@@ -66,7 +70,7 @@ class HiredStudentController extends Controller
             $hiredStudentId= $req->validated();
             $hiredStudentId = $hiredStudentId["students"];
             $hiredStudent = $this->hiredStudent->query()->with("branch")->whereIn("id",$hiredStudentId)->get();
-            $email = Operator::all()->first()->email;
+            $email = auth()->user()->customer_email;
             Mail::to($email)->send(new HireStudentEmail($hiredStudent));
             return response()->json(["success"=>"Successfully send email"]);
         } catch (Exception $e) {
@@ -99,8 +103,9 @@ class HiredStudentController extends Controller
             $pointExperience = [
                 $student->ojt->preventive_maintenance,
                 $student->ojt->remove_and_install,
-                $student->ojt->machine_troubleshooting
+                $student->ojt->machine_troubleshooting,
             ];
+
             return view("detail-studentHired",compact("student","pointExperience"));
         }catch(Exception $e)
         {

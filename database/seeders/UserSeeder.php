@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'customer',
             'email' => config('app.customer_email'),
-            'customer_email' => "verdi@gmail.com",
+            'customer_email' => "kurniawanadi4556@gmail.com",
             'no_telp' => "622139945233",
             'password' => Hash::make("customer-ini")
         ]);

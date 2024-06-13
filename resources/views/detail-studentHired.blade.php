@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
@@ -14,7 +15,7 @@
         content="Template built for Construction Company, Building Services, Architecture, Engineering, Cleaning Service and other Construction related services">
     <meta name="keywords"
         content=" architecture, builder, building, building company, cleaning services, construction, construction business, construction company">
-    <meta name="author" content="blogwp.com">
+    <meta name="author" content="UT School">
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -25,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
     <!-- Favicon and touch icons  -->
-    <link rel="shortcut icon" href="{{ asset('assets/icon/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/admin/img/logo.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/apple-touch-icon-158-precomposed.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -57,7 +58,8 @@
 <body>
     <nav class="d-flex w-100 justify-content-between px-5 py-3 align-items-center "
         style="background-color: #212522; position: fixed;top: 0;z-index: 10000000;">
-        <h1 style="color: white;margin: 0;">UTSchool</h1>
+
+        <img src="{{asset('assets/admin/img/logo_UTS_terang.png')}}" width="150" style="object-fit: cover" alt="UT School">
         <button onclick="handleLogout()">Logout</button>
     </nav>
     <div style="padding: 50px" class="mt-5">
@@ -71,9 +73,12 @@
                     <img src="{{ $student->photo }}" class="student-photo mx-auto d-block card-img-top"
                         style="object-fit: cover;width: 320px;height: 320px; object-position: top" alt="Student Photo">
                 </div>
-                <div class="badge bg-warning p-3" style="font-size: 15px">
+                <div class="badge bg-warning p-3 text-uppercase" style="font-size: 15px">
                     {{ $student->role }}
                 </div>
+                <button class="wprt-button outline p-3 text-uppercase" style="font-size: 15px">
+                    Hire
+                </button>
             </div>
             <div class="col-md-9">
                 <div class="card">
@@ -88,14 +93,24 @@
                                 </li>
                                 <li class="list-group-item"><strong>NIS:</strong> {{ $student->nis }}</li>
                                 <li class="list-group-item"><strong>Major:</strong> {{ $student->major }}</li>
-                                <li class="list-group-item"><strong>School:</strong> {{ $student->school_origin }}</li>
-                                <li class="list-group-item"><strong>Branch:</strong> {{ $student->branch->city }}</li>
+                                <li class="list-group-item"><strong>Former School:</strong> {{ $student->school_origin }}</li>
+                                <li class="list-group-item"><strong>UTS Branch:</strong> {{ $student->branch->city }}</li>
                                 <li class="list-group-item"><strong>Height:</strong> {{ $student->height ?? 170 }} cm
                                 </li>
                                 <li class="list-group-item"><strong>Weight:</strong> {{ $student->weight ?? 50 }} Kg
                                 </li>
-                                <li class="list-group-item"><strong>Branch:</strong> {{ $student->branch->city }}</li>
-                                <li class="list-group-item"><strong>Ojt location:</strong>
+                                @if ($student->score->avg_theory != null)
+                                <li class="list-group-item">
+                                    <strong>Avarage theory score </strong> {{$student->score->avg_theory}}
+                                </li>
+                                @endif
+                                @if ($student->score->avg_theory != null)
+                                <li class="list-group-item">
+                                    <strong>Average practice score</strong> {{$student->score->avg_practice}}
+                                </li>
+                                @endif
+
+                                <li class="list-group-item"><strong>OJT location:</strong>
                                     {{ $student->specialization->ojt_location }}</li>
                             </ul>
                             <div class="d-flex flex-column mt-3">
@@ -132,7 +147,12 @@
                             </div>
                             <div class="mt-4">
                                 <h5 class="fw-bold">Experience</h5>
-                                <p class="fs-6">{{ $student->experience }}</p>
+                                Based on the training experience of this student, the conclusion is:
+                                <ul>
+                                    <li>Preventive Maintenance: <span class="badge bg-warning fs-5">{{ $student->ojt->preventive_maintenance }} point</span></li>
+                                    <li>Remove and Install: <span class="badge bg-warning fs-5">{{ $student->ojt->remove_and_install }} point</span></li>
+                                    <li>Machine Troubleshooting: <span class="badge bg-warning fs-5">{{ $student->ojt->machine_troubleshooting }} point</span> </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -207,9 +227,9 @@
 
         const data = {
             labels: [
-                "PS",
-                "R&I",
-                "TS"
+                "PERIODIC SERVICE",
+                "REMOVE & INSTALL",
+                "TROUBLESHOOTING"
             ],
             datasets: [{
                 label: 'OJT EXPERIENCE',
@@ -236,6 +256,47 @@
         };
         const canvas1 = $("#canvas1");
         new Chart(canvas1, config);
+
+
+        function handleCheckHire() {
+            let hiredStudent = JSON.parse(localStorage.getItem('hired_students')) || []
+            let student = @json($students->pluck('id'))
+
+            let notHiredStudent = student.filter(id => !hiredStudent.includes(id));
+            notHiredStudent.forEach(id => {
+                let btnHire = $('.btn-hire-' + id)
+                let btnUnHire = $('.btn-unhire-' + id)
+                btnHire.removeClass('d-none')
+                btnUnHire.addClass('d-none')
+            });
+
+            $.each(hiredStudent, function(key, value) {
+                let btnHire = $('.btn-hire-' + value)
+                let btnUnHire = $('.btn-unhire-' + value)
+                btnHire.addClass('d-none')
+                btnUnHire.removeClass('d-none')
+            })
+        }
+
+        function handleUnHire(id) {
+            let hiredStudents = JSON.parse(localStorage.getItem('hired_students')) || [];
+            let index = hiredStudents.indexOf(id);
+            if (index > -1) {
+                hiredStudents.splice(index, 1);
+            }
+            localStorage.setItem('hired_students', JSON.stringify(hiredStudents));
+            console.log(localStorage.getItem("hired_students"));
+            handleCheckHire()
+        }
+
+        function handleHire(id) {
+            let hiredStudents = JSON.parse(localStorage.getItem('hired_students')) || [];
+            hiredStudents.push(id);
+            localStorage.setItem('hired_students', JSON.stringify(hiredStudents));
+            console.log(localStorage.getItem("hired_students"));
+            handleCheckHire()
+        }
+
     </script>
 
 </body>

@@ -10,10 +10,6 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <title>Hire Students</title>
-    <meta name="description"
-        content="Template built for Construction Company, Building Services, Architecture, Engineering, Cleaning Service and other Construction related services">
-    <meta name="keywords"
-        content=" architecture, builder, building, building company, cleaning services, construction, construction business, construction company">
 
 
     <!-- Mobile Specific Metas -->
@@ -65,8 +61,15 @@
     <div style="padding: 50px" class="mt-5">
         <h1 class="t">Hire Student</h1>
         <form method="get" class="">
-            <div class="row">
-                <div class="col-md-6 d-flex flex-column mt-3">
+            <div class="row mt-3">
+                <div class="col-md-4 d-flex flex-column mb-0">
+                    <label class="form-label" for="search">Name/NIS</label>
+                    <div class="d-flex">
+                       <input value="{{request()->search}}" placeholder="Student name or nis" style="height: 27px; border: 1px solid #4445" class="form-control mb-0 rounded-2" type="text" name="search" id="search">
+                        {{-- <button class="wprt-button small">Search</button> --}}
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex flex-column">
                     <label class="form-label" for="role">Role</label>
                     <div class="d-flex">
                         <select class="form-control" name="role" id="role">
@@ -74,16 +77,16 @@
                             <option @selected($role == 'mechanic') value="mechanic">Mechanic</option>
                             <option @selected($role == 'operator') value="operator">Operator</option>
                         </select>
-                        <button class="wprt-button small">Search</button>
+                        {{-- <button class="wprt-button small">Search</button> --}}
                     </div>
                 </div>
-                <div class="col-md-6 d-flex flex-column mt-3">
-                    <label class="form-label" for="branch">Branch</label>
+                <div class="col-md-4 d-flex flex-column">
+                    <label class="form-label" for="branch">Branch/Site</label>
                     <div class="d-flex">
                         <select class="form-control" name="branch" id="branch">
-                            <option disabled selected>Select Branch</option>
+                            <option disabled selected>Select Branch/Site</option>
                             @forelse ($branchs as $i => $item)
-                                <option @selected($branch == $item->id) value="{{ $item->id }}">{{ $item->city }}
+                                <option @selected($branch == $item->id) value="{{ $item->id }}">{{ $item->city }} {{count($item->hired_students)}} Students
                                 </option>
                                 @empty
                             @endforelse
@@ -96,13 +99,14 @@
     </div>
     <div class="row px-5 justify-content-start mb-5">
         @forelse ($students as $item)
-            <div class="col-md-6 col-lg-4 px-5 mt-5">
+            <div class="col-md-6 col-lg-3 mt-5">
                 <div class="card mx-5">
                     <div class="card-img d-flex w-full mt-3">
                     <img class="m-auto d-block object-fit-cover" style="border-radius: 100%; object-fit: cover; object-position: top;width: 200px; height: 200px;"
                     src="{{$item->photo}}" alt="Foto {{ $item->name }}">
                     </div>
                     <span class="text-center fw-bold mt-3" style="font-size: 15px">{{$item->name}}</span>
+                    <span class="text-center" style="font-size: 15px">from <span class="badge bg-warning">{{$item->branch->city}}</span></span>
                     <div class="card-body">
                         <div class="mt-3 d-flex justify-content-end gap-2 px-5">
                             <div class="col-6">
@@ -157,6 +161,8 @@
     <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
 
     <script>
+
+
 
 function handleLogout() {
             Swal.fire({
@@ -262,6 +268,7 @@ function handleSendEmail() {
             matcher: matchCustom
         })
         $("#role").select2({
+
         })
 
         handleCheckHire()

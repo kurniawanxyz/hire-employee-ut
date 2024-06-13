@@ -51,10 +51,10 @@
                     </div>
                     <div class="col-md-6 px-3">
                         <div class="my-3">
-                            <label class="form-label" for="customer_email">Customer Email</label>
+                            <label class="form-label" for="customer_email">Operator Email</label>
                             <input type="email" name="customer_email" id="customer_email"
                                 class="form-control @error('customer_email') is-invalid @enderror"
-                                placeholder="Enter customer email for message" value="{{ old('customer_email') }}">
+                                placeholder="Enter Operator email for message" value="{{ old('customer_email') }}">
                             @error('customer_email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -65,7 +65,7 @@
                             <label class="form-label" for="no_telp">Telephone number (62xxx)</label>
                             <input type="text" name="no_telp" id="no_telp"
                                 class="form-control @error('no_telp') is-invalid @enderror"
-                                placeholder="Enter customer telephone number" value="{{ old('no_telp') }}">
+                                placeholder="Enter Operator telephone number" value="{{ old('no_telp') }}">
                             @error('no_telp')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

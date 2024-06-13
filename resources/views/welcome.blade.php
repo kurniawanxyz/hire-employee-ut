@@ -163,7 +163,7 @@
                                     </span>
                                     <i class="fa fa-envelope indonesia"></i>
                                     <span class="indonesia">
-                                        {{ $operator->email }}
+                                        {{ $operator->customer_email }}
                                     </span>
 
                                     <i
@@ -436,17 +436,17 @@
                                         <span class="text">Jl. Raya Bekasi KM. 22
                                             Jakarta Timur 13910, Indonesia</span>
                                     </li>
-                                    <li class="address clearfix">
+                                    {{-- <li class="address clearfix">
                                         <span class="hl">Call Center: </span>
                                         <span class="text">08111084800</span>
-                                    </li>
+                                    </li> --}}
                                     <li class="phone clearfix">
                                         <span class="hl">Phone:</span>
                                         <span class="text">{{ $operator->no_telp }}</span>
                                     </li>
                                     <li class="email clearfix">
                                         <span class="hl">Email:</span>
-                                        <span class="text">{{ $operator->email }}</span>
+                                        <span class="text">{{ $operator->customer_email }}</span>
                                     </li>
                                 </ul>
                             </div>
