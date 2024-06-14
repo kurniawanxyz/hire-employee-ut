@@ -20,7 +20,7 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.0' # Sesuaikan dengan versi PHP yang digunakan
+        php-version: '8.1' # Sesuaikan dengan versi PHP yang digunakan
         extensions: mbstring, intl, bcmath, gd
         ini-values: post_max_size=256M, upload_max_filesize=256M, memory_limit=2G
 
