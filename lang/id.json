@@ -77,5 +77,25 @@
     "Action": "Aksi",
     "Send": "Kirim",
     "Download": "Unduh",
-    "Close": "Tutup"
+    "Close": "Tutup",
+    "Student Information": "Informasi Siswa",
+    "Back": "Kembali",
+    "Place and Date of Birth": "Tempat dan Tanggal Lahir",
+    "Major": "Jurusan",
+    "Former School": "Asal Sekolah",
+    "UTS Branch": "Cabang UTS",
+    "Weight": "Berat",
+    "Height": "Tinggi",
+    "Average practice score": "Rata rata nilai praktek",
+    "Avarage theory score": "Rata rata nilai teori",
+    "OJT Location": "Lokasi OJT",
+    "Unit Spesialization": "Unit Spesialisasi",
+    "Experience": "Pengalaman",
+    "OJT EXPERIENCE": "PENGALAMAN OJT",
+    "Based on the training experience of this student, the conclusion is": "Dengan pengalaman pelatihan dari siswa ini, akhirnya adalah",
+    "Machine Troubleshooting": "Troubleshooting Mesin",
+    "Remove & Install": "Hapus dan Instal",
+    "Preventive Maintenance": "Pemeliharaan Preventif"
+
+
 }

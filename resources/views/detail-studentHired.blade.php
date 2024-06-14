@@ -4,59 +4,61 @@
 
     <div style="padding: 50px" class="mt-5">
         <div class="d-flex justify-content-between align-items-center">
-            <h1 class="">Student Information</h1>
-            <a href="{{ route('hiredStudent.index') }}" class="wprt-button small">Back</a>
+            <h1 class="">{{__("Student Information")}}</h1>
+            <a href="{{ route('hiredStudent.index') }}" class="wprt-button">{{__("Back")}}</a>
         </div>
         <div class="row">
-            <div class="col-md-3 d-flex flex-column gap-2 justify-content-between">
-                <div class="card h-100">
+            <div class="col-md-3 d-flex flex-column gap-2">
+                <div class="card">
                     <img src="{{ $student->photo }}" class="student-photo mx-auto d-block card-img-top"
                         style="object-fit: cover;width: 320px;height: 320px; object-position: top" alt="Student Photo">
                 </div>
-                <div class="badge bg-warning p-3 text-uppercase" style="font-size: 15px">
-                    {{ $student->role }}
+                <div class="d-flex flex-column gap-3 mt-3">
+                    <div class="badge bg-warning p-3 text-uppercase" style="font-size: 15px">
+                        {{ $student->role }}
+                    </div>
+                    <button onclick="handleHire('{{ $student->id }}')"
+                        class="wprt-button outline btn-hire-{{ $student->id }} w-100">Hire</button>
+                    <button onclick="handleUnHire('{{ $student->id }}')"
+                        class="btn btn-danger outline py-3 btn-unhire-{{ $student->id }} d-none w-100">UnHire</button>
                 </div>
-                <button onclick="handleHire('{{ $student->id }}')"
-                    class="wprt-button outline btn-hire-{{ $student->id }} w-100">Hire</button>
-                <button onclick="handleUnHire('{{ $student->id }}')"
-                    class="btn btn-danger outline py-3 btn-unhire-{{ $student->id }} d-none w-100">UnHire</button>
             </div>
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body row">
                         <div class="col-md-6">
-                            <h5 class="card-title fw-bold">Student Information</h5>
+                            <h5 class="card-title fw-bold">{{__("Student Information")}}</h5>
                             <ul class="list-group list-group-flush" style="font-size: 11px">
-                                <li class="list-group-item"><strong>Name:</strong> {{ $student->name }}</li>
-                                <li class="list-group-item"><strong>Place and Date of Birth:</strong>
+                                <li class="list-group-item"><strong>{{__("Name")}}:</strong> {{ $student->name }}</li>
+                                <li class="list-group-item"><strong>{{__("Place and Date of Birth")}}:</strong>
                                     {{ $student->place_birth }},
                                     {{ \Carbon\Carbon::createFromFormat('d/m/Y', $student->date_birth)->isoFormat('D MMMM Y') }}
                                 </li>
                                 <li class="list-group-item"><strong>NIS:</strong> {{ $student->nis }}</li>
-                                <li class="list-group-item"><strong>Major:</strong> {{ $student->major }}</li>
-                                <li class="list-group-item"><strong>Former School:</strong> {{ $student->school_origin }}
+                                <li class="list-group-item"><strong>{{__("Major")}}:</strong> {{ $student->major }}</li>
+                                <li class="list-group-item"><strong>{{__("Former School")}}:</strong> {{ $student->school_origin }}
                                 </li>
-                                <li class="list-group-item"><strong>UTS Branch:</strong> {{ $student->branch->city }}</li>
-                                <li class="list-group-item"><strong>Height:</strong> {{ $student->height ?? 170 }} cm
+                                <li class="list-group-item"><strong>{{__("UTS Branch")}}:</strong> {{ $student->branch->city }}</li>
+                                <li class="list-group-item"><strong>{{__("Height")}}:</strong> {{ $student->height ?? 170 }} cm
                                 </li>
-                                <li class="list-group-item"><strong>Weight:</strong> {{ $student->weight ?? 50 }} Kg
+                                <li class="list-group-item"><strong>{{__("Weight")}}:</strong> {{ $student->weight ?? 50 }} Kg
                                 </li>
                                 @if ($student->score->avg_theory != null)
                                     <li class="list-group-item">
-                                        <strong>Avarage theory score </strong> {{ $student->score->avg_theory }}
+                                        <strong>{{__("Avarage theory score")}} </strong> {{ $student->score->avg_theory }}
                                     </li>
                                 @endif
                                 @if ($student->score->avg_theory != null)
                                     <li class="list-group-item">
-                                        <strong>Average practice score</strong> {{ $student->score->avg_practice }}
+                                        <strong>{{__("Average practice score")}}</strong> {{ $student->score->avg_practice }}
                                     </li>
                                 @endif
 
-                                <li class="list-group-item"><strong>OJT location:</strong>
+                                <li class="list-group-item"><strong>{{__("OJT location")}}:</strong>
                                     {{ $student->specialization->ojt_location }}</li>
                             </ul>
                             <div class="d-flex flex-column mt-3">
-                                <h5 class="fw-bold">Unit Spesialization:</h5>
+                                <h5 class="fw-bold">{{__("Unit Spesialization")}}:</h5>
                                 @php
                                     $hasSpecialization =
                                         $student->specialization->rank_1 == '-' &&
@@ -88,16 +90,16 @@
                                 @endif
                             </div>
                             <div class="mt-4">
-                                <h5 class="fw-bold">Experience</h5>
-                                Based on the training experience of this student, the conclusion is:
+                                <h5 class="fw-bold">{{__("Experience")}}</h5>
+                                {{__("Based on the training experience of this student, the conclusion is")}}:
                                 <ul>
-                                    <li>Preventive Maintenance: <span
+                                    <li>{{__("Preventive Maintenance")}}: <span
                                             class="badge bg-warning fs-5">{{ $student->ojt->preventive_maintenance }}
                                             point</span></li>
-                                    <li>Remove and Install: <span
+                                    <li>{{__("Remove & Install")}}: <span
                                             class="badge bg-warning fs-5">{{ $student->ojt->remove_and_install }}
                                             point</span></li>
-                                    <li>Machine Troubleshooting: <span
+                                    <li>{{__("Machine Troubleshooting")}}: <span
                                             class="badge bg-warning fs-5">{{ $student->ojt->machine_troubleshooting }}
                                             point</span> </li>
                                 </ul>
@@ -127,12 +129,12 @@
 
         const data = {
             labels: [
-                "PERIODIC SERVICE",
-                "REMOVE & INSTALL",
-                "TROUBLESHOOTING"
+                "{{__('Preventive Maintenance')}}",
+                "{{__('Remove & Install')}}",
+                "{{__('Machine Troubleshooting')}}"
             ],
             datasets: [{
-                label: 'OJT EXPERIENCE',
+                label: '{{__("OJT EXPERIENCE")}}',
                 data: point,
                 fill: true,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
