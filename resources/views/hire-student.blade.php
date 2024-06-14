@@ -2,21 +2,21 @@
 
 @section("content")
 <div style="padding: 50px" class="mt-5">
-    <h1 class="t">Hire Student</h1>
+    <h1 class="t">{{__('Hire Student')}}</h1>
     <form method="get" class="">
         <div class="row mt-3">
             <div class="col-md-4 d-flex flex-column mb-0">
-                <label class="form-label" for="search">Name/NIS</label>
+                <label class="form-label" for="search">{{__("Name/NIS")}}</label>
                 <div class="d-flex">
-                   <input value="{{request()->search}}" placeholder="Student Name or NIS" style="height: 32px; border: 1px solid #4445" class="form-control mb-0 rounded-2" type="text" name="search" id="search">
+                   <input value="{{request()->search}}" placeholder='{{__("Student Name or NIS")}}' style="height: 32px; border: 1px solid #4445" class="form-control mb-0 rounded-2" type="text" name="search" id="search">
                     {{-- <button class="wprt-button small">Search</button> --}}
                 </div>
             </div>
             <div class="col-md-4 d-flex flex-column">
-                <label class="form-label" for="role">Role</label>
+                <label class="form-label" for="role">{{__("Role")}}</label>
                 <div class="d-flex">
                     <select class="form-control" name="role" id="role">
-                        <option disabled selected>Select Role</option>
+                        <option disabled selected>{{__("Select Role")}}</option>
                         <option @selected($role == 'mechanic') value="mechanic">Mechanic</option>
                         {{-- <option @selected($role == 'operator') value="operator">Operator</option> --}}
                     </select>
@@ -24,17 +24,17 @@
                 </div>
             </div>
             <div class="col-md-4 d-flex flex-column">
-                <label class="form-label" for="branch">Branch/Site</label>
+                <label class="form-label" for="branch">{{__("Branch/Site")}}</label>
                 <div class="d-flex">
                     <select class="form-control" name="branch" id="branch">
-                        <option disabled selected>Select Branch/Site</option>
+                        <option disabled selected>{{("Select Branch/Site")}}</option>
                         @forelse ($branchs as $i => $item)
                             <option @selected($branch == $item->id) value="{{ $item->id }}">{{ $item->city }} ({{count($item->hired_students)}} Students)
                             </option>
                             @empty
                         @endforelse
                     </select>
-                    <button class="wprt-button small">Search</button>
+                    <button class="wprt-button small">{{__("Search")}}</button>
                 </div>
             </div>
         </div>

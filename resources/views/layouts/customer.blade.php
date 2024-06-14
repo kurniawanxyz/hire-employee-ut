@@ -69,6 +69,18 @@
             alt="">
         {{-- </span> --}}
         <div class="d-flex gap-3">
+            <div class="d-flex gap-3 align-items-center">
+                <a class="" href="{{ route('get.changeLanguage', 'id') }}">
+                    <img width="25" height="25"
+                        src="https://img.icons8.com/color/48/indonesia-circular.png"
+                        alt="indonesia-circular" />
+                </a>
+                <a class="" href="{{ route('get.changeLanguage', 'en') }}">
+                    <img width="25" height="25"
+                        src="https://img.icons8.com/color/48/great-britain-circular.png"
+                        alt="great-britain-circular" />
+                </a>
+            </div>
             <button onclick="showModal()" id="checkHired" data-bs-toggle="modal" data-bs-target="#modalStudent"
                 class="btn btn-secondary py-3 d-flex justify-content-center align-items-center gap-2">
                 <span class="check-student-hired">Check Student Hired</span>

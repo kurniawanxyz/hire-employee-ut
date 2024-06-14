@@ -61,5 +61,13 @@
     "About": "About",
     "Map": "Map",
     "AboutUs": "About Us",
-    "CONTACT INFO": "CONTACT INFO"
+    "CONTACT INFO": "CONTACT INFO",
+    "Hire Student": "Hire Student",
+    "Name/NIS" : "Name/NIS",
+    "Role" : "Role",
+    "Select Role": "Select Role",
+    "Student Name or NIS": "Student Name or NIS",
+    "Branch/Site": "Branch/Site",
+    "Select Branch/Site": "Select Branch/Site",
+    "Search": "Search"
 }
