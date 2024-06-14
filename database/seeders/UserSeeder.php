@@ -26,14 +26,14 @@ class UserSeeder extends Seeder
             'name' => 'customer',
             'email' => "customer@utschool.sch.id",
             'customer_email' => "kurniawanadi4556@gmail.com",
-            'no_telp' => "622139945233",
+            'no_telp' => "62895385285001",
             'password' => Hash::make("customer-ini")
         ]);
         User::create([
             'name' => 'PT PAMAPERSADA NUSANTARA',
             'email' => "pama@utschool.sch.id",
             'customer_email' => "kurniawanadi4556@gmail.com",
-            'no_telp' => "622139945233",
+            'no_telp' => "62895385285001",
             'password' => Hash::make("customer-ini")
         ]);
 
@@ -41,14 +41,14 @@ class UserSeeder extends Seeder
             'name' => 'PT KALIMANTAN PRIMA PERSADA',
             'email' => "kpp@utschool.sch.id",
             'customer_email' => "kurniawanadi4556@gmail.com",
-            'no_telp' => "622139945233",
+            'no_telp' => "62895385285001",
             'password' => Hash::make("customer-ini")
         ]);
         User::create([
             'name' => 'PT KANITRA MITRA JAYAUTAMA',
             'email' => "kamaju@utschool.sch.id",
             'customer_email' => "kurniawanadi4556@gmail.com",
-            'no_telp' => "622139945233",
+            'no_telp' => "62895385285001",
             'password' => Hash::make("customer-ini")
         ]);
     }
