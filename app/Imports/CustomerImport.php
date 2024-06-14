@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\Customer;
+use App\Models\Partner;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -15,7 +15,7 @@ class CustomerImport implements ToCollection, WithHeadingRow
     public function collection(Collection $collection)
     {
         foreach ($collection as $row) {
-            Customer::updateOrCreate(
+            Partner::updateOrCreate(
                 [
                     'name' => $row['name']
                 ],
