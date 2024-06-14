@@ -24,9 +24,9 @@ jobs:
         # ftp server
         server: hireme.kaitodecode.com
         # ftp username
-        username: admin@hireme.kaitodecode.com
+        username: school@hireme.kaitodecode.com
         # ftp password
-        password: pMpBt5NS3jZh
+        password: ER8l23YowU7wi
         # Server port to connect to (read your web hosts docs)
         port: 21
         # protocol to deploy with - ftp, ftps, or ftps-legacy
