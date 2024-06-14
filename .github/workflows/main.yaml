@@ -33,8 +33,6 @@ jobs:
         protocol: ftp
         # An array of glob patterns, these files will not be included in the publish/delete process
         exclude: |
-          */.git
-          */.git/**
           */node_modules/*
           */vendor/*
           */storage/imports/*
