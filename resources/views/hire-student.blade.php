@@ -50,7 +50,7 @@
                 src="{{$item->photo}}" alt="Foto {{ $item->name }}">
                 </div>
                 <span class="text-center fw-bold mt-3" style="font-size: 15px">{{$item->name}}</span>
-                <span class="text-center" style="font-size: 15px">from <span class="badge bg-warning">{{$item->branch->city}}</span></span>
+                <span class="text-center" style="font-size: 15px">{{__("from")}} <span class="badge bg-warning">{{$item->branch->city}}</span></span>
                 <div class="card-body">
                     <div class="mt-3 d-flex justify-content-end gap-2 px-5">
                         <div class="col-6">
@@ -75,7 +75,7 @@
 
 </div>
 <div class="px-5 d-flex flex-row py-3 justify-content-end align-items-center gap-4 border-t">
-    <span>Confirm to admin: </span>
+    <span>{{__("Confirm to admin")}}: </span>
     <div class="d-flex align-items-center gap-2">
         <button onclick="handleSendWhatsapp()" class="wprt-button small outline">Whatsapp</button>
         <button onclick="handleSendEmail()" class="wprt-button small">Email</button>
