@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+    namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreHiredStudentRequest;
-use App\Http\Requests\StoreStudentPhotoRequest;
-use App\Imports\HiredStudentImport;
-use App\Models\Branch;
-use App\Models\HiredStudent;
-use App\Models\OjtExperienceStudents;
-use App\Models\StudentScores;
-use App\Models\UnitSpecialization;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
-use Maatwebsite\Excel\Facades\Excel;
-use ZipArchive;
+    use App\Http\Controllers\Controller;
+    use App\Http\Requests\StoreHiredStudentRequest;
+    use App\Http\Requests\StoreStudentPhotoRequest;
+    use App\Imports\HiredStudentImport;
+    use App\Models\Branch;
+    use App\Models\HiredStudent;
+    use App\Models\OjtExperienceStudents;
+    use App\Models\StudentScores;
+    use App\Models\UnitSpecialization;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Storage;
+    use Illuminate\Support\Facades\Validator;
+    use Maatwebsite\Excel\Facades\Excel;
+    use ZipArchive;
 
-class HiredStudentController extends Controller
-{
+    class HiredStudentController extends Controller
+    {
     /**
      * Display a listing of the resource.
      */
