@@ -1,5 +1,5 @@
 name: CI/CD Development
-on :
+on:
   push:
     branches: [ main ]
   pull_request:
@@ -15,26 +15,21 @@ jobs:
     steps:
     - name: get latest code
       uses: actions/checkout@v3
+      continue-on-error: false
 
     - name: FTP Deploy
-    # You may pin to the exact commit or the version.
-    # uses: SamKirkland/FTP-Deploy-Action@8a24039354ee91000cb948cb4a1dbdf1a1b94a3c
       uses: SamKirkland/FTP-Deploy-Action@v4.0.0
       with:
-        # ftp server
         server: hireme.kaitodecode.com
-        # ftp username
         username: school@hireme.kaitodecode.com
-        # ftp password
         password: ER8l23YowU7wi
-        # Server port to connect to (read your web hosts docs)
         port: 21
-        # protocol to deploy with - ftp, ftps, or ftps-legacy
         protocol: ftp
-        # An array of glob patterns, these files will not be included in the publish/delete process
         exclude: |
           */.git
           */.git/**
           */node_modules/*
           */vendor/*
           */storage/imports/*
+      continue-on-error: true
+
