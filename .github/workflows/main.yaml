@@ -22,17 +22,19 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.0.0
       with:
         # ftp server
-        server: hireme-utschool.kaitodecode.com
+        server: hireme.kaitodecode.com
         # ftp username
-        username: adi@hireme-utschool.kaitodecode.com
+        username: school@hireme.kaitodecode.com
         # ftp password
-        password: bissmillahkenek
+        password: ER8l23YowU7wi
         # Server port to connect to (read your web hosts docs)
         port: 21
         # protocol to deploy with - ftp, ftps, or ftps-legacy
         protocol: ftp
         # An array of glob patterns, these files will not be included in the publish/delete process
         exclude: |
+          */.git
+          */.git/**
           */node_modules/*
           */vendor/*
           */storage/imports/*
