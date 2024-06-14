@@ -35,9 +35,13 @@ jobs:
     - name: Install Composer dependencies
       run: composer install --prefer-dist --no-progress
 
+    - name: Setup Environment
+      run: |
+        cp .env.example .env
+        php artisan key:generate
+
     - name: Run PHPUnit tests
       run: |
-        php artisan key:generate
         php artisan test
 
     - name: Prepare deployment
