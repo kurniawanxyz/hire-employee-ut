@@ -16,15 +16,15 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => "Admin",
-            'email' => config('app.admin_email'),
-            'customer_email' => config('app.admin_email'),
+            'email' => "admin@utschool.sch.id",
+            'customer_email' => "admin@utschool.sch.id",
             'no_telp' => "6222222222222",
             'password' => Hash::make("admin-ini"),
         ]);
 
         User::create([
             'name' => 'customer',
-            'email' => config('app.customer_email'),
+            'email' => "customer@utschool.sch.id",
             'customer_email' => "kurniawanadi4556@gmail.com",
             'no_telp' => "622139945233",
             'password' => Hash::make("customer-ini")
