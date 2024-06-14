@@ -26,7 +26,6 @@ class StudentSeeder extends Seeder
             'age' => 18,
             'height' => 160,
             'weight' => 45,
-            'experience' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi.',
             'role' => 'mechanic',
             'batch' => 1,
             'hasRecruit' => false
@@ -44,7 +43,6 @@ class StudentSeeder extends Seeder
             'age' => 20,
             'height' => 165,
             'weight' => 50,
-            'experience' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi.',
             'role' => 'operator',
             'batch' => 1,
             'hasRecruit' => false
@@ -62,7 +60,6 @@ class StudentSeeder extends Seeder
             'age' => 22,
             'height' => 155,
             'weight' => 48,
-            'experience' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi.',
             'role' => 'mechanic',
             'batch' => 1,
             'hasRecruit' => false
@@ -80,7 +77,6 @@ class StudentSeeder extends Seeder
             'age' => 19,
             'height' => 162,
             'weight' => 47,
-            'experience' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi.',
             'role' => 'operator',
             'batch' => 1,
             'hasRecruit' => false
@@ -98,7 +94,6 @@ class StudentSeeder extends Seeder
             'age' => 21,
             'height' => 170,
             'weight' => 55,
-            'experience' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi.',
             'role' => 'mechanic',
             'batch' => 1,
             'hasRecruit' => false
@@ -116,7 +111,6 @@ class StudentSeeder extends Seeder
             'age' => 23,
             'height' => 158,
             'weight' => 49,
-            'experience' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi.',
             'role' => 'operator',
             'batch' => 1,
             'hasRecruit' => false
@@ -134,7 +128,6 @@ class StudentSeeder extends Seeder
             'age' => 20,
             'height' => 165,
             'weight' => 52,
-            'experience' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi.',
             'role' => 'mechanic',
             'batch' => 1,
             'hasRecruit' => false
@@ -152,7 +145,6 @@ class StudentSeeder extends Seeder
             'age' => 24,
             'height' => 175,
             'weight' => 60,
-            'experience' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi.',
             'role' => 'operator',
             'batch' => 1,
             'hasRecruit' => false
@@ -170,7 +162,6 @@ class StudentSeeder extends Seeder
             'age' => 25,
             'height' => 160,
             'weight' => 50,
-            'experience' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi.',
             'role' => 'mechanic',
             'batch' => 1,
             'hasRecruit' => false
@@ -188,10 +179,10 @@ class StudentSeeder extends Seeder
             'age' => 22,
             'height' => 168,
             'weight' => 58,
-            'experience' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia itaque obcaecati debitis voluptates ducimus tenetur est alias voluptate facilis excepturi.',
             'role' => 'operator',
             'batch' => 1,
             'hasRecruit' => false
         ]);
     }
 }
+
