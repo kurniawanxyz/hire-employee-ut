@@ -101,7 +101,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">List Student Hired</h5>
+              <h5 class="modal-title">{{__("List Student Hired")}}</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
@@ -112,10 +112,10 @@
                 <thead class="table-light">
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Branch/Site</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">{{__("Name")}}</th>
+                        <th scope="col">{{__("Role")}}</th>
+                        <th scope="col">{{__("Branch/Site")}}</th>
+                        <th scope="col">{{__("Action")}}</th>
                     </tr>
                 </thead>
                 <tbody class="listStudent table-group-divider">
@@ -124,10 +124,10 @@
               </table>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" onclick="handleDownload()" class="btn btn-primary"> <i class="fa fa-file"></i> Download</button>
-              <button type="button" onclick="handleSendWhatsapp()" class="btn btn-success"> <i class="fa fa-whatsapp"></i> Send Whatsapp</button>
-              <button type="button" onclick="handleSendEmail()" class="btn btn-warning text-white"> <i class="fa fa-send"></i> Send Email</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__("Close")}}</button>
+              <button type="button" onclick="handleDownload()" class="btn btn-primary"> <i class="fa fa-file"></i> {{__("Download")}}</button>
+              <button type="button" onclick="handleSendWhatsapp()" class="btn btn-success"> <i class="fa fa-whatsapp"></i> {{__("Send")}} Whatsapp</button>
+              <button type="button" onclick="handleSendEmail()" class="btn btn-warning text-white"> <i class="fa fa-send"></i> {{__("Send")}} Email</button>
             </div>
           </div>
         </div>
