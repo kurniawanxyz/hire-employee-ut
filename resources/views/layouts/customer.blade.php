@@ -54,38 +54,36 @@
             .logo {
                 width: 100px;
             }
-            .check-student-hired{
+
+            .check-student-hired {
                 display: none;
             }
         }
-
     </style>
 
 <body>
     <nav class="d-flex w-100 justify-content-between px-5 py-3 align-items-center "
         style="background-color: #212522; position: fixed;top: 0;z-index: 1;">
         {{-- <span> --}}
-        <img width="150" class="logo" style="object-fit:cover" src="{{ asset('assets/admin/img/logo_UTS_terang.png') }}"
-            alt="">
+        <img width="150" class="logo" style="object-fit:cover"
+            src="{{ asset('assets/admin/img/logo_UTS_terang.png') }}" alt="">
         {{-- </span> --}}
         <div class="d-flex gap-3">
             <div class="d-flex gap-3 align-items-center">
                 <a class="" href="{{ route('get.changeLanguage', 'id') }}">
-                    <img width="25" height="25"
-                        src="https://img.icons8.com/color/48/indonesia-circular.png"
+                    <img width="25" height="25" src="https://img.icons8.com/color/48/indonesia-circular.png"
                         alt="indonesia-circular" />
                 </a>
                 <a class="" href="{{ route('get.changeLanguage', 'en') }}">
-                    <img width="25" height="25"
-                        src="https://img.icons8.com/color/48/great-britain-circular.png"
+                    <img width="25" height="25" src="https://img.icons8.com/color/48/great-britain-circular.png"
                         alt="great-britain-circular" />
                 </a>
             </div>
             <button onclick="showModal()" id="checkHired" data-bs-toggle="modal" data-bs-target="#modalStudent"
                 class="btn btn-secondary py-3 d-flex justify-content-center align-items-center gap-2">
-                <span class="check-student-hired">{{__("Check Student Hired")}}</span>
+                <span class="check-student-hired">{{ __('Check Student Hired') }}</span>
                 <div id="totalStudent" class="bg-white rounded-circle p-1 text-secondary"
-                    style="width: 20px; height: 20px">5</div>
+                    style="width: 20px; height: 20px">0</div>
             </button>
             <button onclick="handleLogout()">Logout</button>
         </div>
@@ -99,39 +97,41 @@
 
     <div class="modal" id="modalStudent" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">{{__("List Student Hired")}}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body ">
-              {{-- <ol id="ulStudent" class="m-2">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('List Student Hired') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center notfound">No data available</p>
+                    <table class="table table-striped-columns table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">{{ __('Name') }}</th>
+                                <th scope="col">{{ __('Role') }}</th>
+                                <th scope="col">{{ __('Branch/Site') }}</th>
+                                <th scope="col">{{ __('Action') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="listStudent table-group-divider">
 
-              </ol> --}}
-              <table class="table table-striped-columns table-hover">
-                <thead class="table-light">
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">{{__("Name")}}</th>
-                        <th scope="col">{{__("Role")}}</th>
-                        <th scope="col">{{__("Branch/Site")}}</th>
-                        <th scope="col">{{__("Action")}}</th>
-                    </tr>
-                </thead>
-                <tbody class="listStudent table-group-divider">
-
-                </tbody>
-              </table>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">{{ __('Close') }}</button>
+                    <button type="button" onclick="handleDownload()" class="btn btn-primary"> <i
+                            class="fa fa-file"></i> {{ __('Download') }}</button>
+                    <button type="button" onclick="handleSendWhatsapp()" class="btn btn-success"> <i
+                            class="fa fa-whatsapp"></i> {{ __('Send') }} Whatsapp</button>
+                    <button type="button" onclick="handleSendEmail()" class="btn btn-warning text-white"> <i
+                            class="fa fa-send"></i> {{ __('Send') }} Email</button>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__("Close")}}</button>
-              <button type="button" onclick="handleDownload()" class="btn btn-primary"> <i class="fa fa-file"></i> {{__("Download")}}</button>
-              <button type="button" onclick="handleSendWhatsapp()" class="btn btn-success"> <i class="fa fa-whatsapp"></i> {{__("Send")}} Whatsapp</button>
-              <button type="button" onclick="handleSendEmail()" class="btn btn-warning text-white"> <i class="fa fa-send"></i> {{__("Send")}} Email</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 
 
     <a id="scroll-top"></a>
@@ -155,16 +155,14 @@
     <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
     <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
     <script>
-
         const myModal = document.getElementById('myModal')
         const myInput = document.getElementById('chekHired')
 
         myModal.addEventListener('shown.bs.modal', () => {
-        myInput.focus()
+            myInput.focus()
         })
 
-        function handleDownload()
-        {
+        function handleDownload() {
             const hiredStudent = JSON.parse(localStorage.getItem('hired_students')) || [];
             $.ajax({
                 method: "POST",
@@ -286,8 +284,7 @@
                         }]
                     ];
                     $.each(response, function(index, student) {
-                        data.push([
-                            {
+                        data.push([{
                                 v: index + 1,
                                 s: {
                                     alignment: {
@@ -354,59 +351,80 @@
                         ]);
                     })
                     var ws = XLSX.utils.aoa_to_sheet(data);
-                    ws['!cols'] = [{}, {wpx: 250}, {wpx: 250}, {wpx: 250}];
+                    ws['!cols'] = [{}, {
+                        wpx: 250
+                    }, {
+                        wpx: 250
+                    }, {
+                        wpx: 250
+                    }];
                     var wb = XLSX.utils.book_new();
                     XLSX.utils.book_append_sheet(wb, ws, "Hired Students");
                     XLSX.writeFile(wb, "hired-students.xlsx");
                     console.log(data)
                 },
                 error: function(xhr, status, error) {
-                   swal.fire({
-                       icon: 'error',
-                       title: 'Oops...',
-                       text: 'An error occurred!'+error,
-                   })
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'An error occurred!' + error,
+                    })
                 }
             })
         }
 
 
-        function showModal(){
+        function showModal() {
             const hiredStudent = JSON.parse(localStorage.getItem('hired_students')) || [];
-            $.ajax({
-                method: "POST",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    studentsId: hiredStudent
-                },
-                url: "{{ route('hiredStudent.data') }}",
-                success: function(response) {
-                    const students = response.data
-                    // $("#ulStudent").empty();
-                    $(".listStudent").empty();
-                    $.each(response, function(index, student) {
-                        console.log(student)
-                        $(".listStudent").append(`
-                        <tr>
-                            <td>${index + 1}</td>
-                            <td>${student.name}</td>
-                            <td>${student.role}</td>
-                            <td>${student.branch.city}</td>
-                            <td class="text-center">
-                                <button class="btn btn-danger " onclick="handleUnHire('${student.id}')">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
 
-                            `)
-                    //    $("#ulStudent").append(`<li class='fs-4'> <span class='badge bg-warning'>${student.name}</span> ${student.role} from ${student.branch.city} </li>`)
-                    })
-                },
-                error: function(xhr, status, error) {
-                    console.log(error)
-                }
-            })
+            $("#modalStudent .modal-body .spinner-border").remove();
+            $(".listStudent").empty();
+            if (hiredStudent.length > 0) {
+                $(".notfound").addClass("d-none");
+                $.ajax({
+                    method: "POST",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        studentsId: hiredStudent
+                    },
+                    url: "{{ route('hiredStudent.data') }}",
+                    beforeSend: function() {
+                        $("#modalStudent .modal-body").append(
+                            `<div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>`
+                        )
+                    },
+                    success: function(response) {
+                        const students = response;
+                        $("#modalStudent .modal-body .table").removeClass("d-none");
+                        students.forEach(function(student, index) {
+                            $(".listStudent").append(`
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${student.name}</td>
+                                <td>${student.role}</td>
+                                <td>${student.branch.city}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-danger" onclick="handleUnHire('${student.id}')">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `);
+                        });
+                        $("#modalStudent .modal-body .spinner-border").remove();
+                    },
+                    error: function(xhr, status, error) {
+
+                    }
+                })
+            } else {
+                $("#modalStudent .modal-body .table").addClass("d-none");
+                $(".notfound").removeClass("d-none");
+            }
         }
 
 
@@ -576,7 +594,6 @@
         }
 
         function handleCheckHire() {
-            showModal()
             let hiredStudent = JSON.parse(localStorage.getItem('hired_students')) || []
             let student = @json($students->pluck('id'))
 
@@ -589,6 +606,7 @@
             });
 
             $("#totalStudent").text(hiredStudent.length);
+            showModal()
 
             $.each(hiredStudent, function(key, value) {
                 let btnHire = $('.btn-hire-' + value)
@@ -605,7 +623,7 @@
                 hiredStudents.splice(index, 1);
             }
             localStorage.setItem('hired_students', JSON.stringify(hiredStudents));
-            console.log(localStorage.getItem("hired_students"));
+            // console.log(localStorage.getItem("hired_students"));
             handleCheckHire()
         }
 
