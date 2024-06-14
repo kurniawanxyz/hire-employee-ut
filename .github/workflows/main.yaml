@@ -1,35 +1,61 @@
-name: CI/CD Development
+name: CI/CD Laravel
+
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
-
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  web-deploy:
-    name: auto deploy
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: get latest code
-      uses: actions/checkout@v3
-      continue-on-error: false
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@v4.0.0
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
       with:
-        server: hireme.kaitodecode.com
-        username: school@hireme.kaitodecode.com
-        password: ER8l23YowU7wi
-        port: 21
-        protocol: ftp
-        exclude: |
-          */.git
-          */.git/**
-          */node_modules/*
-          */vendor/*
-          */storage/imports/*
-      continue-on-error: true
+        php-version: '8.0' # Sesuaikan dengan versi PHP yang digunakan
+        extensions: mbstring, intl, bcmath, gd
+        ini-values: post_max_size=256M, upload_max_filesize=256M, memory_limit=2G
 
+    - name: Cache Composer dependencies
+      uses: actions/cache@v2
+      with:
+        path: vendor
+        key: composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          composer-
+
+    - name: Install Composer dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Run tests
+      run: php artisan test
+
+    - name: Prepare deployment
+      run: |
+        php artisan config:cache
+        php artisan route:cache
+        php artisan view:cache
+
+    - name: Install rsync
+      run: sudo apt-get install -y rsync
+
+    - name: Deploy to Shared Hosting
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      run: |
+        echo "$SSH_PRIVATE_KEY" > private_key
+        chmod 600 private_key
+        rsync -avz --delete --exclude='.git' -e "ssh -i private_key -o StrictHostKeyChecking=no" ./ $SSH_USERNAME@$SSH_HOST:/path/to/your/project
+
+    - name: Clean up
+      run: rm private_key
