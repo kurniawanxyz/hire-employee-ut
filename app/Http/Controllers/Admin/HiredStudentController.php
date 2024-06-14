@@ -85,7 +85,6 @@ class HiredStudentController extends Controller
             $hs->age = $request->age;
             $hs->height = $request->height;
             $hs->weight = $request->weight;
-            $hs->experience = $request->experience;
             $hs->role = $request->role;
             $hs->hasRecruit = ($request->recruit == 'yes') ? true : (($request->recruit == 'no') ? false : null);
             $hs->save();
@@ -179,7 +178,6 @@ class HiredStudentController extends Controller
             $hs->age = $request->age;
             $hs->height = $request->height;
             $hs->weight = $request->weight;
-            $hs->experience = $request->experience;
             $hs->role = $request->role;
             $hs->hasRecruit = ($request->recruit == 'yes') ? true : (($request->recruit == 'no') ? false : null);
             $hs->save();
