@@ -35,7 +35,10 @@ jobs:
     - name: Install Composer dependencies
       run: composer install --prefer-dist --no-progress
 
-
+    - name: Run PHPUnit tests
+      run: |
+        php artisan key:generate
+        php artisan test
 
     - name: Prepare deployment
       run: |
@@ -54,7 +57,7 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key
         chmod 600 private_key
-        rsync -avz --delete --exclude='.git' -e "ssh -i private_key -o StrictHostKeyChecking=no" ./ $SSH_USERNAME@$SSH_HOST:/path/to/your/project
+        rsync -avz --delete --exclude='.git' -e "ssh -i private_key -o StrictHostKeyChecking=no" ./ $SSH_USERNAME@$SSH_HOST:/public_html/hireme.kaitodecode.com
 
     - name: Clean up
       run: rm private_key
