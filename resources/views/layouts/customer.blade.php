@@ -83,7 +83,7 @@
             </div>
             <button onclick="showModal()" id="checkHired" data-bs-toggle="modal" data-bs-target="#modalStudent"
                 class="btn btn-secondary py-3 d-flex justify-content-center align-items-center gap-2">
-                <span class="check-student-hired">Check Student Hired</span>
+                <span class="check-student-hired">{{__("Check Student Hired")}}</span>
                 <div id="totalStudent" class="bg-white rounded-circle p-1 text-secondary"
                     style="width: 20px; height: 20px">5</div>
             </button>
