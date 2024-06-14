@@ -20,7 +20,7 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.1' # Sesuaikan dengan versi PHP yang digunakan
+        php-version: '8.1' # Mengubah ke versi PHP 8.1
         extensions: mbstring, intl, bcmath, gd
         ini-values: post_max_size=256M, upload_max_filesize=256M, memory_limit=2G
 
@@ -33,7 +33,7 @@ jobs:
           composer-
 
     - name: Install Composer dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+      run: composer install --prefer-dist --no-progress
 
     - name: Run tests
       run: php artisan test
