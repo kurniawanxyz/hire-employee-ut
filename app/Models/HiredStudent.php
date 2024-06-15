@@ -39,4 +39,12 @@ class HiredStudent extends Model
     {
         return $this->hasOne(OjtExperienceStudents::class);
     }
+    public function presentation_score():HasOne
+    {
+        return $this->hasOne(PresentationScores::class);
+    }
+    public function Behavior():HasOne
+    {
+        return $this->hasOne(Behavior::class);
+    }
 }

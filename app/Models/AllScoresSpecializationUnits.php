@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
+use App\Models\HiredStudent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
-class UnitSpecialization extends Model
+class AllScoresSpecializationUnits extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
+
     public $incrementing = false, $keyType = "string";
     protected static function boot()
     {
@@ -26,11 +26,6 @@ class UnitSpecialization extends Model
 
     public function hired_student(): BelongsTo
     {
-        return $this->belongsTo(HiredStudent::class, 'hired_student_id');
-    }
-
-    public function all_scores_specialization_units(): HasOne
-    {
-        return $this->hasOne(AllScoresSpecializationUnits::class);
+        return $this->belongsTo(UnitSpecialization::class, 'unit_specialization_id');
     }
 }

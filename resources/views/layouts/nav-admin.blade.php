@@ -158,7 +158,7 @@
                                         request()->routeIs('admin.partner.create') ||
                                         request()->routeIs('admin.partner.edit'),
                                 ])
-                                        href="{{ route('admin.customer.index') }}">Data</a></li>
+                                        href="{{ route('admin.partner.index') }}">Data</a></li>
                             </ul>
                         </li>
                     </ul>

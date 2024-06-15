@@ -1,11 +1,14 @@
 <?php
 
-    namespace App\Http\Controllers\Admin;
 
+namespace App\Http\Controllers\Admin;
+
+    use App\Models\Behavior;
     use App\Http\Controllers\Controller;
     use App\Http\Requests\StoreHiredStudentRequest;
     use App\Http\Requests\StoreStudentPhotoRequest;
     use App\Imports\HiredStudentImport;
+    use App\Models\AllScoresSpecializationUnits;
     use App\Models\Branch;
     use App\Models\HiredStudent;
     use App\Models\OjtExperienceStudents;
@@ -111,6 +114,65 @@
             $us->rank_4 = $request->us_rank_4;
             $us->save();
 
+            $allScoreUnit = new AllScoresSpecializationUnits;
+            $allScoreUnit->unit_specialization_id = $us->id;
+            $allScoreUnit->ps_scania = $request->ps_scania;
+            $allScoreUnit->ri_scania = $request->ri_scania;
+            $allScoreUnit->ts_scania = $request->ts_scania;
+            $allScoreUnit->unit_scania = $request->unit_scania;
+            $allScoreUnit->ps_ud = $request->ps_ud;
+            $allScoreUnit->ri_ud = $request->ri_ud;
+            $allScoreUnit->ts_ud = $request->ts_ud;
+            $allScoreUnit->unit_ud = $request->unit_ud;
+            $allScoreUnit->ps_hd = $request->ps_hd;
+            $allScoreUnit->ri_hd = $request->ri_hd;
+            $allScoreUnit->ts_hd = $request->ts_hd;
+            $allScoreUnit->unit_hd = $request->unit_hd;
+            $allScoreUnit->ps_pc_small = $request->ps_pc_small;
+            $allScoreUnit->ri_pc_small = $request->ri_pc_small;
+            $allScoreUnit->ts_pc_small = $request->ts_pc_small;
+            $allScoreUnit->unit_pc_small = $request->unit_pc_small;
+            $allScoreUnit->ps_pc_big = $request->ps_pc_big;
+            $allScoreUnit->ri_pc_big = $request->ri_pc_big;
+            $allScoreUnit->ts_pc_big = $request->ts_pc_big;
+            $allScoreUnit->unit_pc_big = $request->unit_pc_big;
+            $allScoreUnit->ps_sbd = $request->ps_sbd;
+            $allScoreUnit->ri_sbd = $request->ri_sbd;
+            $allScoreUnit->ts_sbd = $request->ts_sbd;
+            $allScoreUnit->unit_sbd = $request->unit_sbd;
+            $allScoreUnit->ps_grader = $request->ps_grader;
+            $allScoreUnit->ri_grader = $request->ri_grader;
+            $allScoreUnit->ts_grader = $request->ts_grader;
+            $allScoreUnit->unit_grader = $request->unit_grader;
+            $allScoreUnit->ps_bulldozer_small = $request->ps_bulldozer_small;
+            $allScoreUnit->ri_bulldozer_small = $request->ri_bulldozer_small;
+            $allScoreUnit->ts_bulldozer_small = $request->ts_bulldozer_small;
+            $allScoreUnit->unit_bulldozer_small = $request->unit_bulldozer_small;
+            $allScoreUnit->ps_bulldozer_big = $request->ps_bulldozer_big;
+            $allScoreUnit->ri_bulldozer_big = $request->ri_bulldozer_big;
+            $allScoreUnit->ts_bulldozer_big = $request->ts_bulldozer_big;
+            $allScoreUnit->unit_bulldozer_big = $request->unit_bulldozer_big;
+            $allScoreUnit->ps_bomag = $request->ps_bomag;
+            $allScoreUnit->ri_bomag = $request->ri_bomag;
+            $allScoreUnit->ts_bomag = $request->ts_bomag;
+            $allScoreUnit->unit_bomag = $request->unit_bomag;
+            $allScoreUnit->ps_tadano = $request->ps_tadano;
+            $allScoreUnit->ri_tadano = $request->ri_tadano;
+            $allScoreUnit->ts_tadano = $request->ts_tadano;
+            $allScoreUnit->unit_tadano = $request->unit_tadano;
+            $allScoreUnit->ps_wheel_loader = $request->ps_wheel_loader;
+            $allScoreUnit->ri_wheel_loader = $request->ri_wheel_loader;
+            $allScoreUnit->ts_wheel_loader = $request->ts_wheel_loader;
+            $allScoreUnit->unit_wheel_loader = $request->unit_wheel_loader;
+            $allScoreUnit->save();
+
+            $insani = new Behavior;
+            $insani->hired_student_id = $hs->id;
+            $insani->integritas = $request->integritas;
+            $insani->santun = $request->santun;
+            $insani->ahli = $request->ahli;
+            $insani->berani = $request->berani;
+
             DB::commit();
 
             toastr()->success("Successfully create student!");
@@ -200,6 +262,65 @@
             $us->rank_3 = $request->us_rank_3;
             $us->rank_4 = $request->us_rank_4;
             $us->save();
+
+            $allScoreUnit = AllScoresSpecializationUnits::where('unit_specialization_id', $us->id)->first();
+            $allScoreUnit->unit_specialization_id = $us->id;
+            $allScoreUnit->ps_scania = $request->ps_scania;
+            $allScoreUnit->ri_scania = $request->ri_scania;
+            $allScoreUnit->ts_scania = $request->ts_scania;
+            $allScoreUnit->unit_scania = $request->unit_scania;
+            $allScoreUnit->ps_ud = $request->ps_ud;
+            $allScoreUnit->ri_ud = $request->ri_ud;
+            $allScoreUnit->ts_ud = $request->ts_ud;
+            $allScoreUnit->unit_ud = $request->unit_ud;
+            $allScoreUnit->ps_hd = $request->ps_hd;
+            $allScoreUnit->ri_hd = $request->ri_hd;
+            $allScoreUnit->ts_hd = $request->ts_hd;
+            $allScoreUnit->unit_hd = $request->unit_hd;
+            $allScoreUnit->ps_pc_small = $request->ps_pc_small;
+            $allScoreUnit->ri_pc_small = $request->ri_pc_small;
+            $allScoreUnit->ts_pc_small = $request->ts_pc_small;
+            $allScoreUnit->unit_pc_small = $request->unit_pc_small;
+            $allScoreUnit->ps_pc_big = $request->ps_pc_big;
+            $allScoreUnit->ri_pc_big = $request->ri_pc_big;
+            $allScoreUnit->ts_pc_big = $request->ts_pc_big;
+            $allScoreUnit->unit_pc_big = $request->unit_pc_big;
+            $allScoreUnit->ps_sbd = $request->ps_sbd;
+            $allScoreUnit->ri_sbd = $request->ri_sbd;
+            $allScoreUnit->ts_sbd = $request->ts_sbd;
+            $allScoreUnit->unit_sbd = $request->unit_sbd;
+            $allScoreUnit->ps_grader = $request->ps_grader;
+            $allScoreUnit->ri_grader = $request->ri_grader;
+            $allScoreUnit->ts_grader = $request->ts_grader;
+            $allScoreUnit->unit_grader = $request->unit_grader;
+            $allScoreUnit->ps_bulldozer_small = $request->ps_bulldozer_small;
+            $allScoreUnit->ri_bulldozer_small = $request->ri_bulldozer_small;
+            $allScoreUnit->ts_bulldozer_small = $request->ts_bulldozer_small;
+            $allScoreUnit->unit_bulldozer_small = $request->unit_bulldozer_small;
+            $allScoreUnit->ps_bulldozer_big = $request->ps_bulldozer_big;
+            $allScoreUnit->ri_bulldozer_big = $request->ri_bulldozer_big;
+            $allScoreUnit->ts_bulldozer_big = $request->ts_bulldozer_big;
+            $allScoreUnit->unit_bulldozer_big = $request->unit_bulldozer_big;
+            $allScoreUnit->ps_bomag = $request->ps_bomag;
+            $allScoreUnit->ri_bomag = $request->ri_bomag;
+            $allScoreUnit->ts_bomag = $request->ts_bomag;
+            $allScoreUnit->unit_bomag = $request->unit_bomag;
+            $allScoreUnit->ps_tadano = $request->ps_tadano;
+            $allScoreUnit->ri_tadano = $request->ri_tadano;
+            $allScoreUnit->ts_tadano = $request->ts_tadano;
+            $allScoreUnit->unit_tadano = $request->unit_tadano;
+            $allScoreUnit->ps_wheel_loader = $request->ps_wheel_loader;
+            $allScoreUnit->ri_wheel_loader = $request->ri_wheel_loader;
+            $allScoreUnit->ts_wheel_loader = $request->ts_wheel_loader;
+            $allScoreUnit->unit_wheel_loader = $request->unit_wheel_loader;
+            $allScoreUnit->save();
+
+            $insani = new Behavior;
+            $insani->hired_student_id = $hs->id;
+            $insani->integritas = $request->integritas;
+            $insani->santun = $request->santun;
+            $insani->ahli = $request->ahli;
+            $insani->berani = $request->berani;
 
             DB::commit();
 
