@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Admin;
     use App\Models\Branch;
     use App\Models\HiredStudent;
     use App\Models\OjtExperienceStudents;
+    use App\Models\PresentationScores;
     use App\Models\StudentScores;
     use App\Models\UnitSpecialization;
     use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ namespace App\Http\Controllers\Admin;
             $students->where('hasRecruit', $request->input('hired') == 'true' ? 1 : 0);
         }
 
-        $students = $students->paginate(10);
+        $students = $students->orderBy('created_at', 'desc')->paginate(10);
         return view('admin.hired_student.index', compact('students'));
     }
 
@@ -172,6 +173,15 @@ namespace App\Http\Controllers\Admin;
             $insani->santun = $request->santun;
             $insani->ahli = $request->ahli;
             $insani->berani = $request->berani;
+            $insani->save();
+
+            $presentation = new PresentationScores;
+            $presentation->hired_student_id = $hs->id;
+            $presentation->presentation_title_ps = $request->presentation_title_ps;
+            $presentation->presentation_title_ts = $request->presentation_title_ts;
+            $presentation->ps_score = $request->presentation_ps_score;
+            $presentation->ts_score = $request->presentation_ts_score;
+            $presentation->save();
 
             DB::commit();
 
@@ -189,7 +199,7 @@ namespace App\Http\Controllers\Admin;
      */
     public function edit(string $id)
     {
-        $student = HiredStudent::with('branch', 'ojt', 'score', 'specialization')->where('id', $id)->first();
+        $student = HiredStudent::with(['branch', 'ojt', 'score', 'specialization', 'specialization.scores', 'behavior', 'presentation_score'])->where('id', $id)->first();
         if (!$student) {
             toastr()->error("Student ID not found!");
             return back();
@@ -315,16 +325,24 @@ namespace App\Http\Controllers\Admin;
             $allScoreUnit->unit_wheel_loader = $request->unit_wheel_loader;
             $allScoreUnit->save();
 
-            $insani = new Behavior;
+            $insani = Behavior::where('hired_student_id', $hs->id)->first();
             $insani->hired_student_id = $hs->id;
             $insani->integritas = $request->integritas;
             $insani->santun = $request->santun;
             $insani->ahli = $request->ahli;
             $insani->berani = $request->berani;
+            $insani->save();
+
+            $presentation = PresentationScores::where('hired_student_id', $hs->id)->first();
+            $presentation->presentation_title_ps = $request->presentation_title_ps;
+            $presentation->presentation_title_ts = $request->presentation_title_ts;
+            $presentation->ps_score = $request->presentation_ps_score;
+            $presentation->ts_score = $request->presentation_ts_score;
+            $presentation->save();
 
             DB::commit();
 
-            toastr()->success("Successfully create student!");
+            toastr()->success("Successfully update student!");
             return to_route('admin.hired-students.index');
         } catch (\Exception $e) {
             DB::rollBack();

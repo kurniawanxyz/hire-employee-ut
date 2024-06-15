@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('presentation_scores', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('hired_student_id')->constrained()->cascadeOnDelete();
-            $table->string('presentation_title_ps');
-            $table->integer('ps_score');
-            $table->string('presentation_title_ts');
-            $table->integer('ts_score');
+            $table->string('presentation_title_ps')->nullable();
+            $table->integer('ps_score')->nullable()->default(0);
+            $table->string('presentation_title_ts')->nullable();
+            $table->integer('ts_score')->nullable()->default(0);
             $table->timestamps();
         });
     }

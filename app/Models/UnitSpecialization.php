@@ -29,7 +29,7 @@ class UnitSpecialization extends Model
         return $this->belongsTo(HiredStudent::class, 'hired_student_id');
     }
 
-    public function all_scores_specialization_units(): HasOne
+    public function scores(): HasOne
     {
         return $this->hasOne(AllScoresSpecializationUnits::class);
     }

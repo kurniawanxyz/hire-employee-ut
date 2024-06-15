@@ -25,8 +25,10 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
      */
     public function collection(Collection $rows)
     {
-        dd($rows);
         foreach ($rows as $row) {
+            if(empty($row['nama'])){
+                continue;
+            }
             $student = HiredStudent::updateOrCreate([
                 'nis' => $row['nis']
             ], [
@@ -61,9 +63,9 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
             OjtExperienceStudents::updateOrCreate([
                 'hired_student_id' => $student->id,
             ], [
-                'preventive_maintenance' => $row['experience_ojt_ps'],
-                'remove_and_install' => $row['experience_ojt_ri'],
-                'machine_troubleshooting' => $row['experience_ojt_ts'],
+                'preventive_maintenance' => $row['experience_total_ojt_ps'],
+                'remove_and_install' => $row['experience_total_ojt_ri'],
+                'machine_troubleshooting' => $row['experience_total_ojt_ts'],
             ]);
 
             $us = UnitSpecialization::updateOrCreate([
@@ -132,10 +134,10 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
             Behavior::updateOrCreate([
                 'hired_student_id' => $student->id
             ], [
-                'integritas' => $row['integritas'],
-                'santun' => $row['santun'],
-                'ahli' => $row['ahli'],
-                'berani' => $row['berani']
+                'integritas' => $row['nilai_bhv_integritas'],
+                'santun' => $row['nilai_bhv_santun'],
+                'ahli' => $row['nilai_bhv_ahli'],
+                'berani' => $row['nilai_bhv_berani']
             ]);
 
             PresentationScores::updateOrCreate([
@@ -143,8 +145,8 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
             ], [
                 'presentation_title_ps' => $row['judul_presentasi_ps'],
                 'presentation_title_ts' => $row['judul_presentasi_ts'],
-                'presentation_ps_score' => $row['nilai_presentasi_ps'],
-                'presentation_ts_score' => $row['nilai_presentasi_ps'],
+                'ps_score' => $row['nilai_ps'],
+                'ts_score' => $row['nilai_ps'],
             ]);
         }
     }

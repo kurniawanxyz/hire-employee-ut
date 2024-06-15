@@ -43,7 +43,7 @@ class HiredStudent extends Model
     {
         return $this->hasOne(PresentationScores::class);
     }
-    public function Behavior():HasOne
+    public function behavior():HasOne
     {
         return $this->hasOne(Behavior::class);
     }
