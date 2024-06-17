@@ -116,25 +116,19 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="my-3 px-3 d-flex">
-                            <div class="form-check me-3">
-                                <input class="form-check-input" type="radio" name="recruit" id="recruit1"
-                                    value="no"
-                                    {{ old('recruit', $student->hasRecruit == 0 ? 'no' : '') == 'no' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="recruit1">
-                                    Not hire yet
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="recruit" id="recruit2"
-                                    value="yes"
-                                    {{ old('recruit', $student->hasRecruit == 1 ? 'yes' : '') == 'yes' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="recruit2">
-                                    already recruited
-                                </label>
-                            </div>
+                        <div class="my-3">
+                            <label class="form-label" for="batch">Batch</label>
+                            <input type="number" name="batch" id="batch"
+                                class="form-control @error('batch') is-invalid @enderror"
+                                placeholder="Enter name for student" value="{{ old('batch', $student->batch) }}">
+                            @error('batch')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
+
                     <div class="col-md-6 px-3">
                         <div class="my-3">
                             <label class="form-label" for="place_birth">Place Birth</label>
@@ -212,15 +206,31 @@
                             @enderror
                         </div>
                         <div class="my-3">
-                            <label class="form-label" for="batch">Batch</label>
-                            <input type="number" name="batch" id="batch"
-                                class="form-control @error('batch') is-invalid @enderror"
-                                placeholder="Enter name for student" value="{{ old('batch', $student->batch) }}">
-                            @error('batch')
+                            <label class="form-label m-2" for="bmi">BMI</label>
+                            <input type="number" name="bmi" id="bmi"
+                                class="form-control @error('bmi') is-invalid @enderror" placeholder="Enter student BMI"
+                                value="{{ old('bmi', $student->bmi) }}">
+                            @error('bmi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                    </div>
+                    <div class="my-3 px-3 d-flex justify-content-center">
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="radio" name="recruit" id="recruit1" value="no"
+                                {{ old('recruit', $student->hasRecruit == 0 ? 'no' : '') == 'no' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="recruit1">
+                                Not hire yet
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="recruit" id="recruit2" value="yes"
+                                {{ old('recruit', $student->hasRecruit == 1 ? 'yes' : '') == 'yes' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="recruit2">
+                                already recruited
+                            </label>
                         </div>
                     </div>
                     <div class="col-md-6 px-3">
@@ -306,7 +316,8 @@
                             <div class="row">
                                 <div class="col-md-3 px-3">
                                     <div class="my-3">
-                                        <label class="form-label" for="{{ $item[1] }}">PS {{ $item[0] }}</label>
+                                        <label class="form-label" for="{{ $item[1] }}">PS
+                                            {{ $item[0] }}</label>
                                         <input type="number" name="{{ $item[1] }}" id="{{ $item[1] }}"
                                             class="form-control @error($item[1]) is-invalid @enderror"
                                             placeholder="Preventive Maintenance {{ $item[0] }}"
@@ -320,7 +331,8 @@
                                 </div>
                                 <div class="col-md-3 px-3">
                                     <div class="my-3">
-                                        <label class="form-label" for="{{ $item[2] }}">R&I {{ $item[0] }}</label>
+                                        <label class="form-label" for="{{ $item[2] }}">R&I
+                                            {{ $item[0] }}</label>
                                         <input type="number" name="{{ $item[2] }}" id="{{ $item[2] }}"
                                             class="form-control @error($item[2]) is-invalid @enderror"
                                             placeholder="Remove and Install {{ $item[0] }}"
@@ -334,7 +346,8 @@
                                 </div>
                                 <div class="col-md-3 px-3">
                                     <div class="my-3">
-                                        <label class="form-label" for="{{ $item[3] }}">TS {{ $item[0] }}</label>
+                                        <label class="form-label" for="{{ $item[3] }}">TS
+                                            {{ $item[0] }}</label>
                                         <input type="number" name="{{ $item[3] }}" id="{{ $item[3] }}"
                                             class="form-control @error($item[3]) is-invalid @enderror"
                                             placeholder="Troubleshooting {{ $item[0] }}"
@@ -348,7 +361,8 @@
                                 </div>
                                 <div class="col-md-3 px-3">
                                     <div class="my-3">
-                                        <label class="form-label" for="{{ $item[4] }}">Unit {{ $item[0] }}</label>
+                                        <label class="form-label" for="{{ $item[4] }}">Unit
+                                            {{ $item[0] }}</label>
                                         <input type="number" name="{{ $item[4] }}" id="{{ $item[0] }}"
                                             class="form-control @error($item[4]) is-invalid @enderror"
                                             placeholder="Unit {{ $item[0] }}"

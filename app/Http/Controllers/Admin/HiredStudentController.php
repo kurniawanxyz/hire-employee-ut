@@ -152,7 +152,7 @@ class HiredStudentController extends Controller
      */
     public function edit(string $id)
     {
-        $student = HiredStudent::with(['branch', 'ojt', 'score', 'specialization', 'specialization.scores', 'behavior', 'presentation_score'])->where('id', $id)->first();
+        $student = HiredStudent::with(['branch', 'ojt', 'score', 'specialization', 'specialization', 'behavior', 'presentation_score'])->where('id', $id)->first();
         if (!$student) {
             toastr()->error("Student ID not found!");
             return back();
