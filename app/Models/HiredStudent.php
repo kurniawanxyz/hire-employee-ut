@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
@@ -31,9 +32,9 @@ class HiredStudent extends Model
     {
         return $this->hasOne(StudentScores::class);
     }
-    public function specialization():HasOne
+    public function specialization():HasMany
     {
-        return $this->hasOne(UnitSpecialization::class);
+        return $this->hasMany(UnitSpecialization::class);
     }
     public function ojt():HasOne
     {

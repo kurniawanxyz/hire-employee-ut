@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('unit_specializations', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('hired_student_id')->constrained()->cascadeOnDelete();
-            $table->string('ojt_location');
-            $table->string('rank_1')->nullable();
-            $table->string('rank_2')->nullable();
-            $table->string('rank_3')->nullable();
-            $table->string('rank_4')->nullable();
+            $table->string('name');
+            $table->string('preventive_maintenance')->nullable();
+            $table->string('remove_and_install')->nullable();
+            $table->string('machine_troubleshooting')->nullable();
+            $table->string('total')->nullable();
             $table->timestamps();
         });
     }

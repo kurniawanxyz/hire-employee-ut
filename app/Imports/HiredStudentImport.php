@@ -2,7 +2,6 @@
 
 namespace App\Imports;
 
-use App\Models\AllScoresSpecializationUnits;
 use App\Models\Behavior;
 use App\Models\Branch;
 use App\Models\HiredStudent;
@@ -25,8 +24,9 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
      */
     public function collection(Collection $rows)
     {
+        $unit = config('app.unit');
         foreach ($rows as $row) {
-            if(empty($row['nama'])){
+            if (empty($row['nama'])) {
                 continue;
             }
             $student = HiredStudent::updateOrCreate([
@@ -44,6 +44,7 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
                 'weight' => $row['berat_badan'] ?? null,
                 'batch' => $row['batch'],
                 'role' => $row['role'],
+                'ojt_location' => $row['lokasi_ojt'],
                 'branch_id' => Branch::firstOrCreate(
                     ['city' => $row['area_uts']],
                     [
@@ -68,68 +69,19 @@ class HiredStudentImport implements ToCollection, WithHeadingRow
                 'machine_troubleshooting' => $row['experience_total_ojt_ts'],
             ]);
 
-            $us = UnitSpecialization::updateOrCreate([
-                'hired_student_id' => $student->id,
-            ], [
-                'ojt_location' => $row['lokasi_ojt'],
-                'rank_1' => $row['spesialisasi_unit_rank_1'],
-                'rank_2' => $row['spesialisasi_unit_rank_2'],
-                'rank_3' => $row['spesialisasi_unit_rank_3'],
-                'rank_4' => $row['spesialisasi_unit_rank_4'],
-            ]);
-
-            AllScoresSpecializationUnits::updateOrCreate([
-                'unit_specialization_id' => $us->id
-            ], [
-                'ps_scania' => $row['ps_scania'],
-                'ri_scania' => $row['ri_scania'],
-                'ts_scania' => $row['ts_scania'],
-                'unit_scania' => $row['unit_scania'],
-                'ps_ud' => $row['ps_ud'],
-                'ri_ud' => $row['ri_ud'],
-                'ts_ud' => $row['ts_ud'],
-                'unit_ud' => $row['unit_ud'],
-                'ps_hd' => $row['ps_hd'],
-                'ri_hd' => $row['ri_hd'],
-                'ts_hd' => $row['ts_hd'],
-                'unit_hd' => $row['unit_hd'],
-                'ps_pc_small' => $row['ps_pc_small'],
-                'ri_pc_small' => $row['ri_pc_small'],
-                'ts_pc_small' => $row['ts_pc_small'],
-                'unit_pc_small' => $row['unit_pc_small'],
-                'ps_pc_big' => $row['ps_pc_big'],
-                'ri_pc_big' => $row['ri_pc_big'],
-                'ts_pc_big' => $row['ts_pc_big'],
-                'unit_pc_big' => $row['unit_pc_big'],
-                'ps_sbd' => $row['ps_sbd'],
-                'ri_sbd' => $row['ri_sbd'],
-                'ts_sbd' => $row['ts_sbd'],
-                'unit_sbd' => $row['unit_sbd'],
-                'ps_grader' => $row['ps_grader'],
-                'ri_grader' => $row['ri_grader'],
-                'ts_grader' => $row['ts_grader'],
-                'unit_grader' => $row['unit_grader'],
-                'ps_bulldozer_small' => $row['ps_bulldozer_small'],
-                'ri_bulldozer_small' => $row['ri_bulldozer_small'],
-                'ts_bulldozer_small' => $row['ts_bulldozer_small'],
-                'unit_bulldozer_small' => $row['unit_bulldozer_small'],
-                'ps_bulldozer_big' => $row['ps_bulldozer_big'],
-                'ri_bulldozer_big' => $row['ri_bulldozer_big'],
-                'ts_bulldozer_big' => $row['ts_bulldozer_big'],
-                'unit_bulldozer_big' => $row['unit_bulldozer_big'],
-                'ps_bomag' => $row['ps_bomag'],
-                'ri_bomag' => $row['ri_bomag'],
-                'ts_bomag' => $row['ts_bomag'],
-                'unit_bomag' => $row['unit_bomag'],
-                'ps_tadano' => $row['ps_tadano'],
-                'ri_tadano' => $row['ri_tadano'],
-                'ts_tadano' => $row['ts_tadano'],
-                'unit_tadano' => $row['unit_tadano'],
-                'ps_wheel_loader' => $row['ps_wheel_loader'],
-                'ri_wheel_loader' => $row['ri_wheel_loader'],
-                'ts_wheel_loader' => $row['ts_wheel_loader'],
-                'unit_wheel_loader' => $row['unit_wheel_loader']
-            ]);
+            foreach ($unit as $item) {
+                if (intval($row[$item[4]]) > 0) {
+                    UnitSpecialization::updateOrCreate([
+                        'hired_student_id' => $student->id,
+                        'name' => $item[0],
+                    ], [
+                        'preventive_maintenance' => $row[$item[1]],
+                        'remove_and_install' => $row[$item[2]],
+                        'machine_troubleshooting' => $row[$item[3]],
+                        'total' => $row[$item[4]],
+                    ]);
+                }
+            }
 
             Behavior::updateOrCreate([
                 'hired_student_id' => $student->id

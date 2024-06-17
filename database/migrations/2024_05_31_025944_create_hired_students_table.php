@@ -27,6 +27,7 @@ return new class extends Migration
             $table->enum('role', ['mechanic', 'operator']);
             $table->integer('batch');
             $table->boolean('hasRecruit')->default(false);
+            $table->string('ojt_location');
             $table->foreignUuid("branch_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
