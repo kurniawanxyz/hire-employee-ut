@@ -160,6 +160,93 @@ return [
     |
     */
 
+    'unit' => [
+            [
+                'Scania',
+                'ps_scania',
+                'ri_scania',
+                'ts_scania',
+                'unit_scania',
+            ],
+            [
+                'UD',
+                'ps_ud',
+                'ri_ud',
+                'ts_ud',
+                'unit_ud',
+            ],
+            [
+                'HD',
+                'ps_hd',
+                'ri_hd',
+                'ts_hd',
+                'unit_hd',
+            ],
+            [
+                'PC Small',
+                'ps_pc_small',
+                'ri_pc_small',
+                'ts_pc_small',
+                'unit_pc_small',
+            ],
+            [
+                'PC Big',
+                'ps_pc_big',
+                'ri_pc_big',
+                'ts_pc_big',
+                'unit_pc_big',
+            ],
+            [
+                'SBD',
+                'ps_sbd',
+                'ri_sbd',
+                'ts_sbd',
+                'unit_sbd',
+            ],
+            [
+                'Grader',
+                'ps_grader',
+                'ri_grader',
+                'ts_grader',
+                'unit_grader',
+            ],
+            [
+                'Bulldozer Small',
+                'ps_bulldozer_small',
+                'ri_bulldozer_small',
+                'ts_bulldozer_small',
+                'unit_bulldozer_small',
+            ],
+            [
+                'Bulldozer Big',
+                'ps_bulldozer_big',
+                'ri_bulldozer_big',
+                'ts_bulldozer_big',
+                'unit_bulldozer_big',
+            ],
+            [
+                'Bomag',
+                'ps_bomag',
+                'ri_bomag',
+                'ts_bomag',
+                'unit_bomag',
+            ],
+            [
+                'Tadano',
+                'ps_tadano',
+                'ri_tadano',
+                'ts_tadano',
+                'unit_tadano',
+            ],
+            [
+                'Wheel Loader',
+                'ps_wheel_loader',
+                'ri_wheel_loader',
+                'ts_wheel_loader',
+                'unit_wheel_loader',
+            ],
+        ],
+
     'providers' => ServiceProvider::defaultProviders()->merge([
         /*
          * Package Service Providers...
