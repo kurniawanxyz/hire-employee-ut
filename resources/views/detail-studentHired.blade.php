@@ -4,8 +4,8 @@
 
     <div style="padding: 50px" class="mt-5">
         <div class="d-flex justify-content-between align-items-center">
-            <h1 class="">{{__("Student Information")}}</h1>
-            <a href="{{ route('hiredStudent.index') }}" class="wprt-button">{{__("Back")}}</a>
+            <h1 class="">{{ __('Student Information') }}</h1>
+            <a href="{{ route('hiredStudent.index') }}" class="wprt-button">{{ __('Back') }}</a>
         </div>
         <div class="row">
             <div class="col-md-3 d-flex flex-column gap-2">
@@ -26,39 +26,93 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body row">
-                        <div class="col-md-6">
-                            <h5 class="card-title fw-bold">{{__("Student Information")}}</h5>
-                            <ul class="list-group list-group-flush" style="font-size: 11px">
-                                <li class="list-group-item"><strong>{{__("Name")}}:</strong> {{ $student->name }}</li>
-                                <li class="list-group-item"><strong>{{__("Place and Date of Birth")}}:</strong>
-                                    {{ $student->place_birth }},
-                                    {{ \Carbon\Carbon::createFromFormat('d/m/Y', $student->date_birth)->isoFormat('D MMMM Y') }}
-                                </li>
-                                <li class="list-group-item"><strong>NIS:</strong> {{ $student->nis }}</li>
-                                <li class="list-group-item"><strong>{{__("Major")}}:</strong> {{ $student->major }}</li>
-                                <li class="list-group-item"><strong>{{__("Former School")}}:</strong> {{ $student->school_origin }}
-                                </li>
-                                <li class="list-group-item"><strong>{{__("UTS Branch")}}:</strong> {{ $student->branch->city }}</li>
-                                <li class="list-group-item"><strong>{{__("Height")}}:</strong> {{ $student->height ?? 170 }} cm
-                                </li>
-                                <li class="list-group-item"><strong>{{__("Weight")}}:</strong> {{ $student->weight ?? 50 }} Kg
-                                </li>
-                                @if ($student->score->avg_theory != null)
-                                    <li class="list-group-item">
-                                        <strong>{{__("Avarage theory score")}} </strong> {{ $student->score->avg_theory }}
-                                    </li>
-                                @endif
-                                @if ($student->score->avg_theory != null)
-                                    <li class="list-group-item">
-                                        <strong>{{__("Average practice score")}}</strong> {{ $student->score->avg_practice }}
-                                    </li>
-                                @endif
+                        <div class="col-md-6 p-2">
+                            <style>
+                                .nav-tabs .nav-link:not(:hover):not(.active) {
+                                    color: var(--bs-warning);
+                                }
 
-                                <li class="list-group-item"><strong>{{__("OJT location")}}:</strong>
-                                    {{ $student->specialization->ojt_location }}</li>
+                                .nav-tabs .nav-link.active,
+                                .nav-tabs .nav-link:hover {
+                                    background-color: var(--bs-warning);
+                                    color: white;
+                                }
+                            </style>
+                            <ul class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="Biodata-tab" data-bs-toggle="tab"
+                                        data-bs-target="#Biodata" type="button" role="tab" aria-controls="Biodata"
+                                        aria-selected="true">Detail Information</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="Academic-tab" data-bs-toggle="tab"
+                                        data-bs-target="#Academic" type="button" role="tab" aria-controls="Academic"
+                                        aria-selected="false">Academic Information</button>
+                                </li>
                             </ul>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div id="Biodata" role="tabpanel" class="tab-pane fade show in active">
+                                    <table class="table table-bordered fs-5">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">{{ __('Name') }}:</th>
+                                                <td>{{ $student->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">{{ __('Place and Date of Birth') }}:</th>
+                                                <td>{{ $student->place_birth }},
+                                                    {{ \Carbon\Carbon::createFromFormat('d/m/Y', $student->date_birth)->isoFormat('D MMMM Y') }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">NIS:</th>
+                                                <td>{{ $student->nis }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">{{ __('Major') }}:</th>
+                                                <td>{{ $student->major }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">{{ __('Former School') }}:</th>
+                                                <td>{{ $student->school_origin }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">{{ __('UTS Branch') }}:</th>
+                                                <td>{{ $student->branch->city }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">{{ __('Height') }}:</th>
+                                                <td>{{ $student->height ?? 170 }} cm</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">{{ __('Weight') }}:</th>
+                                                <td>{{ $student->weight ?? 50 }} Kg</td>
+                                            </tr>
+                                            @if ($student->score->avg_theory != null)
+                                                <tr>
+                                                    <th scope="row">{{ __('Avarage theory score') }}:</th>
+                                                    <td>{{ $student->score->avg_theory }}</td>
+                                                </tr>
+                                            @endif
+                                            @if ($student->score->avg_theory != null)
+                                                <tr>
+                                                    <th scope="row">{{ __('Average practice score') }}:</th>
+                                                    <td>{{ $student->score->avg_practice }}</td>
+                                                </tr>
+                                            @endif
+                                            <tr>
+                                                <th scope="row">{{ __('OJT location') }}:</th>
+                                                <td>{{ $student->specialization->ojt_location }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="Academic" role="tabpanel" class="tab-pane fade">
+
+                                </div>
+                            </div>
                             <div class="d-flex flex-column mt-3">
-                                <h5 class="fw-bold">{{__("Unit Spesialization")}}:</h5>
+                                <h5 class="fw-bold">{{ __('Unit Spesialization') }}:</h5>
                                 @php
                                     $hasSpecialization =
                                         $student->specialization->rank_1 == '-' &&
@@ -90,16 +144,16 @@
                                 @endif
                             </div>
                             <div class="mt-4">
-                                <h5 class="fw-bold">{{__("Experience")}}</h5>
-                                {{__("Based on the training experience of this student, the conclusion is")}}:
+                                <h5 class="fw-bold">{{ __('Experience') }}</h5>
+                                {{ __('Based on the training experience of this student, the conclusion is') }}:
                                 <ul>
-                                    <li>{{__("Preventive Maintenance")}}: <span
+                                    <li>{{ __('Preventive Maintenance') }}: <span
                                             class="badge bg-warning fs-5">{{ $student->ojt->preventive_maintenance }}
                                             point</span></li>
-                                    <li>{{__("Remove & Install")}}: <span
+                                    <li>{{ __('Remove & Install') }}: <span
                                             class="badge bg-warning fs-5">{{ $student->ojt->remove_and_install }}
                                             point</span></li>
-                                    <li>{{__("Machine Troubleshooting")}}: <span
+                                    <li>{{ __('Machine Troubleshooting') }}: <span
                                             class="badge bg-warning fs-5">{{ $student->ojt->machine_troubleshooting }}
                                             point</span> </li>
                                 </ul>
@@ -121,7 +175,7 @@
 @endsection
 
 @section('script')
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         handleCheckHire()
@@ -129,12 +183,12 @@
 
         const data = {
             labels: [
-                "{{__('Preventive Maintenance')}}",
-                "{{__('Remove & Install')}}",
-                "{{__('Machine Troubleshooting')}}"
+                "{{ __('Preventive Maintenance') }}",
+                "{{ __('Remove & Install') }}",
+                "{{ __('Machine Troubleshooting') }}"
             ],
             datasets: [{
-                label: '{{__("OJT EXPERIENCE")}}',
+                label: '{{ __('OJT EXPERIENCE') }}',
                 data: point,
                 fill: true,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',

@@ -100,6 +100,7 @@ class HiredStudentController extends Controller
     {
         try{
             $student = HiredStudent::findOrFail($id);
+            dd($student->specialization,$student->specialization->scores);
             $students = $this->hiredStudent->query()->where('hasRecruit',false)->get();
             $pointExperience = [
                 $student->ojt->preventive_maintenance,

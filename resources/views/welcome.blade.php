@@ -217,8 +217,8 @@
                                     </li>
                                     <li class="menu-item"><a href="#about">{{ __('About') }}</a>
                                     </li>
-                                    <li class="menu-item"><a href="#maps">{{ __('Map') }}</a>
-                                    </li>
+                                    {{-- <li class="menu-item"><a href="#maps">{{ __('Map') }}</a>
+                                    </li> --}}
                                     <li style="padding: 10px;display: flex;justify-content: end;"
                                         class="menu-item btn-login p-2">
                                         <button href="/login" class="btn btn-warning p-3 btn-login">
@@ -388,7 +388,7 @@
                     </div>
                 </div>
             </div>
-            <div id="maps" style="width: 100%; height: 500px; display: block;"></div>
+            {{-- <div id="maps" style="width: 100%; height: 500px; display: block;"></div> --}}
 
             <!-- Footer -->
             <footer id="footer">
