@@ -126,7 +126,7 @@
                                                 @php
                                                     $bmi = $student->weight && $student->height ? $student->weight * 1000 / ($student->height * $student->height) : null;
                                                 @endphp
-                                                <td>{{ $bmi ?? '-' }}</td>
+                                                <td>{{ $student->bmi ?? '-' }}</td>
                                             </tr>
 
                                         </tbody>

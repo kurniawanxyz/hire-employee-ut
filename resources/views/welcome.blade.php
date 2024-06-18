@@ -217,8 +217,6 @@
                                     </li>
                                     <li class="menu-item"><a href="#about">{{ __('About') }}</a>
                                     </li>
-                                    {{-- <li class="menu-item"><a href="#maps">{{ __('Map') }}</a>
-                                    </li> --}}
                                     <li style="padding: 10px;display: flex;justify-content: end;"
                                         class="menu-item btn-login p-2">
                                         <button href="/login" class="btn btn-warning p-3 btn-login">
@@ -442,11 +440,11 @@
                                     </li> --}}
                                     <li class="phone clearfix">
                                         <span class="hl">Phone:</span>
-                                        <span class="text">{{ $operator->no_telp }}</span>
+                                        <span class="text">{{ $operator->no_telp??62895385285001 }}</span>
                                     </li>
                                     <li class="email clearfix">
                                         <span class="hl">Email:</span>
-                                        <span class="text">{{ $operator->customer_email }}</span>
+                                        <span class="text">{{ $operator->customer_email??"WpS1H@example.com" }}</span>
                                     </li>
                                 </ul>
                             </div>
