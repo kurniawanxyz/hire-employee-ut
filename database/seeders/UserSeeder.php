@@ -40,8 +40,8 @@
             User::create([
                 'name' => 'PT KALIMANTAN PRIMA PERSADA',
                 'email' => "kpp@utschool.sch.id",
-                'customer_email' => "kurniawanadi4556@gmail.com",
-                'no_telp' => "62895385285001",
+                'customer_email' => "gioverdiansyh@gmail.com",
+                'no_telp' => "6282132900242",
                 'password' => Hash::make("customer-ini")
             ]);
             User::create([

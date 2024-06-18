@@ -100,15 +100,60 @@ class HiredStudentController extends Controller
     {
         try{
             $student = HiredStudent::findOrFail($id);
-            dd($student->specialization,$student->specialization->scores);
             $students = $this->hiredStudent->query()->where('hasRecruit',false)->get();
-            $pointExperience = [
-                $student->ojt->preventive_maintenance,
-                $student->ojt->remove_and_install,
-                $student->ojt->machine_troubleshooting,
+            $pointExperience = [];
+            $pm = 0;
+            $ra = 0;
+            $mt = 0;
+            foreach ($student->bestSpecialization as $data) {
+                $pm += $data->preventive_maintenance;
+                $ra += $data->remove_and_install;
+                $mt += $data->machine_troubleshooting;
+
+                $pointExperience[]=[
+                    "name" => $data->name,
+                    "pm" => $data->preventive_maintenance,
+                    "ri" => $data->remove_and_install,
+                    "mt" =>$data->machine_troubleshooting
+                ];
+            }
+
+            $exp=[
+                "pm" => $pm,
+                "ri" => $ra,
+                "mt" => $mt
+            ];
+            $behaviorScore = [
+                intval($student->behavior->integritas),
+                intval($student->behavior->santun),
+                intval($student->behavior->ahli),
+                intval($student->behavior->berani),
             ];
 
-            return view("detail-studentHired",compact("student","pointExperience","students"));
+            $behavior=[];
+            foreach ($behaviorScore as $key => $value) {
+                switch ($key) {
+                    case 0:
+                        $persentase = number_format((($value/9) * 100),1);
+                        $behavior["integritas"] = $value > 75.0 ? __('Sangat Baik') : ($value > 50.0 ? __('Cukup') : __('Kurang'));
+                        break;
+                    case 1:
+                        $persentase = number_format((($value/9) * 100),1);
+                        $behavior["santun"] = $value > 75.0 ? __('Sangat Baik') : ($value > 50.0 ? __('Cukup') : __('Kurang'));
+                        break;
+                    case 2:
+                        $persentase = number_format((($value/9) * 100),1);
+                        $behavior["ahli"] = $value > 75.0 ? __('Sangat Baik') : ($value > 50.0 ? __('Cukup') : __('Kurang'));
+                        break;
+                    case 3:
+                        $persentase = number_format((($value/9) * 100),1);
+                        $behavior["berani"] = $value > 75.0 ? __('Sangat Baik') : ($value > 50.0 ? __('Cukup') : __('Kurang'));
+                        break;
+                }
+
+            }
+
+            return view("detail-studentHired",compact("student","pointExperience","students","exp","behaviorScore","behavior"));
         }catch(Exception $e)
         {
             toastr()->error($e->getMessage(),"Error");

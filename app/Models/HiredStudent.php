@@ -36,6 +36,12 @@ class HiredStudent extends Model
     {
         return $this->hasMany(UnitSpecialization::class);
     }
+
+    public function bestSpecialization():HasMany
+    {
+        return $this->hasMany(UnitSpecialization::class)->orderByDesc('total')->take(4);
+    }
+
     public function ojt():HasOne
     {
         return $this->hasOne(OjtExperienceStudents::class);
