@@ -15,7 +15,7 @@
                                 <li class="breadcrumb-item" aria-current="page"><a
                                         href="{{ route('admin.customer.index') }}">Customer data</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Create</li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit</li>
                             </ol>
                         </nav>
                     </div>
