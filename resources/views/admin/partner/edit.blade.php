@@ -15,7 +15,7 @@
                                 <li class="breadcrumb-item" aria-current="page"><a
                                         href="{{ route('admin.partner.index') }}">Branch data</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Update</li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit</li>
                             </ol>
                         </nav>
                     </div>
