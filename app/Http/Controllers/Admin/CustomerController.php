@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCustomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -71,7 +72,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreCustomerRequest $request, string $id)
+    public function update(UpdateCustomerRequest $request, string $id)
     {
         try {
             DB::beginTransaction();
@@ -87,7 +88,10 @@ class CustomerController extends Controller
             $customer->email = $request->email;
             $customer->customer_email = $request->customer_email;
             $customer->no_telp = $request->no_telp;
-            $customer->password = Hash::make($request->password);
+
+            if(!empty($request->password)){
+                $customer->password = Hash::make($request->password);
+            }
             $customer->save();
 
             DB::commit();
