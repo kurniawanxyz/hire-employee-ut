@@ -281,7 +281,22 @@
                                 }
                             },
                             t: "s"
-                        }]
+                        },
+                        {
+                            v: "Date",
+                            s: {
+                                fill: {
+                                    fgColor: {
+                                        rgb: "00B050"
+                                    },
+                                    bgColor: {
+                                        rgb: "D9D9D9"
+                                    }
+                                }
+                            },
+                            t: "s",
+                        },
+                    ]
                     ];
                     $.each(response, function(index, student) {
                         data.push([{
@@ -347,7 +362,8 @@
                             },
                             student.name,
                             student.role,
-                            student.branch.city
+                            student.branch.city,
+                            new Date().toLocaleDateString('en-GB'),
                         ]);
                     })
                     var ws = XLSX.utils.aoa_to_sheet(data);
