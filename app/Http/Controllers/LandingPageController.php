@@ -23,7 +23,7 @@ class LandingPageController extends Controller
         $landingPage = LandingPage::all()->first();
         $branchs = Branch::all()->count();
         $landingPage["total_branch"] = $branchs;
-        $operator = User::whereNot('email', config('app.admin_email'))->first();
+        $operator = User::where('email', config('app.customer_email'))->first();
         return view("welcome", compact("landingPage","operator"));
     }
 
@@ -66,7 +66,7 @@ class LandingPageController extends Controller
     public function update(RequestUpdateLandingPage $request)
     {
         try{
-            $landingPage = LandingPage::all()->first();
+            $landingPage = LandingPage::first();
             $data = $request->validated();
 
             if($request->hasFile('hero_section_image_1')) {
@@ -75,11 +75,11 @@ class LandingPageController extends Controller
             }
             if($request->hasFile('hero_section_image_2')) {
                 $this->deleteImage($landingPage->hero_section_image_2);
-                $$data['hero_section_image_2'] = $this->uploadImage($request->file('hero_section_image_2'),"heroImg");
+                $data['hero_section_image_2'] = $this->uploadImage($request->file('hero_section_image_2'),"heroImg");
             }
             if($request->hasFile('hero_section_image_3')) {
                 $this->deleteImage($landingPage->hero_section_image_3);
-                $$data['hero_section_image_3'] = $this->uploadImage($request->file('hero_section_image_3'),"heroImg");
+                $data['hero_section_image_3'] = $this->uploadImage($request->file('hero_section_image_3'),"heroImg");
             }
 
             $landingPage->update($data);

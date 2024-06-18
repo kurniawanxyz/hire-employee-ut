@@ -73,7 +73,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="hero_section_image_2">
-                                <img id="preview2" src="{{ asset($landingPage->hero_section_image_2??'assets/img/hero/hero2.jpg') }}"
+                                <img id="preview2" src="{{ asset($landingPage->hero_section_image_2??'assets/img/hero/hero2.png') }}"
                                     class="object-fit-cover" alt="hero image 2">
                                 <h3 class="text-primary">Hero Image 2</h3>
                             </label>
@@ -84,7 +84,7 @@
                             @enderror
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label" for="">
+                            <label class="form-label" for="hero_section_image_3">
                                 <img id="preview3" src="{{ asset($landingPage->hero_section_image_3??'assets/img/hero/hero3.jpg') }}"
                                     class="object-fit-cover" alt="hero image 2">
                                 <h3 class="text-primary">Hero Image 3</h3>
