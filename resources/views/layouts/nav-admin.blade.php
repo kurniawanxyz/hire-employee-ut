@@ -31,7 +31,7 @@
     <div class="main-wrapper">
         <div class="header">
             <div class="header-left d-flex align-items-center">
-                <a href="{{ route('get.landingpage') }}" class="logo">
+                <a href="{{ route('admin.dashboard') }}" class="logo">
                     <img src="{{ asset('assets/admin/img/logo_UTS_terang.png') }}" id="logo-PT" alt="Logo"
                         class="w-75" />
                 </a>
