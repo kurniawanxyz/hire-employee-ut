@@ -55,9 +55,9 @@ class HiredStudentController extends Controller
         $hiredStudent = $this->hiredStudent->query()->with("branch")->whereIn("id",$hiredStudentId)->get();
         $message="";
         $telp = auth()->user()->no_telp;
-        $message.="Halo, Saya ingin merekrut mekanik atau pekerja berikut ini"."%0A";
+        $message.="Halo, Saya dari " . auth()->user()->name . " ingin merekrut siswa mekanik atau operator berikut ini"."%0A";
         foreach ($hiredStudent as $key => $value) {
-            $message .= $key+1 . ". " . $value->name . " " . $value->role . " dari " . $value->branch->city . "%0A";
+            $message .= $key+1 . ". " . $value->name . " " . $value->role . " dari UTS " . $value->branch->city . "%0A";
         }
         $url = "https://wa.me/". $telp . "?text=" . strval($message);
 
