@@ -77,11 +77,11 @@
                                         data-bs-target="#Biodata" type="button" role="tab" aria-controls="Biodata"
                                         aria-selected="true">{{__('Detail Information')}}</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
+                                {{-- <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="Academic-tab" data-bs-toggle="tab"
                                         data-bs-target="#Academic" type="button" role="tab" aria-controls="Academic"
                                         aria-selected="false">{{__('Academic Information')}}</button>
-                                </li>
+                                </li> --}}
                             </ul>
                             <div class="tab-content" id="nav-tabContent">
                                 <div id="Biodata" role="tabpanel" class="tab-pane fade show in active">
@@ -198,47 +198,53 @@
                                 <div class="col-md-12" id="statistik">
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="OJT-tab" data-bs-toggle="tab" data-bs-target="#OJT" type="button" role="tab" aria-controls="OJT" aria-selected="true">OJT Experience</button>
+                                            <button class="nav-link active" id="behavior-tab" data-bs-toggle="tab" data-bs-target="#behavior" type="button" role="tab" aria-controls="behavior" aria-selected="false">Behavior</button>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="behavior-tab" data-bs-toggle="tab" data-bs-target="#behavior" type="button" role="tab" aria-controls="behavior" aria-selected="false">Behavior</button>
+                                            <button class="nav-link" id="OJT-tab" data-bs-toggle="tab" data-bs-target="#OJT" type="button" role="tab" aria-controls="OJT" aria-selected="true">OJT Experience</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="OJT2-tab" data-bs-toggle="tab" data-bs-target="#OJT2" type="button" role="tab" aria-controls="OJT2" aria-selected="true">OJT Experience 2</button>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show in active" id="OJT" role="tabpanel" aria-labelledby="OJT-tab">
+                                        <div class="tab-pane fade in" id="OJT" role="tabpanel" aria-labelledby="OJT-tab">
                                             <canvas id="myChart"></canvas>
                                         </div>
-                                        <div class="tab-pane fade in" id="behavior" role="tabpanel" aria-labelledby="behavior-tab">
+                                        <div class="tab-pane fade in" id="OJT2" role="tabpanel" aria-labelledby="OJT-tab">
+                                            <canvas id="myChart2"></canvas>
+                                        </div>
+                                        <div class="tab-pane fade in show active" id="behavior" role="tabpanel" aria-labelledby="behavior-tab">
                                             <canvas id="behaviorChart"></canvas>
                                             <h5 class="fw-bold">Behavior</h5>
                                             <ul>
-                                                @if($behavior["integritas"] == 'Sangat Baik')
+                                                @if($behavior["integritas"] == __('Sangat Baik'))
                                                     <li>Integritas: <span class="badge bg-success fs-5"> {{ $behavior["integritas"] }} </span></li>
-                                                @elseif($behavior["integritas"] == 'Cukup')
+                                                @elseif($behavior["integritas"] == __('Cukup'))
                                                     <li>Integritas: <span class="badge bg-warning fs-5"> {{ $behavior["integritas"] }} </span></li>
                                                 @else
                                                     <li>Integritas: <span class="badge bg-danger fs-5"> {{ $behavior["integritas"] }} </span></li>
                                                 @endif
 
-                                                @if($behavior["santun"] == 'Sangat Baik')
+                                                @if($behavior["santun"] == __('Sangat Baik'))
                                                     <li>Santun: <span class="badge bg-success fs-5"> {{ $behavior["santun"] }} </span></li>
-                                                @elseif($behavior["santun"] == 'Cukup')
+                                                @elseif($behavior["santun"] == __('Cukup'))
                                                     <li>Santun: <span class="badge bg-warning fs-5"> {{ $behavior["santun"] }} </span></li>
                                                 @else
                                                     <li>Santun: <span class="badge bg-danger fs-5"> {{ $behavior["santun"] }} </span></li>
                                                 @endif
 
-                                                @if($behavior["ahli"] == 'Sangat Baik')
+                                                @if($behavior["ahli"] == __('Sangat Baik'))
                                                     <li>Ahli: <span class="badge bg-success fs-5"> {{ $behavior["ahli"] }} </span></li>
-                                                @elseif($behavior["ahli"] == 'Cukup')
+                                                @elseif($behavior["ahli"] == __('Cukup'))
                                                     <li>Ahli: <span class="badge bg-warning fs-5"> {{ $behavior["ahli"] }} </span></li>
                                                 @else
                                                     <li>Ahli: <span class="badge bg-danger fs-5"> {{ $behavior["ahli"] }} </span></li>
                                                 @endif
 
-                                                @if($behavior["berani"] == 'Sangat Baik')
+                                                @if($behavior["berani"] == __('Sangat Baik'))
                                                     <li>Berani: <span class="badge bg-success fs-5"> {{ $behavior["berani"] }} </span></li>
-                                                @elseif($behavior["berani"] == 'Cukup')
+                                                @elseif($behavior["berani"] == __('Cukup'))
                                                     <li>Berani: <span class="badge bg-warning fs-5"> {{ $behavior["berani"] }} </span></li>
                                                 @else
                                                     <li>Berani: <span class="badge bg-danger fs-5"> {{ $behavior["berani"] }} </span></li>
@@ -330,6 +336,18 @@
             },
 
         };
+        const config2 = {
+            type: 'radar',
+            data: data,
+            options: {
+                elements: {
+                    line: {
+                        borderWidth: 3
+                    }
+                }
+            },
+
+        };
         const configBehavior = {
             type: 'radar',
             data: {
@@ -342,7 +360,7 @@
                     borderWidth: 1
                 },{
                     label: 'Max',
-                    data: [9,9,9,9],
+                    data: [3,3,3,3],
                     fill: false,
                     backgroundColor: 'rgba(0,0,0,0)'
                 },{
@@ -361,8 +379,10 @@
             },
         }
         const canvas1 = $("#myChart");
+        const canvas12 = $("#myChart2");
         const canvas2 = $("#behaviorChart");
         new Chart(canvas1, config);
+        new Chart(canvas12, config2);
         new Chart(canvas2, configBehavior)
     </script>
 @endsection

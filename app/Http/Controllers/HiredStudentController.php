@@ -134,20 +134,16 @@ class HiredStudentController extends Controller
             foreach ($behaviorScore as $key => $value) {
                 switch ($key) {
                     case 0:
-                        $persentase = number_format((($value/9) * 100),1);
-                        $behavior["integritas"] = $value > 75.0 ? __('Sangat Baik') : ($value > 50.0 ? __('Cukup') : __('Kurang'));
+                        $behavior["integritas"] = $value == 3 ? __('Sangat Baik') : ($value == 2 ? __('Cukup') : __('Kurang'));
                         break;
                     case 1:
-                        $persentase = number_format((($value/9) * 100),1);
-                        $behavior["santun"] = $value > 75.0 ? __('Sangat Baik') : ($value > 50.0 ? __('Cukup') : __('Kurang'));
+                        $behavior["santun"] = $value == 3 ? __('Sangat Baik') : ($value == 2 ? __('Cukup') : __('Kurang'));
                         break;
                     case 2:
-                        $persentase = number_format((($value/9) * 100),1);
-                        $behavior["ahli"] = $value > 75.0 ? __('Sangat Baik') : ($value > 50.0 ? __('Cukup') : __('Kurang'));
+                        $behavior["ahli"] = $value == 3 ? __('Sangat Baik') : ($value == 2 ? __('Cukup') : __('Kurang'));
                         break;
                     case 3:
-                        $persentase = number_format((($value/9) * 100),1);
-                        $behavior["berani"] = $value > 75.0 ? __('Sangat Baik') : ($value > 50.0 ? __('Cukup') : __('Kurang'));
+                        $behavior["berani"] = $value == 3 ? __('Sangat Baik') : ($value == 2 ? __('Cukup') : __('Kurang'));
                         break;
                 }
 
