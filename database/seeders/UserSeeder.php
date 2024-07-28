@@ -16,22 +16,22 @@
         {
             User::create([
                 'name' => "Admin",
-                'email' => "admin@utschool.sch.id",
-                'customer_email' => "admin@utschool.sch.id",
+                'email' => "admin@utschoolhub.com",
+                'customer_email' => "admin@utschoolhub.com",
                 'no_telp' => "6222222222222",
                 'password' => Hash::make("admin-ini"),
             ]);
 
             User::create([
                 'name' => 'customer',
-                'email' => "customer@utschool.sch.id",
+                'email' => "customer@utschoolhub.com",
                 'customer_email' => "kurniawanadi4556@gmail.com",
                 'no_telp' => "62895385285001",
                 'password' => Hash::make("customer-ini")
             ]);
             User::create([
                 'name' => 'PT PAMAPERSADA NUSANTARA',
-                'email' => "pama@utschool.sch.id",
+                'email' => "pama@utschoolhub.com",
                 'customer_email' => "kurniawanadi4556@gmail.com",
                 'no_telp' => "62895385285001",
                 'password' => Hash::make("customer-ini")
@@ -39,14 +39,14 @@
 
             User::create([
                 'name' => 'PT KALIMANTAN PRIMA PERSADA',
-                'email' => "kpp@utschool.sch.id",
+                'email' => "kpp@utschoolhub.com",
                 'customer_email' => "gioverdiansyh@gmail.com",
                 'no_telp' => "6282132900242",
                 'password' => Hash::make("customer-ini")
             ]);
             User::create([
                 'name' => 'PT KANITRA MITRA JAYAUTAMA',
-                'email' => "kamaju@utschool.sch.id",
+                'email' => "kamaju@utschoolhub.com",
                 'customer_email' => "kurniawanadi4556@gmail.com",
                 'no_telp' => "62895385285001",
                 'password' => Hash::make("customer-ini")
