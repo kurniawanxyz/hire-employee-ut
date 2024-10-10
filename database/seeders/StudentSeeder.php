@@ -26,6 +26,8 @@ class StudentSeeder extends Seeder
             'age' => 18,
             'height' => 160,
             'weight' => 45,
+            'bmi' => 45,
+            'ojt_location' => "jakarta",
             'role' => 'mechanic',
             'batch' => 1,
             'hasRecruit' => false
@@ -43,6 +45,8 @@ class StudentSeeder extends Seeder
             'age' => 20,
             'height' => 165,
             'weight' => 50,
+            'bmi' => 45,
+            'ojt_location' => "jakarta",
             'role' => 'operator',
             'batch' => 1,
             'hasRecruit' => false
@@ -60,6 +64,8 @@ class StudentSeeder extends Seeder
             'age' => 22,
             'height' => 155,
             'weight' => 48,
+            'bmi' => 45,
+            'ojt_location' => "jakarta",
             'role' => 'mechanic',
             'batch' => 1,
             'hasRecruit' => false
@@ -77,6 +83,8 @@ class StudentSeeder extends Seeder
             'age' => 19,
             'height' => 162,
             'weight' => 47,
+            'bmi' => 45,
+            'ojt_location' => "jakarta",
             'role' => 'operator',
             'batch' => 1,
             'hasRecruit' => false
@@ -94,6 +102,8 @@ class StudentSeeder extends Seeder
             'age' => 21,
             'height' => 170,
             'weight' => 55,
+            'bmi' => 45,
+            'ojt_location' => "jakarta",
             'role' => 'mechanic',
             'batch' => 1,
             'hasRecruit' => false
@@ -111,6 +121,8 @@ class StudentSeeder extends Seeder
             'age' => 23,
             'height' => 158,
             'weight' => 49,
+            'bmi' => 45,
+            'ojt_location' => "jakarta",
             'role' => 'operator',
             'batch' => 1,
             'hasRecruit' => false
@@ -128,6 +140,8 @@ class StudentSeeder extends Seeder
             'age' => 20,
             'height' => 165,
             'weight' => 52,
+            'bmi' => 45,
+            'ojt_location' => "jakarta",
             'role' => 'mechanic',
             'batch' => 1,
             'hasRecruit' => false
@@ -145,6 +159,8 @@ class StudentSeeder extends Seeder
             'age' => 24,
             'height' => 175,
             'weight' => 60,
+            'bmi' => 45,
+            'ojt_location' => "jakarta",
             'role' => 'operator',
             'batch' => 1,
             'hasRecruit' => false
@@ -162,6 +178,8 @@ class StudentSeeder extends Seeder
             'age' => 25,
             'height' => 160,
             'weight' => 50,
+            'bmi' => 45,
+            'ojt_location' => "jakarta",
             'role' => 'mechanic',
             'batch' => 1,
             'hasRecruit' => false
@@ -179,6 +197,8 @@ class StudentSeeder extends Seeder
             'age' => 22,
             'height' => 168,
             'weight' => 58,
+            'bmi' => 45,
+            'ojt_location' => "jakarta",
             'role' => 'operator',
             'batch' => 1,
             'hasRecruit' => false

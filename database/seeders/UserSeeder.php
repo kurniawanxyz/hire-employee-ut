@@ -15,7 +15,7 @@
         public function run(): void
         {
             User::create([
-                 'name' => "Admin",
+                'name' => "Admin",
                 'email' => "admin@utschoolhub.com",
                 'customer_email' => "admin@utschoolhub.com",
                 'no_telp' => "6222222222222",

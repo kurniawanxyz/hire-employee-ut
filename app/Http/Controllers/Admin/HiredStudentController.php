@@ -88,6 +88,7 @@ class HiredStudentController extends Controller
             $hs->age = $request->age;
             $hs->height = $request->height;
             $hs->weight = $request->weight;
+            $hs->bmi = $request->bmi;
             $hs->ojt_location = $request->ojt_location;
             $hs->role = $request->role;
             $hs->hasRecruit = ($request->recruit == 'yes') ? true : (($request->recruit == 'no') ? false : null);
@@ -207,6 +208,7 @@ class HiredStudentController extends Controller
             $hs->age = $request->age;
             $hs->height = $request->height;
             $hs->weight = $request->weight;
+            $hs->bmi = $request->bmi;
             $hs->role = $request->role;
             $hs->ojt_location = $request->ojt_location;
             $hs->hasRecruit = ($request->recruit == 'yes') ? true : (($request->recruit == 'no') ? false : null);
