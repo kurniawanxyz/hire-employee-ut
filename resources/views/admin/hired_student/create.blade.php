@@ -152,7 +152,7 @@
                         </div>
                         <div class="my-3">
                             <label class="form-label" for="date_birth">Date Birth</label>
-                            <input type="text" name="date_birth" id="date_birth"
+                            <input type="date" name="date_birth" id="date_birth"
                                 class="form-control @error('date_birth') is-invalid @enderror"
                                 placeholder="Enter name place birth student" value="{{ old('date_birth') }}">
                             @error('date_birth')

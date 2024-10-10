@@ -32,7 +32,7 @@ class StoreHiredStudentRequest extends FormRequest
             'email' => 'required|email:rfc,dns',
             'school_origin' => 'required',
             'place_birth' => 'required',
-            'date_birth' => 'required',
+            'date_birth' => 'required|date',
             'major' => 'required',
             'batch' => 'required|integer',
             'ojt_location' => 'required',
