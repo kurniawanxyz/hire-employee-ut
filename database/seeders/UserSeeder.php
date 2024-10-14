@@ -19,6 +19,7 @@
                 'email' => "admin@utschoolhub.com",
                 'customer_email' => "admin@utschoolhub.com",
                 'no_telp' => "6222222222222",
+                
                 'password' => Hash::make("admin-ini"),
             ]);
 

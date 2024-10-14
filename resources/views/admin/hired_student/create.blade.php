@@ -130,7 +130,7 @@
                     <div class="col-md-6 px-3">
                         <div class="my-3">
                             <label class="form-label" for="place_birth">Place Birth</label>
-                            <input type="date" name="place_birth" id="place_birth"
+                            <input type="text" name="place_birth" id="place_birth"
                                 class="form-control @error('place_birth') is-invalid @enderror"
                                 placeholder="Enter name place birth student" value="{{ old('place_birth') }}">
                             @error('place_birth')

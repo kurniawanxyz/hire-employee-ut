@@ -105,7 +105,7 @@ class HiredStudentController extends Controller
             $pm = 0;
             $ra = 0;
             $mt = 0;
-            foreach ($student->bestSpecialization as $data) {
+            foreach ($student->specialization as $data) {
                 $pm += $data->preventive_maintenance;
                 $ra += $data->remove_and_install;
                 $mt += $data->machine_troubleshooting;

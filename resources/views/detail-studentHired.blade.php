@@ -94,7 +94,7 @@
                                             <tr>
                                                 <th scope="row">{{ __('Place and Date of Birth') }}:</th>
                                                 <td>{{ $student->place_birth }},
-                                                    {{ \Carbon\Carbon::createFromFormat('d/m/Y', $student->date_birth)->isoFormat('D MMMM Y') }}
+                                                    {{$student->date_birth}}
                                                 </td>
                                             </tr>
                                             <tr>
